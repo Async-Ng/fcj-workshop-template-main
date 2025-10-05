@@ -44,6 +44,8 @@ The system utilizes AWS Serverless architecture and free open-source services to
 | Recommendation Engine | Rule-based + TensorFlow.js |
 | Analytics & Dashboard | AWS QuickSight             |
 
+![Smart Boarding House Finder Architecture](/images/2-Proposal/AWSProject.drawio.png)
+
 ### AWS Services Used
 
 - **AWS Lambda**: Processes API requests and executes recommendation logic.

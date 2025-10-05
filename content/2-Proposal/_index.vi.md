@@ -44,6 +44,8 @@ Hệ thống sử dụng kiến trúc AWS Serverless và dịch vụ open-source
 | Recommendation Engine | Rule-based + TensorFlow.js |
 | Analytics & Dashboard | AWS QuickSight             |
 
+![Kiến Trúc Smart Boarding House Finder](/images/2-Proposal/AWSProject.drawio.png)
+
 ### Dịch vụ AWS sử dụng
 
 - **AWS Lambda**: Xử lý các yêu cầu API và thực thi logic gợi ý.
