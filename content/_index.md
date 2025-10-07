@@ -5,25 +5,21 @@ weight: 1
 chapter: false
 ---
 
-    
 # Internship Report
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
-
 ### Student Information:
-&emsp; **Full Name:** Nguyen Van A
 
-&emsp; **Phone Number:** 0989888999 
+&emsp; **Full Name:** Nguyen Nhut Truong
 
-&emsp; **Email:** Anguyenvan@gmail.com
+&emsp; **Phone Number:** 0798065047
 
-&emsp; **University:** Ho Chi Minh City University of Technology and Education
+&emsp; **Email:** truongnnse182324@fpt.edu.vn
 
-&emsp; **Major:** Information Technology
+&emsp; **University:** FPT Univeristy
 
-&emsp; **Class:** AWS082025
+&emsp; **Major:** Software Engineering
+
+&emsp; **Class:** FCJ - FPTU
 
 &emsp; **Internship Company:** Amazon Web Services Vietnam Co., Ltd.
 
