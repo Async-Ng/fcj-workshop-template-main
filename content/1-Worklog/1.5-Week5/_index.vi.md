@@ -5,55 +5,47 @@ weight: 1
 chapter: false
 pre: " <b> 1.5. </b> "
 ---
+
 {{% notice warning %}}
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-
 ### Mục tiêu tuần 5:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Kết nối, làm quen với các thành viên trong First Cloud Journey.
+- Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc                                                                                          | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | -------------------------------------------------------------------------------------------------- | ------------ | --------------- | -------------- |
+| 2   | - Nghỉ ốm                                                                                          | 06/10/2025   | 06/10/2025      |                |
+| 3   | - Dịch Blogs được giao                                                                             | 07/10/2025   | 07/10/2025      |                |
+| 4   | - Ôn tập kiến thức tuần số 4 <br> - Tiếp tục dịch blog                                             | 08/10/2025   | 08/10/2025      |                |
+| 5   | - Tìm hiểu, cài môi trường chuẩn bị dev dự án <br> - Tìm cách chạy các service AWS local để tối ưu | 09/10/2025   | 09/10/2025      |                |
+| 6   | - Cài DynamoDB local cấu hình Docker <br> - Tìm hiểu cơ bản về CDK và cách tổ chức thư mục dự án   | 10/10/2025   | 10/10/2025      |                |
 
 ### Kết quả đạt được tuần 5:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+- Hoàn thành việc dịch các blogs được giao cho dự án FCJ.
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+- Ôn tập và củng cố lại kiến thức đã học ở tuần 4.
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+- Thiết lập môi trường phát triển cho dự án sắp tới:
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+  - Nghiên cứu các công cụ và cấu hình cần thiết
+  - Tìm hiểu phương pháp chạy các dịch vụ AWS local để tối ưu chi phí và tăng tốc độ phát triển
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+- Cài đặt và cấu hình thành công DynamoDB local:
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+  - Thiết lập môi trường Docker
+  - Cấu hình DynamoDB local chạy trong container
+  - Test các thao tác cơ bản với DynamoDB local
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+- Học được kiến thức cơ bản về AWS CDK (Cloud Development Kit):
 
+  - Hiểu các khái niệm và lợi ích của CDK
+  - Học cách tổ chức và cấu trúc thư mục dự án CDK
+  - Làm quen với cú pháp và pattern của CDK
 
+- Chuẩn bị nền tảng cho quy trình phát triển local với các dịch vụ AWS.

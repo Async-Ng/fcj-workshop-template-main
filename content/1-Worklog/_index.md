@@ -10,11 +10,11 @@ pre: " <b> 1. </b> "
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
-**On this page**, I will introduce my AWS learning journey during the **first 4 weeks** of the internship program. Each week I focused on different topics, from basic services to advanced solutions.
+**On this page**, I will introduce my AWS learning journey during the **first 5 weeks** of the internship program. Each week I focused on different topics, from basic services to advanced solutions.
 
 The program is designed progressively, helping me build a solid knowledge foundation and practical skills necessary for a Cloud Engineer/Solution Architect role.
 
-## 4-Week Learning Program
+## 5-Week Learning Program
 
 **Week 1:** [AWS Fundamentals - Foundation](1.1-week1/)
 
@@ -42,6 +42,14 @@ The program is designed progressively, helping me build a solid knowledge founda
 - **Performance**: Docker/ECS, CodePipeline, Data Lake, DynamoDB
 - **Cost Optimization**: Savings Plans, right-sizing, cost analysis
 
+**Week 5:** [Project Development & Local Environment Setup](1.5-week5/)
+
+- Translation of assigned FCJ blogs
+- Review and consolidation of Week 4 knowledge
+- Development environment setup for upcoming project
+- Local AWS services configuration (DynamoDB local with Docker)
+- Introduction to AWS CDK and project structure organization
+
 ---
 
-**Note**: These are the first 4 weeks of the 12-week program. Subsequent weeks will be updated according to actual learning progress.
+**Note**: These are the first 5 weeks of the 12-week program. Subsequent weeks will be updated according to actual learning progress.

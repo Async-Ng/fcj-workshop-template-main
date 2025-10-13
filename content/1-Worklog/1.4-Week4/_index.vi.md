@@ -1,5 +1,5 @@
 ---
-title: "Worklog Tuần| 2   | **Operational Excellence**:<br>- Tự động tắt server và gửi thông báo Slack với AWS Lambda<br>+ Tạo hệ thống giám sát với Amazon CloudWatch và Grafana<br>+ Quản lý tài nguyên theo nhóm với Tag và Resource Groups<br>- Quản lý truy cập EC2 với Tag thông qua IAM<br>+ Tự động hóa quản lý dịch vụ với AWS Systems Manager<br>- Khởi tạo Infrastructure as Code với AWS CloudFormation | 29/09/2025   | 29/09/2025      | <https://cloudjourney.awsstudygroup.com><br><https://www.youtube.com/watch?v=AQlsd0nWdZk&list=PLahN4TLWtox2a3vElknwzU_urND8hLn1i> |4"
+title: "Worklog Tuần 4"
 date: "`r Sys.Date()`"
 weight: 1
 chapter: false

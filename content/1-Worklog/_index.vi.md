@@ -10,11 +10,11 @@ pre: " <b> 1. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-**Trong trang này** tôi sẽ giới thiệu quá trình học tập AWS của mình trong **4 tuần đầu** của chương trình thực tập. Mỗi tuần tôi đã tập trung vào những chủ đề khác nhau, từ các dịch vụ cơ bản đến các giải pháp nâng cao.
+**Trong trang này** tôi sẽ giới thiệu quá trình học tập AWS của mình trong **5 tuần đầu** của chương trình thực tập. Mỗi tuần tôi đã tập trung vào những chủ đề khác nhau, từ các dịch vụ cơ bản đến các giải pháp nâng cao.
 
 Chương trình được thiết kế theo hướng tiến bộ, giúp tôi xây dựng nền tảng kiến thức vững chắc và kỹ năng thực hành cần thiết cho vai trò Cloud Engineer/Solution Architect.
 
-## Chương trình học tập 4 tuần đầu
+## Chương trình học tập 5 tuần đầu
 
 **Tuần 1:** [AWS Fundamentals - Nền tảng cơ bản](1.1-week1/)
 
@@ -42,6 +42,14 @@ Chương trình được thiết kế theo hướng tiến bộ, giúp tôi xây
 - **Performance**: Docker/ECS, CodePipeline, Data Lake, DynamoDB
 - **Cost Optimization**: Savings Plans, right-sizing, cost analysis
 
+**Tuần 5:** [Phát triển dự án & Cài đặt môi trường Local](1.5-week5/)
+
+- Dịch các blogs được giao cho FCJ
+- Ôn tập và củng cố kiến thức tuần 4
+- Thiết lập môi trường phát triển cho dự án sắp tới
+- Cấu hình các dịch vụ AWS local (DynamoDB local với Docker)
+- Làm quen với AWS CDK và tổ chức cấu trúc dự án
+
 ---
 
-**Lưu ý**: Đây là 4 tuần đầu của chương trình 12 tuần. Các tuần tiếp theo sẽ được cập nhật theo tiến độ học tập thực tế.
+**Lưu ý**: Đây là 5 tuần đầu của chương trình 12 tuần. Các tuần tiếp theo sẽ được cập nhật theo tiến độ học tập thực tế.
