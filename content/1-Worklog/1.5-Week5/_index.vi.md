@@ -6,10 +6,6 @@ chapter: false
 pre: " <b> 1.5. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 ### Mục tiêu tuần 5:
 
 - Kết nối, làm quen với các thành viên trong First Cloud Journey.
@@ -17,13 +13,13 @@ pre: " <b> 1.5. </b> "
 
 ### Các công việc cần triển khai trong tuần này:
 
-| Thứ | Công việc                                                                                          | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
-| --- | -------------------------------------------------------------------------------------------------- | ------------ | --------------- | -------------- |
-| 2   | - Nghỉ ốm                                                                                          | 06/10/2025   | 06/10/2025      |                |
-| 3   | - Dịch Blogs được giao                                                                             | 07/10/2025   | 07/10/2025      |                |
-| 4   | - Ôn tập kiến thức tuần số 4 <br> - Tiếp tục dịch blog                                             | 08/10/2025   | 08/10/2025      |                |
-| 5   | - Tìm hiểu, cài môi trường chuẩn bị dev dự án <br> - Tìm cách chạy các service AWS local để tối ưu | 09/10/2025   | 09/10/2025      |                |
-| 6   | - Cài DynamoDB local cấu hình Docker <br> - Tìm hiểu cơ bản về CDK và cách tổ chức thư mục dự án   | 10/10/2025   | 10/10/2025      |                |
+| Thứ | Công việc                                                                                                                                                                          | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | -------------- |
+| 2   | - Nghỉ ốm                                                                                                                                                                          | 06/10/2025   | 06/10/2025      |                |
+| 3   | - Dịch Blogs được giao                                                                                                                                                             | 07/10/2025   | 07/10/2025      |                |
+| 4   | - Ôn tập kiến thức tuần số 4 <br> - Tiếp tục dịch blog                                                                                                                             | 08/10/2025   | 08/10/2025      |                |
+| 5   | - Tìm hiểu, cài môi trường chuẩn bị dev dự án <br> - Tìm cách chạy các service AWS local để tối ưu                                                                                 | 09/10/2025   | 09/10/2025      |                |
+| 6   | - Cố gắng cài DynamoDB local với Docker (không thành công) <br> - Quyết định sử dụng DynamoDB trên AWS cloud trực tiếp <br> - Tìm hiểu cơ bản về CDK và cách tổ chức thư mục dự án | 10/10/2025   | 10/10/2025      |                |
 
 ### Kết quả đạt được tuần 5:
 
@@ -36,11 +32,11 @@ pre: " <b> 1.5. </b> "
   - Nghiên cứu các công cụ và cấu hình cần thiết
   - Tìm hiểu phương pháp chạy các dịch vụ AWS local để tối ưu chi phí và tăng tốc độ phát triển
 
-- Cài đặt và cấu hình thành công DynamoDB local:
+- Cố gắng cài đặt và cấu hình DynamoDB local:
 
-  - Thiết lập môi trường Docker
-  - Cấu hình DynamoDB local chạy trong container
-  - Test các thao tác cơ bản với DynamoDB local
+  - Thử thiết lập môi trường Docker
+  - Gặp vấn đề với cấu hình DynamoDB local
+  - Quyết định sử dụng DynamoDB trên AWS cloud trực tiếp để đảm bảo độ tin cậy và dễ dàng thiết lập
 
 - Học được kiến thức cơ bản về AWS CDK (Cloud Development Kit):
 
@@ -48,4 +44,4 @@ pre: " <b> 1.5. </b> "
   - Học cách tổ chức và cấu trúc thư mục dự án CDK
   - Làm quen với cú pháp và pattern của CDK
 
-- Chuẩn bị nền tảng cho quy trình phát triển local với các dịch vụ AWS.
+- Chuẩn bị nền tảng cho quy trình phát triển trên cloud với các dịch vụ AWS.

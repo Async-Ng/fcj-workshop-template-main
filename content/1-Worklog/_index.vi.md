@@ -6,10 +6,6 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
 **Trong trang này** tôi sẽ giới thiệu quá trình học tập AWS của mình trong **5 tuần đầu** của chương trình thực tập. Mỗi tuần tôi đã tập trung vào những chủ đề khác nhau, từ các dịch vụ cơ bản đến các giải pháp nâng cao.
 
 Chương trình được thiết kế theo hướng tiến bộ, giúp tôi xây dựng nền tảng kiến thức vững chắc và kỹ năng thực hành cần thiết cho vai trò Cloud Engineer/Solution Architect.
