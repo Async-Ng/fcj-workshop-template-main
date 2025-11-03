@@ -6,12 +6,11 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-
-**On this page**, I will introduce my AWS learning journey during the **first 5 weeks** of the internship program. Each week I focused on different topics, from basic services to advanced solutions.
+**On this page**, I will introduce my AWS learning journey during the **first 8 weeks** of the internship program. Each week I focused on different topics, from basic services to advanced solutions.
 
 The program is designed progressively, helping me build a solid knowledge foundation and practical skills necessary for a Cloud Engineer/Solution Architect role.
 
-## 5-Week Learning Program
+## 8-Week Learning Program
 
 **Week 1:** [AWS Fundamentals - Foundation](1.1-week1/)
 
@@ -47,6 +46,30 @@ The program is designed progressively, helping me build a solid knowledge founda
 - Local AWS services configuration (DynamoDB local with Docker)
 - Introduction to AWS CDK and project structure organization
 
+**Week 6:** [Application Modernization & Microservices](1.6-week6/)
+
+- Migrate monolithic applications to cloud-native architecture
+- Implement authentication and security with Amazon Cognito
+- Build microservices with API Gateway and Lambda
+- Configure orchestration and CI/CD workflows
+- Develop Single Page Applications and integrate AI services
+
+**Week 7:** [Containers & Kubernetes](1.7-week7/)
+
+- Deploy applications using Amazon Lightsail Containers
+- Set up and manage Amazon EKS clusters
+- Implement CI/CD pipelines with AWS CodePipeline
+- Transform monoliths to microservices using Docker and AWS Fargate
+- Integrate GitHub with EKS for automated deployments
+
+**Week 8:** [Comprehensive Review & Midterm Examination](1.8-week8/)
+
+- Review AWS Fundamentals (Weeks 1-2): EC2, S3, VPC, networking
+- Review Security & Identity (Weeks 3-4): IAM, Cognito, best practices
+- Review Serverless & Modernization (Weeks 5-6): Lambda, API Gateway, DynamoDB
+- Review Containers & CI/CD (Week 7): Docker, EKS, CodePipeline, Fargate
+- Midterm Examination covering all topics from Weeks 1-7
+
 ---
 
-**Note**: These are the first 5 weeks of the 12-week program. Subsequent weeks will be updated according to actual learning progress.
+**Note**: These are the first 8 weeks of the 12-week program. Subsequent weeks will be updated according to actual learning progress.

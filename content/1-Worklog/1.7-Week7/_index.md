@@ -5,53 +5,61 @@ weight: 1
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
-{{% notice warning %}} 
-⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
-{{% /notice %}}
-
 
 ### Week 7 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+- Learn containerization with Amazon Lightsail Containers and Docker.
+- Get started with Kubernetes orchestration using Amazon EKS.
+- Implement CI/CD pipelines with AWS CodePipeline.
+- Transform monolithic applications into microservices using Docker and AWS Fargate.
+- Integrate CI/CD workflows with EKS, CodePipeline, and GitHub.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Day | Task                                                                                                                                                                                                                                                                                                                                                                                                                          | Start Date | Completion Date | Reference Material                                                            |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------- | ----------------------------------------------------------------------------- |
+| Mon | - **Getting Started with Amazon Lightsail Containers** <br>&emsp; + Learn Lightsail container service basics <br>&emsp; + Deploy containerized applications <br>&emsp; + Configure container settings                                                                                                                                                                                                                         | 10/20/2025 | 10/20/2025      | <https://aws.amazon.com/lightsail/>                                           |
+| Tue | - **Get started with Amazon EKS** <br>&emsp; + Set up EKS cluster <br>&emsp; + Configure kubectl <br>&emsp; + Deploy applications to EKS <br>&emsp; + Manage pods and services                                                                                                                                                                                                                                                | 10/21/2025 | 10/21/2025      | <https://aws.amazon.com/eks/>                                                 |
+| Wed | - **CI/CD with CodePipeline** <br>&emsp; + Create CodePipeline <br>&emsp; + Configure source and build stages <br>&emsp; + Set up deployment automation <br>&emsp; + Test pipeline execution                                                                                                                                                                                                                                  | 10/22/2025 | 10/22/2025      | <https://aws.amazon.com/codepipeline/>                                        |
+| Thu | - **Monolith to Microservices with Docker and AWS Fargate** <br>&emsp; + Decompose monolithic application <br>&emsp; + Containerize microservices <br>&emsp; + Deploy to Fargate <br>&emsp; + Configure service communication <br> - **CI/CD on EKS with CodePipeline and GitHub** <br>&emsp; + Integrate GitHub repository <br>&emsp; + Configure pipeline for EKS deployment <br>&emsp; + Automate build and deploy process | 10/23/2025 | 10/23/2025      | <https://aws.amazon.com/fargate/> <br> <https://aws.amazon.com/codepipeline/> |
+| Fri | - **Review and Consolidate Knowledge** <br>&emsp; + Review container and Kubernetes concepts <br>&emsp; + Practice CI/CD pipeline troubleshooting <br>&emsp; + Consolidate microservices architecture patterns <br>&emsp; + Prepare for comprehensive review next week                                                                                                                                                        | 10/24/2025 | 10/24/2025      |                                                                               |
 
 ### Week 7 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+- Successfully deployed containerized applications using Amazon Lightsail Containers:
 
-* Successfully created and configured an AWS Free Tier account.
+  - Understood Lightsail container service architecture
+  - Deployed and managed Docker containers
+  - Configured container scaling and networking
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+- Set up and configured Amazon EKS cluster:
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+  - Created EKS cluster with proper node groups
+  - Configured kubectl for cluster management
+  - Deployed and managed containerized applications on Kubernetes
+  - Worked with pods, deployments, and services
 
-* Used AWS CLI to perform basic operations such as:
+- Implemented CI/CD pipelines with AWS CodePipeline:
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+  - Created automated build and deployment workflows
+  - Integrated source control with pipeline stages
+  - Configured deployment automation for containerized applications
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Transformed monolithic applications into microservices architecture:
+
+  - Decomposed monolithic application into independent services
+  - Containerized microservices using Docker
+  - Deployed microservices to AWS Fargate
+  - Configured service discovery and communication
+
+- Integrated CI/CD with EKS and GitHub:
+
+  - Connected GitHub repositories to CodePipeline
+  - Automated build, test, and deployment to EKS
+  - Implemented GitOps workflows for Kubernetes deployments
+
+- Gained hands-on experience with:
+  - Container orchestration and management
+  - Kubernetes concepts and operations
+  - CI/CD best practices for containerized applications
+  - Serverless container deployment with Fargate

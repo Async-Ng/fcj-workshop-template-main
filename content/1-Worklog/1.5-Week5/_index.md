@@ -6,22 +6,24 @@ chapter: false
 pre: " <b> 1.5. </b> "
 ---
 
-### Week 5 Objectives:
+### Week 5 Objectives
 
-- Connect and get acquainted with members of First Cloud Journey.
-- Understand basic AWS services, how to use the console & CLI.
+- Complete translation of assigned blogs and consolidate learned knowledge.
+- Set up the development environment and explore running AWS services locally to optimize cost.
+- Attempt DynamoDB local (with Docker) and evaluate using DynamoDB on AWS.
+- Begin learning AWS CDK and organizing project structure for infrastructure management.
 
-### Tasks to be carried out this week:
+### Tasks to be carried out this week
 
 | Day | Task                                                                                                                                                                          | Start Date | Completion Date | Reference Material |
 | --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------- | ------------------ |
 | 2   | - Sick leave                                                                                                                                                                  | 10/06/2025 | 10/06/2025      |                    |
 | 3   | - Translate assigned blogs                                                                                                                                                    | 10/07/2025 | 10/07/2025      |                    |
-| 4   | - Review Week 4 knowledge <br> - Continue translating blogs                                                                                                                   | 10/08/2025 | 10/08/2025      |                    |
-| 5   | - Research and set up development environment for the project <br> - Find ways to run AWS services locally for optimization                                                   | 10/09/2025 | 10/09/2025      |                    |
-| 6   | - Attempt to install DynamoDB local with Docker (unsuccessful) <br> - Decide to use DynamoDB on AWS cloud directly <br> - Learn basics about CDK and project folder structure | 10/10/2025 | 10/10/2025      |                    |
+| 4   | - Review Week 4 knowledge; Continue translating blogs                                                                                                                           | 10/08/2025 | 10/08/2025      |                    |
+| 5   | - Research and set up development environment for the project; Find ways to run AWS services locally for optimization                                                         | 10/09/2025 | 10/09/2025      |                    |
+| 6   | - Attempt to install DynamoDB local with Docker (unsuccessful); Decide to use DynamoDB on AWS cloud directly; Learn basics about CDK and project folder structure           | 10/10/2025 | 10/10/2025      |                    |
 
-### Week 5 Achievements:
+### Week 5 Achievements
 
 - Successfully translated assigned blogs for the FCJ project.
 

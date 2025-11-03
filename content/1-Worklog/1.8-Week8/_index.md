@@ -5,53 +5,66 @@ weight: 1
 chapter: false
 pre: " <b> 1.8. </b> "
 ---
-{{% notice warning %}} 
+
+{{% notice warning %}}
 ⚠️ **Note:** The following information is for reference purposes only. Please **do not copy verbatim** for your own report, including this warning.
 {{% /notice %}}
 
-
 ### Week 8 Objectives:
 
-* Connect and get acquainted with members of First Cloud Journey.
-* Understand basic AWS services, how to use the console & CLI.
+- Review and consolidate all knowledge learned from previous weeks.
+- Strengthen understanding of core AWS services and architectures.
+- Practice and troubleshoot common scenarios across different AWS services.
+- Prepare comprehensive documentation of learning progress.
+- Identify knowledge gaps and areas for improvement.
 
 ### Tasks to be carried out this week:
-| Day | Task                                                                                                                                                                                                   | Start Date | Completion Date | Reference Material                        |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------- | --------------- | ----------------------------------------- |
-| 2   | - Get acquainted with FCJ members <br> - Read and take note of internship unit rules and regulations                                                                                                   | 08/11/2025 | 08/11/2025      |
-| 3   | - Learn about AWS and its types of services <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                              | 08/12/2025 | 08/12/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Create AWS Free Tier account <br> - Learn about AWS Console & AWS CLI <br> - **Practice:** <br>&emsp; + Create AWS account <br>&emsp; + Install & configure AWS CLI <br> &emsp; + How to use AWS CLI | 08/13/2025 | 08/13/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Learn basic EC2: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - SSH connection methods to EC2 <br> - Learn about Elastic IP   <br>                            | 08/14/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Practice:** <br>&emsp; + Launch an EC2 instance <br>&emsp; + Connect via SSH <br>&emsp; + Attach an EBS volume                                                                                     | 08/15/2025 | 08/15/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Day | Task                                                                                                                                                                                                                                                                                                            | Start Date | Completion Date | Reference Material                        |
+| --- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------- | --------------- | ----------------------------------------- |
+| Mon | - **Review Weeks 1-2: AWS Fundamentals** <br>&emsp; + Review EC2, EBS, and compute concepts <br>&emsp; + Review S3, storage classes, and data management <br>&emsp; + Review VPC, networking, and security groups <br>&emsp; + Practice hands-on labs from previous weeks                                       | 10/27/2025 | 10/27/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Tue | - **Review Weeks 3-4: Security and Identity** <br>&emsp; + Review IAM, users, roles, and policies <br>&emsp; + Review Cognito and authentication flows <br>&emsp; + Review AWS security best practices <br>&emsp; + Practice creating and managing IAM policies                                                 | 10/28/2025 | 10/28/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Wed | - **Review Weeks 5-6: Serverless and Modernization** <br>&emsp; + Review Lambda and serverless architecture <br>&emsp; + Review API Gateway and microservices patterns <br>&emsp; + Review DynamoDB and NoSQL concepts <br>&emsp; + Practice building serverless applications                                   | 10/29/2025 | 10/29/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Thu | - **Review Week 7: Containers and CI/CD** <br>&emsp; + Review Docker and containerization <br>&emsp; + Review EKS and Kubernetes concepts <br>&emsp; + Review CodePipeline and CI/CD workflows <br>&emsp; + Review Fargate and serverless containers <br>&emsp; + Practice deploying containerized applications | 10/30/2025 | 10/30/2025      | <https://cloudjourney.awsstudygroup.com/> |
+| Fri | - **Midterm Examination**                                                                                                                                                                                                                                                                                       | 10/31/2025 | 10/31/2025      |                                           |
 
 ### Week 8 Achievements:
 
-* Understood what AWS is and mastered the basic service groups: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+- Successfully reviewed and consolidated all knowledge from Weeks 1-7:
 
-* Successfully created and configured an AWS Free Tier account.
+  - Reinforced understanding of AWS compute, storage, and networking fundamentals
+  - Strengthened grasp of EC2, S3, VPC, and related services
+  - Reviewed security concepts including IAM, Cognito, and best practices
 
-* Became familiar with the AWS Management Console and learned how to find, access, and use services via the web interface.
+- Deepened understanding of serverless and modern application architectures:
 
-* Installed and configured AWS CLI on the computer, including:
-  * Access Key
-  * Secret Key
-  * Default Region
-  * ...
+  - Reviewed Lambda, API Gateway, and event-driven patterns
+  - Consolidated knowledge of DynamoDB and NoSQL databases
+  - Refreshed microservices and API-first development concepts
 
-* Used AWS CLI to perform basic operations such as:
+- Strengthened container and orchestration knowledge:
 
-  * Check account & configuration information
-  * Retrieve the list of regions
-  * View EC2 service
-  * Create and manage key pairs
-  * Check information about running services
-  * ...
+  - Reviewed Docker containerization fundamentals
+  - Consolidated Kubernetes and EKS concepts
+  - Reinforced CI/CD pipeline design with CodePipeline
+  - Reviewed Fargate and serverless container deployment
 
-* Acquired the ability to connect between the web interface and CLI to manage AWS resources in parallel.
-* ...
+- Successfully completed midterm examination:
+
+  - Demonstrated comprehensive understanding of AWS fundamentals
+  - Applied knowledge of security, serverless, and container concepts
+  - Solved practical scenarios using appropriate AWS services
+  - Showed proficiency in architectural design and best practices
+
+- Achieved strong performance across all exam areas:
+
+  - AWS core services (EC2, S3, VPC, IAM)
+  - Serverless architectures (Lambda, API Gateway, DynamoDB)
+  - Container technologies (Docker, EKS, Fargate)
+  - CI/CD pipelines and DevOps practices
+  - Security and authentication mechanisms
+
+- Validated learning progress and skill development:
+  - Confirmed solid foundation in AWS cloud services
+  - Identified strengths and areas for continued improvement
+  - Ready to advance to more complex AWS topics and projects

@@ -6,22 +6,25 @@ chapter: false
 pre: " <b> 1.5. </b> "
 ---
 
-### Mục tiêu tuần 5:
 
-- Kết nối, làm quen với các thành viên trong First Cloud Journey.
-- Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+### Mục tiêu tuần 5
 
-### Các công việc cần triển khai trong tuần này:
+- Hoàn thành việc dịch các blog được giao và củng cố kiến thức đã học.
+- Thiết lập môi trường phát triển cho dự án và tìm cách chạy các dịch vụ AWS cục bộ để tối ưu chi phí.
+- Thử nghiệm cài đặt DynamoDB local (với Docker) và đánh giá phương án sử dụng DynamoDB trên AWS.
+- Bắt đầu làm quen và tổ chức cấu trúc dự án bằng AWS CDK để quản lý hạ tầng.
+
+### Các công việc cần triển khai trong tuần này
 
 | Thứ | Công việc                                                                                                                                                                          | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
 | --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | -------------- |
 | 2   | - Nghỉ ốm                                                                                                                                                                          | 06/10/2025   | 06/10/2025      |                |
 | 3   | - Dịch Blogs được giao                                                                                                                                                             | 07/10/2025   | 07/10/2025      |                |
-| 4   | - Ôn tập kiến thức tuần số 4 <br> - Tiếp tục dịch blog                                                                                                                             | 08/10/2025   | 08/10/2025      |                |
-| 5   | - Tìm hiểu, cài môi trường chuẩn bị dev dự án <br> - Tìm cách chạy các service AWS local để tối ưu                                                                                 | 09/10/2025   | 09/10/2025      |                |
-| 6   | - Cố gắng cài DynamoDB local với Docker (không thành công) <br> - Quyết định sử dụng DynamoDB trên AWS cloud trực tiếp <br> - Tìm hiểu cơ bản về CDK và cách tổ chức thư mục dự án | 10/10/2025   | 10/10/2025      |                |
+| 4   | - Ôn tập kiến thức tuần số 4; Tiếp tục dịch blog                                                                                                                                | 08/10/2025   | 08/10/2025      |                |
+| 5   | - Tìm hiểu, cài môi trường chuẩn bị dev dự án; Tìm cách chạy các service AWS local để tối ưu                                                                                        | 09/10/2025   | 09/10/2025      |                |
+| 6   | - Cố gắng cài DynamoDB local với Docker (không thành công); Quyết định sử dụng DynamoDB trên AWS cloud trực tiếp; Tìm hiểu cơ bản về CDK và cách tổ chức thư mục dự án | 10/10/2025   | 10/10/2025      |                |
 
-### Kết quả đạt được tuần 5:
+### Kết quả đạt được tuần 5
 
 - Hoàn thành việc dịch các blogs được giao cho dự án FCJ.
 

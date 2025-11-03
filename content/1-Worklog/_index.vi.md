@@ -6,11 +6,11 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-**Trong trang này** tôi sẽ giới thiệu quá trình học tập AWS của mình trong **5 tuần đầu** của chương trình thực tập. Mỗi tuần tôi đã tập trung vào những chủ đề khác nhau, từ các dịch vụ cơ bản đến các giải pháp nâng cao.
+**Trong trang này** tôi sẽ giới thiệu quá trình học tập AWS của mình trong **8 tuần đầu** của chương trình thực tập. Mỗi tuần tôi đã tập trung vào những chủ đề khác nhau, từ các dịch vụ cơ bản đến các giải pháp nâng cao.
 
 Chương trình được thiết kế theo hướng tiến bộ, giúp tôi xây dựng nền tảng kiến thức vững chắc và kỹ năng thực hành cần thiết cho vai trò Cloud Engineer/Solution Architect.
 
-## Chương trình học tập 5 tuần đầu
+## Chương trình học tập 8 tuần đầu
 
 **Tuần 1:** [AWS Fundamentals - Nền tảng cơ bản](1.1-week1/)
 
@@ -46,6 +46,30 @@ Chương trình được thiết kế theo hướng tiến bộ, giúp tôi xây
 - Cấu hình các dịch vụ AWS local (DynamoDB local với Docker)
 - Làm quen với AWS CDK và tổ chức cấu trúc dự án
 
+**Tuần 6:** [Hiện đại hóa Ứng dụng & Microservices](1.6-week6/)
+
+- Di chuyển ứng dụng nguyên khối sang kiến trúc cloud-native
+- Triển khai xác thực và bảo mật với Amazon Cognito
+- Xây dựng microservices với API Gateway và Lambda
+- Cấu hình điều phối và quy trình CI/CD
+- Phát triển Single Page Applications và tích hợp dịch vụ AI
+
+**Tuần 7:** [Containers & Kubernetes](1.7-week7/)
+
+- Triển khai ứng dụng sử dụng Amazon Lightsail Containers
+- Thiết lập và quản lý Amazon EKS clusters
+- Triển khai CI/CD pipelines với AWS CodePipeline
+- Chuyển đổi ứng dụng nguyên khối sang microservices với Docker và AWS Fargate
+- Tích hợp GitHub với EKS cho automated deployments
+
+**Tuần 8:** [Ôn tập Tổng hợp & Thi Giữa Kỳ](1.8-week8/)
+
+- Ôn tập Nền tảng AWS (Tuần 1-2): EC2, S3, VPC, networking
+- Ôn tập Bảo mật & Định danh (Tuần 3-4): IAM, Cognito, best practices
+- Ôn tập Serverless & Modernization (Tuần 5-6): Lambda, API Gateway, DynamoDB
+- Ôn tập Containers & CI/CD (Tuần 7): Docker, EKS, CodePipeline, Fargate
+- Thi Giữa Kỳ bao gồm tất cả nội dung từ Tuần 1-7
+
 ---
 
-**Lưu ý**: Đây là 5 tuần đầu của chương trình 12 tuần. Các tuần tiếp theo sẽ được cập nhật theo tiến độ học tập thực tế.
+**Lưu ý**: Đây là 8 tuần đầu của chương trình 12 tuần. Các tuần tiếp theo sẽ được cập nhật theo tiến độ học tập thực tế.

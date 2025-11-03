@@ -5,55 +5,65 @@ weight: 1
 chapter: false
 pre: " <b> 1.7. </b> "
 ---
+
 {{% notice warning %}}
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-
 ### Mục tiêu tuần 7:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Học cách triển khai container hóa với Amazon Lightsail Containers và Docker.
+- Bắt đầu với điều phối Kubernetes sử dụng Amazon EKS.
+- Triển khai CI/CD pipeline với AWS CodePipeline.
+- Chuyển đổi ứng dụng nguyên khối thành microservices sử dụng Docker và AWS Fargate.
+- Tích hợp quy trình CI/CD với EKS, CodePipeline và GitHub.
 
 ### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
 
+| Thứ | Công việc                                                                                                                                                                                                                                                                                                                                                                                                                                | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                                                                |
+| --- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------------------------------------------- |
+| 2   | - **Getting Started with Amazon Lightsail Containers** <br>&emsp; + Tìm hiểu cơ bản dịch vụ Lightsail container <br>&emsp; + Triển khai ứng dụng container hóa <br>&emsp; + Cấu hình thiết lập container                                                                                                                                                                                                                                 | 20/10/2025   | 20/10/2025      | <https://aws.amazon.com/lightsail/>                                           |
+| 3   | - **Get started with Amazon EKS** <br>&emsp; + Thiết lập EKS cluster <br>&emsp; + Cấu hình kubectl <br>&emsp; + Triển khai ứng dụng lên EKS <br>&emsp; + Quản lý pods và services                                                                                                                                                                                                                                                        | 21/10/2025   | 21/10/2025      | <https://aws.amazon.com/eks/>                                                 |
+| 4   | - **CI/CD with CodePipeline** <br>&emsp; + Tạo CodePipeline <br>&emsp; + Cấu hình source và build stages <br>&emsp; + Thiết lập tự động hóa deployment <br>&emsp; + Kiểm tra thực thi pipeline                                                                                                                                                                                                                                           | 22/10/2025   | 22/10/2025      | <https://aws.amazon.com/codepipeline/>                                        |
+| 5   | - **Monolith to Microservices with Docker and AWS Fargate** <br>&emsp; + Phân tách ứng dụng nguyên khối <br>&emsp; + Container hóa microservices <br>&emsp; + Triển khai lên Fargate <br>&emsp; + Cấu hình giao tiếp giữa các services <br> - **CI/CD on EKS with CodePipeline and GitHub** <br>&emsp; + Tích hợp GitHub repository <br>&emsp; + Cấu hình pipeline cho EKS deployment <br>&emsp; + Tự động hóa quy trình build và deploy | 23/10/2025   | 23/10/2025      | <https://aws.amazon.com/fargate/> <br> <https://aws.amazon.com/codepipeline/> |
+| 6   | - **Ôn tập và Củng cố Kiến thức** <br>&emsp; + Ôn lại các khái niệm container và Kubernetes <br>&emsp; + Thực hành khắc phục sự cố CI/CD pipeline <br>&emsp; + Củng cố các mẫu kiến trúc microservices <br>&emsp; + Chuẩn bị cho tuần ôn tập tổng hợp tiếp theo                                                                                                                                                                          | 24/10/2025   | 24/10/2025      |                                                                               |
 
 ### Kết quả đạt được tuần 7:
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+- Triển khai thành công ứng dụng container hóa sử dụng Amazon Lightsail Containers:
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+  - Hiểu kiến trúc dịch vụ Lightsail container
+  - Triển khai và quản lý Docker containers
+  - Cấu hình scaling và networking cho container
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
+- Thiết lập và cấu hình Amazon EKS cluster:
 
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
+  - Tạo EKS cluster với node groups phù hợp
+  - Cấu hình kubectl cho quản lý cluster
+  - Triển khai và quản lý ứng dụng container hóa trên Kubernetes
+  - Làm việc với pods, deployments và services
 
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
+- Triển khai CI/CD pipeline với AWS CodePipeline:
 
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
+  - Tạo quy trình build và deployment tự động
+  - Tích hợp source control với các pipeline stages
+  - Cấu hình tự động hóa deployment cho ứng dụng container hóa
 
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
+- Chuyển đổi ứng dụng nguyên khối thành kiến trúc microservices:
 
+  - Phân tách ứng dụng nguyên khối thành các services độc lập
+  - Container hóa microservices sử dụng Docker
+  - Triển khai microservices lên AWS Fargate
+  - Cấu hình service discovery và giao tiếp
 
+- Tích hợp CI/CD với EKS và GitHub:
+
+  - Kết nối GitHub repositories với CodePipeline
+  - Tự động hóa build, test và deployment lên EKS
+  - Triển khai GitOps workflows cho Kubernetes deployments
+
+- Có kinh nghiệm thực hành với:
+  - Điều phối và quản lý container
+  - Các khái niệm và thao tác Kubernetes
+  - Best practices cho CI/CD với ứng dụng container hóa
+  - Serverless container deployment với Fargate
