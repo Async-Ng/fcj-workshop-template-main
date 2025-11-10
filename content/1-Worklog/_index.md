@@ -6,11 +6,11 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-**On this page**, I will introduce my AWS learning journey during the **first 8 weeks** of the internship program. Each week I focused on different topics, from basic services to advanced solutions.
+**On this page**, I will introduce my AWS learning journey during the **first 9 weeks** of the internship program. Each week I focused on different topics, from basic services to advanced solutions.
 
 The program is designed progressively, helping me build a solid knowledge foundation and practical skills necessary for a Cloud Engineer/Solution Architect role.
 
-## 8-Week Learning Program
+## 9-Week Learning Program
 
 **Week 1:** [AWS Fundamentals - Foundation](1.1-week1/)
 
@@ -70,6 +70,16 @@ The program is designed progressively, helping me build a solid knowledge founda
 - Review Containers & CI/CD (Week 7): Docker, EKS, CodePipeline, Fargate
 - Midterm Examination covering all topics from Weeks 1-7
 
+**Week 9:** [Data Lake & Analytics with AI/ML](1.9-week9/)
+
+- Build a comprehensive serverless Data Lake on AWS
+- Master data ingestion, storage, transformation, and analysis
+- Learn AWS Analytics Services: Glue, Athena, Kinesis, and Redshift
+- Create interactive dashboards with Amazon QuickSight
+- Get started with machine learning using Amazon SageMaker
+- Explore generative AI with Amazon Bedrock
+- Feature Engineering and XGBoost model training/deployment
+
 ---
 
-**Note**: These are the first 8 weeks of the 12-week program. Subsequent weeks will be updated according to actual learning progress.
+**Note**: These are the first 9 weeks of the 12-week program. Subsequent weeks will be updated according to actual learning progress.

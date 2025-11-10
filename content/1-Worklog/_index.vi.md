@@ -6,11 +6,11 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-**Trong trang này** tôi sẽ giới thiệu quá trình học tập AWS của mình trong **8 tuần đầu** của chương trình thực tập. Mỗi tuần tôi đã tập trung vào những chủ đề khác nhau, từ các dịch vụ cơ bản đến các giải pháp nâng cao.
+**Trong trang này** tôi sẽ giới thiệu quá trình học tập AWS của mình trong **9 tuần đầu** của chương trình thực tập. Mỗi tuần tôi đã tập trung vào những chủ đề khác nhau, từ các dịch vụ cơ bản đến các giải pháp nâng cao.
 
 Chương trình được thiết kế theo hướng tiến bộ, giúp tôi xây dựng nền tảng kiến thức vững chắc và kỹ năng thực hành cần thiết cho vai trò Cloud Engineer/Solution Architect.
 
-## Chương trình học tập 8 tuần đầu
+## Chương trình học tập 9 tuần đầu
 
 **Tuần 1:** [AWS Fundamentals - Nền tảng cơ bản](1.1-week1/)
 
@@ -70,6 +70,16 @@ Chương trình được thiết kế theo hướng tiến bộ, giúp tôi xây
 - Ôn tập Containers & CI/CD (Tuần 7): Docker, EKS, CodePipeline, Fargate
 - Thi Giữa Kỳ bao gồm tất cả nội dung từ Tuần 1-7
 
+**Tuần 9:** [Data Lake & Analytics với AI/ML](1.9-week9/)
+
+- Xây dựng Data Lake toàn diện sử dụng dịch vụ serverless của AWS
+- Nắm vững kỹ năng thu thập, lưu trữ, chuyển đổi và phân tích dữ liệu
+- Học tập các Dịch vụ Analytics trên AWS: Glue, Athena, Kinesis, và Redshift
+- Tạo dashboards tương tác với Amazon QuickSight
+- Bắt đầu với machine learning sử dụng Amazon SageMaker
+- Khám phá Generative AI với Amazon Bedrock
+- Feature Engineering và huấn luyện/triển khai mô hình XGBoost
+
 ---
 
-**Lưu ý**: Đây là 8 tuần đầu của chương trình 12 tuần. Các tuần tiếp theo sẽ được cập nhật theo tiến độ học tập thực tế.
+**Lưu ý**: Đây là 9 tuần đầu của chương trình 12 tuần. Các tuần tiếp theo sẽ được cập nhật theo tiến độ học tập thực tế.
