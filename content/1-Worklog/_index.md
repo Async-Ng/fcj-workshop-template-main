@@ -80,6 +80,15 @@ The program is designed progressively, helping me build a solid knowledge founda
 - Explore generative AI with Amazon Bedrock
 - Feature Engineering and XGBoost model training/deployment
 
+**Week 10:** [Backend System Review & AI Integration](1.10-week10/)
+
+- Re-test the entire Backend system created with AI
+- Understand authentication, authorization, and room management logic
+- Test endpoints and API functionality
+- Review code and logic of AI recommendation feature
+- Master AWS Bedrock integration with filter logic
+- Comprehensive understanding of all AI-related features
+
 ---
 
-**Note**: These are the first 9 weeks of the 12-week program. Subsequent weeks will be updated according to actual learning progress.
+**Note**: These are the first 10 weeks of the 12-week program. Subsequent weeks will be updated according to actual learning progress.

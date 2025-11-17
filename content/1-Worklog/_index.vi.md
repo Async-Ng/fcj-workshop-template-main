@@ -80,6 +80,15 @@ Chương trình được thiết kế theo hướng tiến bộ, giúp tôi xây
 - Khám phá Generative AI với Amazon Bedrock
 - Feature Engineering và huấn luyện/triển khai mô hình XGBoost
 
+**Tuần 10:** [Ôn tập Hệ thống Backend & Tích hợp AI](1.10-week10/)
+
+- Test lại toàn bộ hệ thống Backend được tạo bằng AI
+- Hiểu rõ logic của xác thực, phân quyền và quản lý phòng trọ
+- Kiểm tra các endpoints và chức năng API
+- Ôn tập code và logic của tính năng đề xuất AI
+- Nắm vững tích hợp AWS Bedrock với filter logic
+- Hiểu toàn diện về tất cả các tính năng liên quan đến AI
+
 ---
 
-**Lưu ý**: Đây là 9 tuần đầu của chương trình 12 tuần. Các tuần tiếp theo sẽ được cập nhật theo tiến độ học tập thực tế.
+**Lưu ý**: Đây là 10 tuần đầu của chương trình 12 tuần. Các tuần tiếp theo sẽ được cập nhật theo tiến độ học tập thực tế.

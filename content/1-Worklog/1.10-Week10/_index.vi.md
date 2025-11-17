@@ -5,55 +5,36 @@ weight: 2
 chapter: false
 pre: " <b> 1.10. </b> "
 ---
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
+{{% notice info %}}
+**Ghi chú:** Hệ thống Backend đã được sử dụng AI để triển khai từ những tuần trước, nên trong tuần này sẽ review lại toàn bộ để hiểu rõ cách chúng hoạt động và có thể tiếp tục phát triển.
+{{% /notice %}}
 
 ### Mục tiêu tuần 10:
 
-* Kết nối, làm quen với các thành viên trong First Cloud Journey.
-* Hiểu dịch vụ AWS cơ bản, cách dùng console & CLI.
+- Test lại toàn bộ hệ thống Backend đã được AI tạo ra trước đó
+- Hiểu được logic và cách các tính năng hoạt động
+- Kiểm tra hệ thống xác thực và phân quyền
+- Kiểm tra các endpoint liên quan đến phòng trọ
+- Đọc hiểu code và logic của tính năng đề xuất phòng trọ bằng AI
+- Nắm vững toàn bộ các tính năng liên quan đến AI trong ứng dụng
 
-### Các công việc cần triển khai trong tuần này:
-| Thứ | Công việc                                                                                                                                                                                   | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu                            |
-| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | ----------------------------------------- |
-| 2   | - Làm quen với các thành viên FCJ <br> - Đọc và lưu ý các nội quy, quy định tại đơn vị thực tập                                                                                             | 11/08/2025   | 11/08/2025      |
-| 3   | - Tìm hiểu AWS và các loại dịch vụ <br>&emsp; + Compute <br>&emsp; + Storage <br>&emsp; + Networking <br>&emsp; + Database <br>&emsp; + ... <br>                                            | 12/08/2025   | 12/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 4   | - Tạo AWS Free Tier account <br> - Tìm hiểu AWS Console & AWS CLI <br> - **Thực hành:** <br>&emsp; + Tạo AWS account <br>&emsp; + Cài AWS CLI & cấu hình <br> &emsp; + Cách sử dụng AWS CLI | 13/08/2025   | 13/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 5   | - Tìm hiểu EC2 cơ bản: <br>&emsp; + Instance types <br>&emsp; + AMI <br>&emsp; + EBS <br>&emsp; + ... <br> - Các cách remote SSH vào EC2 <br> - Tìm hiểu Elastic IP   <br>                  | 14/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
-| 6   | - **Thực hành:** <br>&emsp; + Tạo EC2 instance <br>&emsp; + Kết nối SSH <br>&emsp; + Gắn EBS volume                                                                                         | 15/08/2025   | 15/08/2025      | <https://cloudjourney.awsstudygroup.com/> |
+### Các công việc cần triển khai trong tuần này
 
+<!-- markdownlint-disable MD033 -->
 
-### Kết quả đạt được tuần 10:
+| Thứ | Công việc                                                                                                                                                                       | Ngày bắt đầu | Ngày hoàn thành | Nguồn tài liệu |
+| --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ | --------------- | -------------- |
+| 2   | Test lại hệ thống xác thực và phân quyền <br> - Kiểm tra login/register flow <br> - Kiểm tra JWT token <br> - Kiểm tra role-based access control                                | 10/11/2025   | 10/11/2025      |                |
+| 3   | Test các endpoint liên quan đến phòng trọ                                                                                                                                       | 11/11/2025   | 11/11/2025      |                |
+| 4   | Đọc hiểu code và logic của tính năng đề xuất phòng trọ bằng AI <br> - Hiểu cách AI xử lý data <br> - Hiểu recommendation algorithm <br> - Kiểm tra các parameter đầu vào/đầu ra | 12/11/2025   | 12/11/2025      |                |
+| 5   | Không làm được gì do bận đi thi lái xe                                                                                                                                          | 13/11/2025   | 13/11/2025      |                |
+| 6   | Đọc hiểu lại toàn bộ tính năng liên quan đến AI <br> - AI recommendation system <br> - AI search optimization <br> - Các tính năng ML khác                                      | 14/11/2025   | 14/11/2025      |                |
 
-* Hiểu AWS là gì và nắm được các nhóm dịch vụ cơ bản: 
-  * Compute
-  * Storage
-  * Networking 
-  * Database
-  * ...
+<!-- markdownlint-enable MD033 -->
 
-* Đã tạo và cấu hình AWS Free Tier account thành công.
+### Kết quả đạt được tuần 10
 
-* Làm quen với AWS Management Console và biết cách tìm, truy cập, sử dụng dịch vụ từ giao diện web.
-
-* Cài đặt và cấu hình AWS CLI trên máy tính bao gồm:
-  * Access Key
-  * Secret Key
-  * Region mặc định
-  * ...
-
-* Sử dụng AWS CLI để thực hiện các thao tác cơ bản như:
-
-  * Kiểm tra thông tin tài khoản & cấu hình
-  * Lấy danh sách region
-  * Xem dịch vụ EC2
-  * Tạo và quản lý key pair
-  * Kiểm tra thông tin dịch vụ đang chạy
-  * ...
-
-* Có khả năng kết nối giữa giao diện web và CLI để quản lý tài nguyên AWS song song.
-* ...
-
-
+- Hoàn thành test toàn bộ hệ thống BE được AI tạo ra
+- Hiểu rõ logic hoạt động của authentication, RBAC, room management
+- Nắm vững kiến thức về AI recommendation system
