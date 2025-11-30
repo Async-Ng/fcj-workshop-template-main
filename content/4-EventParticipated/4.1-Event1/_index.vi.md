@@ -6,120 +6,99 @@ chapter: false
 pre: " <b> 4.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-# Bài thu hoạch “GenAI-powered App-DB Modernization workshop”
+# Bài thu hoạch “AI-Driven Development Life Cycle”
 
 ### Mục Đích Của Sự Kiện
 
-- Chia sẻ best practices trong thiết kế ứng dụng hiện đại
-- Giới thiệu phương pháp DDD và event-driven architecture
-- Hướng dẫn lựa chọn compute services phù hợp
-- Giới thiệu công cụ AI hỗ trợ development lifecycle
+- Giới thiệu mô hình AI-Driven Development Life Cycle (AI-DLC): Tái định hình cách phát triển phần mềm từ lập kế hoạch, phát triển, kiểm thử đến vận hành.
+- Hướng dẫn cách tự động hóa các công việc nặng nhọc không tạo ra giá trị khác biệt (undifferentiated heavy lifting) để tập trung vào các tác vụ sáng tạo giá trị cao.
+- Trình diễn thực tế việc ứng dụng Amazon Q Developer và Kiro trong quy trình phát triển phần mềm hiện đại.
 
 ### Danh Sách Diễn Giả
 
-- **Jignesh Shah** - Director, Open Source Databases
-- **Erica Liu** - Sr. GTM Specialist, AppMod
-- **Fabrianne Effendi** - Assc. Specialist SA, Serverless Amazon Web Services
+- **Toàn Huỳnh** – Instructor (Trình bày về AI-DLC & Amazon Q Developer)
+- **Mỹ Nguyễn** – Instructor (Demo công cụ Kiro)
+- **Địa điểm**: AWS Event Hall, Tầng 26 Tháp Bitexco, TP.HCM
 
 ### Nội Dung Nổi Bật
 
-#### Đưa ra các ảnh hưởng tiêu cực của kiến trúc ứng dụng cũ
+#### Sự phát triển: Từ Trợ lý Code đến AI Agents (2023-2025)
 
-- Thời gian release sản phẩm lâu → Mất doanh thu/bỏ lỡ cơ hội
-- Hoạt động kém hiệu quả → Mất năng suất, tốn kém chi phí
-- Không tuân thủ các quy định về bảo mật → Mất an ninh, uy tín
+- 2023 (Auto-Complete): Hỗ trợ viết code nhanh hơn.
+- 2024 (Assistants): Tạo các đoạn code lớn, trả lời câu hỏi kỹ thuật.
+- 2025 (Agents): Hoàn thành các tác vụ đầu-cuối (End-to-End) với sự giám sát của con người (Human-in-the-loop).
 
-#### Chuyển đổi sang kiến trúc ứng dụng mới - Microservice Architecture
+#### Khái niệm cốt lõi: AI-Driven Development (AI-DLC)
 
-Chuyển đổi thành hệ thống modular – từng chức năng là một **dịch vụ độc lập** giao tiếp với nhau qua **sự kiện** với 3 trụ cột cốt lõi:
+Phân biệt các mô hình phát triển:
 
-- **Queue Management**: Xử lý tác vụ bất đồng bộ
-- **Caching Strategy:** Tối ưu performance
-- **Message Handling:** Giao tiếp linh hoạt giữa services
+- **AI-Assisted**: AI chỉ hỗ trợ các tác vụ hẹp, con người vẫn làm phần lớn công việc trí tuệ.
+- **AI-Managed**: AI tự chủ hoàn toàn (chưa phổ biến).
+- **AI-Driven** (Trọng tâm): AI đóng vai trò điều phối (orchestrator) quy trình phát triển, đưa ra kế hoạch và kiến trúc. Con người giữ vai trò xác thực (Validation) và ra quyết định cuối cùng.
 
-#### Domain-Driven Design (DDD)
+#### Quy trình chuẩn: Spec-Driven Development (Phát triển dựa trên đặc tả)
 
-- **Phương pháp 4 bước**: Xác định domain events → sắp xếp timeline → identify actors → xác định bounded contexts
-- **Case study bookstore**: Minh họa cách áp dụng DDD thực tế
-- **Context mapping**: 7 patterns tích hợp bounded contexts
+Quy trình làm việc chuẩn được giới thiệu trong phiên của diễn giả Toàn Huỳnh:
 
-#### Event-Driven Architecture
+- **Inception (Khởi tạo)**: Xây dựng User Stories, lập kế hoạch (plan.md), và làm rõ yêu cầu với AI đóng vai Product Manager.
+- **Construction (Xây dựng)**: AI thực hiện tạo Domain Model, sinh code, viết Test và IaaC (Infrastructure as Code).
+- **Operation (Vận hành)**: Triển khai và quản lý sự cố.
 
-- **3 patterns tích hợp**: Publish/Subscribe, Point-to-point, Streaming
-- **Lợi ích**: Loose coupling, scalability, resilience
-- **So sánh sync vs async**: Hiểu rõ trade-offs (sự đánh đổi)
+#### Hệ sinh thái công cụ: Amazon Q Developer & Kiro
 
-#### Compute Evolution
+Buổi workshop tập trung vào demo hai công cụ chính:
 
-- **Shared Responsibility Model**: Từ EC2 → ECS → Fargate → Lambda
-- **Serverless benefits**: No server management, auto-scaling, pay-for-value
-- **Functions vs Containers**: Criteria lựa chọn phù hợp
+- **Amazon Q Developer**: Trợ lý AI hỗ trợ toàn bộ vòng đời SDLC, giúp tự động hóa các tác vụ lặp lại, nâng cấp code (code transformation) và bảo mật ứng dụng.
+- **Kiro**: Công cụ Agentic AI được demo bởi diễn giả Mỹ Nguyễn, thể hiện khả năng thực thi các tác vụ phức tạp trong quy trình AI-Driven, giúp lập trình viên giảm tải các công việc thủ công.
 
-#### Amazon Q Developer
+#### Các sai lầm cần tránh (Anti-Patterns)
 
-- **SDLC automation**: Từ planning đến maintenance
-- **Code transformation**: Java upgrade, .NET modernization
-- **AWS Transform agents**: VMware, Mainframe, .NET migration
+Những lỗi phổ biến khi làm việc với AI:
+
+- **Single-shot Prompts**: Cố gắng giải quyết vấn đề lớn/phức tạp chỉ bằng một câu lệnh duy nhất.
+- **Context Overload:** Không làm mới ngữ cảnh khi hội thoại quá dài, dẫn đến AI bị "loãng" thông tin.
+- **Lack of Guidance**: Để AI tự quyết định quá nhiều mà không có sự kiểm soát phạm vi (Over-reach).
 
 ### Những Gì Học Được
 
-#### Tư Duy Thiết Kế
+#### Tư duy thiết kế (Design Mindset)
 
-- **Business-first approach**: Luôn bắt đầu từ business domain, không phải technology
-- **Ubiquitous language**: Importance của common vocabulary giữa business và tech teams
-- **Bounded contexts**: Cách identify và manage complexity trong large systems
+- **Tái định hình kỹ sư phần mềm**: Chuyển đổi tư duy từ "người viết code" (Coder) sang "người kiến tạo và xác thực" (Architect & Validator).
 
-#### Kiến Trúc Kỹ Thuật
+- **Tập trung vào nghiệp vụ**: Tự động hóa giúp Developer tập trung vào logic nghiệp vụ và sáng tạo thay vì cấu hình hạ tầng lặp đi lặp lại.
 
-- **Event storming technique**: Phương pháp thực tế để mô hình hóa quy trình kinh doanh
-- Sử dụng **Event-driven communication** thay vì synchronous calls
-- **Integration patterns**: Hiểu khi nào dùng sync, async, pub/sub, streaming
-- **Compute spectrum**: Criteria chọn từ VM → containers → serverless
+#### Kiến trúc kỹ thuật
 
-#### Chiến Lược Hiện Đại Hóa
+- **Prompt as Code**: Sử dụng các "Mẫu Prompt" chuẩn (ví dụ: đóng vai Expert Product Manager) để tạo ra các bản kế hoạch và tài liệu chất lượng cao.
 
-- **Phased approach**: Không rush, phải có roadmap rõ ràng
-- **7Rs framework**: Nhiều con đường khác nhau tùy thuộc vào đặc điểm của mỗi ứng dụng
-- **ROI measurement**: Cost reduction + business agility
+- **Spec-Driven**: Bắt buộc có tài liệu/kế hoạch rõ ràng (như file .md) trước khi bắt tay vào code để AI hiểu đúng ngữ cảnh.
 
-### Ứng Dụng Vào Công Việc
+#### Chiến lược hiện đại hóa
 
-- **Áp dụng DDD** cho project hiện tại: Event storming sessions với business team
-- **Refactor microservices**: Sử dụng bounded contexts để identify service boundaries
-- **Implement event-driven patterns**: Thay thế một số sync calls bằng async messaging
-- **Serverless adoption**: Pilot AWS Lambda cho một số use cases phù hợp
-- **Try Amazon Q Developer**: Integrate vào development workflow để boost productivity
+- Áp dụng **Amazon Q Developer** để xử lý các tác vụ "undifferentiated heavy lifting" (công việc tốn sức nhưng ít giá trị gia tăng).
+
+- Tích hợp các AI Agents như **Kiro** để thực hiện các luồng công việc tự động hóa cao hơn (Agentic Workflows).
+
+#### Ứng dụng vào công việc
+
+- **Triển khai AI-DLC**: Bắt đầu áp dụng quy trình Inception -> Construction với sự hỗ trợ của AI cho dự án sắp tới.
+
+- **Sử dụng Amazon Q Developer**: Tích hợp vào IDE (VS Code, IntelliJ) để hỗ trợ hoàn thành code, giải thích code và vá lỗi bảo mật.
+
+- **Thử nghiệm Kiro**: Đánh giá khả năng của Kiro trong việc giải quyết các bài toán cụ thể của dự án để tăng năng suất.
+
+- **Tối ưu hóa Prompt**: Áp dụng mẫu prompt lập kế hoạch (Plan-first) để tránh việc AI tạo code sai hướng hoặc thiếu ngữ cảnh.
 
 ### Trải nghiệm trong event
 
-Tham gia workshop **“GenAI-powered App-DB Modernization”** là một trải nghiệm rất bổ ích, giúp tôi có cái nhìn toàn diện về cách hiện đại hóa ứng dụng và cơ sở dữ liệu bằng các phương pháp và công cụ hiện đại. Một số trải nghiệm nổi bật:
+Tham gia buổi sinh hoạt của AWS GenAI Builder Club tại tháp Bitexco là một trải nghiệm rất giá trị:
 
-#### Học hỏi từ các diễn giả có chuyên môn cao
-- Các diễn giả đến từ AWS và các tổ chức công nghệ lớn đã chia sẻ **best practices** trong thiết kế ứng dụng hiện đại.
-- Qua các case study thực tế, tôi hiểu rõ hơn cách áp dụng **Domain-Driven Design (DDD)** và **Event-Driven Architecture** vào các project lớn.
+#### Học hỏi từ chuyên gia
 
-#### Trải nghiệm kỹ thuật thực tế
-- Tham gia các phiên trình bày về **event storming** giúp tôi hình dung cách **mô hình hóa quy trình kinh doanh** thành các domain events.
-- Học cách **phân tách microservices** và xác định **bounded contexts** để quản lý sự phức tạp của hệ thống lớn.
-- Hiểu rõ trade-offs giữa **synchronous và asynchronous communication** cũng như các pattern tích hợp như **pub/sub, point-to-point, streaming**.
+- Phần trình bày của Anh Toàn Huỳnh đã giúp tôi hệ thống hóa lại kiến thức về sự phát triển của AI, từ Auto-complete đơn giản đến mô hình Agent phức tạp trong năm 2025.
 
-#### Ứng dụng công cụ hiện đại
-- Trực tiếp tìm hiểu về **Amazon Q Developer**, công cụ AI hỗ trợ SDLC từ lập kế hoạch đến maintenance.
-- Học cách **tự động hóa code transformation** và pilot serverless với **AWS Lambda**, từ đó nâng cao năng suất phát triển.
+- Phần demo thực tế về Kiro của Chị Mỹ Nguyễn rất ấn tượng, cho thấy tiềm năng thực sự của AI Agents trong việc xử lý các tác vụ lập trình đầu-cuối.
 
-#### Kết nối và trao đổi
-- Workshop tạo cơ hội trao đổi trực tiếp với các chuyên gia, đồng nghiệp và team business, giúp **nâng cao ngôn ngữ chung (ubiquitous language)** giữa business và tech.
-- Qua các ví dụ thực tế, tôi nhận ra tầm quan trọng của **business-first approach**, luôn bắt đầu từ nhu cầu kinh doanh thay vì chỉ tập trung vào công nghệ.
+#### Tầm nhìn tương lai
 
-#### Bài học rút ra
-- Việc áp dụng DDD và event-driven patterns giúp giảm **coupling**, tăng **scalability** và **resilience** cho hệ thống.
-- Chiến lược hiện đại hóa cần **phased approach** và đo lường **ROI**, không nên vội vàng chuyển đổi toàn bộ hệ thống.
-- Các công cụ AI như Amazon Q Developer có thể **boost productivity** nếu được tích hợp vào workflow phát triển hiện tại.
-
-#### Một số hình ảnh khi tham gia sự kiện
-* Thêm các hình ảnh của các bạn tại đây
-> Tổng thể, sự kiện không chỉ cung cấp kiến thức kỹ thuật mà còn giúp tôi thay đổi cách tư duy về thiết kế ứng dụng, hiện đại hóa hệ thống và phối hợp hiệu quả hơn giữa các team.
+- Tôi nhận ra rằng việc nắm vững Amazon Q Developer và các công cụ như Kiro không còn là lựa chọn mà là yêu cầu bắt buộc để duy trì lợi thế cạnh tranh của một lập trình viên trong kỷ nguyên AI sắp tới.

@@ -6,11 +6,11 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-**On this page**, I will introduce my AWS learning journey during the **first 9 weeks** of the internship program. Each week I focused on different topics, from basic services to advanced solutions.
+**On this page**, I will introduce my AWS learning journey during the **12 weeks** of the internship program. Each week I focused on different topics, from basic services to advanced solutions.
 
 The program is designed progressively, helping me build a solid knowledge foundation and practical skills necessary for a Cloud Engineer/Solution Architect role.
 
-## 9-Week Learning Program
+## 12-Week Learning Program
 
 **Week 1:** [AWS Fundamentals - Foundation](1.1-week1/)
 
@@ -89,6 +89,18 @@ The program is designed progressively, helping me build a solid knowledge founda
 - Master AWS Bedrock integration with filter logic
 - Comprehensive understanding of all AI-related features
 
----
+**Week 11:** [DevOps Workshop & Proposal Review](1.11-week11/)
 
-**Note**: These are the first 10 weeks of the 12-week program. Subsequent weeks will be updated according to actual learning progress.
+- Attend intensive DevOps and CI/CD workshop
+- Understand DevOps Mindset and application in practice
+- Master AWS DevOps Services and CI/CD Pipeline
+- Explore Infrastructure as Code (IaC) and best practices
+- Rewrite and review project proposal documentation
+- Conduct comprehensive source code review and audit
+
+**Week 12:** [Project Maintenance & Adjustments](1.12-week12/)
+
+- Test new prompts for project search endpoint
+- Fix reported endpoint errors
+- Coordinate with frontend team for interface adjustments
+- Continue editing and improving necessary endpoints

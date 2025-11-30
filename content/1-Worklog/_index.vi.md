@@ -6,11 +6,11 @@ chapter: false
 pre: " <b> 1. </b> "
 ---
 
-**Trong trang này** tôi sẽ giới thiệu quá trình học tập AWS của mình trong **9 tuần đầu** của chương trình thực tập. Mỗi tuần tôi đã tập trung vào những chủ đề khác nhau, từ các dịch vụ cơ bản đến các giải pháp nâng cao.
+**Trong trang này** tôi sẽ giới thiệu quá trình học tập AWS của mình trong **12 tuần** của chương trình thực tập. Mỗi tuần tôi đã tập trung vào những chủ đề khác nhau, từ các dịch vụ cơ bản đến các giải pháp nâng cao.
 
 Chương trình được thiết kế theo hướng tiến bộ, giúp tôi xây dựng nền tảng kiến thức vững chắc và kỹ năng thực hành cần thiết cho vai trò Cloud Engineer/Solution Architect.
 
-## Chương trình học tập 9 tuần đầu
+## Chương trình học tập 12 tuần
 
 **Tuần 1:** [AWS Fundamentals - Nền tảng cơ bản](1.1-week1/)
 
@@ -89,6 +89,18 @@ Chương trình được thiết kế theo hướng tiến bộ, giúp tôi xây
 - Nắm vững tích hợp AWS Bedrock với filter logic
 - Hiểu toàn diện về tất cả các tính năng liên quan đến AI
 
----
+**Tuần 11:** [Workshop DevOps & Ôn tập Proposal](1.11-week11/)
 
-**Lưu ý**: Đây là 10 tuần đầu của chương trình 12 tuần. Các tuần tiếp theo sẽ được cập nhật theo tiến độ học tập thực tế.
+- Tham dự workshop tăng cường về DevOps và CI/CD
+- Hiểu DevOps Mindset và cách áp dụng trong thực tế
+- Nắm vững AWS DevOps Services và CI/CD Pipeline
+- Tìm hiểu Infrastructure as Code (IaC) và best practices
+- Viết lại tài liệu proposal dự án
+- Kiểm tra và audit toàn diện source code
+
+**Tuần 12:** [Bảo trì Dự án & Điều chỉnh](1.12-week12/)
+
+- Test các prompt mới cho endpoint tìm kiếm của dự án
+- Sửa các lỗi endpoint được báo cáo
+- Phối hợp với team frontend để điều chỉnh giao diện
+- Tiếp tục chỉnh sửa và cải thiện các endpoint cần thiết

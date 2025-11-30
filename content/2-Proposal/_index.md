@@ -106,13 +106,13 @@ The platform utilizes a modular AWS Serverless design with AI enrichment and dyn
 
 | Component            | Service               | Estimated Cost   |
 | -------------------- | --------------------- | ---------------- |
-| Lambda + API Gateway | Backend               | $0.10/month      |
+| Lambda + API Gateway | Backend               | $0.22/month      |
 | DynamoDB             | Database              | $0.10/month      |
 | S3                   | Storage               | $0.20/month      |
-| Cognito + SNS        | Authentication + OTP  | $0.05/month      |
-| Bedrock              | AI Processing         | $0.05/month      |
-| Location Service     | Map & Geospatial Data | $0.00            |
-| **Total**            |                       | **~$0.50/month** |
+| Cognito + SNS        | Authentication + OTP  | $0.13/month      |
+| Bedrock              | AI Processing         | $7.5/month       |
+| Location Service     | Map & Geospatial Data | $3.30            |
+| **Total**            |                       | **~$24.32/month** |
 
 **Note**: All services operate under Free Tier usage limits during MVP phase with minimal operational cost.
 
