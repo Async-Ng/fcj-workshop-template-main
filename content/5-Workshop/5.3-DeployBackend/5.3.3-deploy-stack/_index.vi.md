@@ -36,7 +36,6 @@ Flag `--require-approval never` bỏ qua xác nhận cho các thay đổi IAM.
 Quá trình triển khai sẽ mất khoảng **5-10 phút** để cung cấp tất cả tài nguyên.
 {{% /notice %}}
 
-![Tiến trình triển khai](/images/5-Workshop/5.3-DeployBackend/deploy-progress.png)
 
 Trong quá trình triển khai, bạn sẽ thấy:
 

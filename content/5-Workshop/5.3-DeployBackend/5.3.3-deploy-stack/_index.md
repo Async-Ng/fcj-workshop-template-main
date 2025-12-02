@@ -36,8 +36,6 @@ The `--require-approval never` flag bypasses the confirmation prompt for IAM cha
 The deployment process will take approximately **5-10 minutes** to provision all resources.
 {{% /notice %}}
 
-![Deployment Progress](/images/5-Workshop/5.3-DeployBackend/deploy-progress.png)
-
 During deployment, you'll see:
 
 - CloudFormation stack creation progress
