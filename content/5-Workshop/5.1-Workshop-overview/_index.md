@@ -1,18 +1,20 @@
 ---
-title : "Introduction"
-date :  "`r Sys.Date()`" 
-weight : 1 
-chapter : false
-pre : " <b> 5.1. </b> "
+title: "Introduction"
+date: "`r Sys.Date()`"
+weight: 1
+chapter: false
+pre: " <b> 5.1. </b> "
 ---
 
-#### VPC endpoints
-+ **VPC endpoints** are virtual devices. They are horizontally scaled, redundant, and highly available VPC components. They allow communication between your compute resources and AWS services without imposing availability risks.
-+ Compute resources running in VPC can access  **Amazon S3**  using a Gateway endpoint. PrivateLink interface endpoints can be used by compute resources running in VPC or on-premises.
+#### Serverless Architecture
+
+**Serverless architecture** allows you to build and run applications and services without thinking about servers. It eliminates infrastructure management tasks such as server provisioning, patching, operating system maintenance, and capacity provisioning.
+The architecture relies on **AWS Lambda** for compute, **Amazon API Gateway** for API management, and **Amazon DynamoDB** for data storage. Compute resources running in Lambda are triggered by events from API Gateway and scale automatically.
 
 #### Workshop overview
-In this workshop, you will use two VPCs. 
-+ **"VPC Cloud"** is for cloud resources such as a  **Gateway endpoint** and an EC2 instance to test with. 
-+ **"VPC On-Prem"** simulates an on-premises environment such as a factory or corporate datacenter. An EC2 instance running strongSwan VPN software has been deployed in "VPC On-prem" and automatically configured to establish a Site-to-Site VPN tunnel with AWS Transit Gateway. This VPN simulates connectivity from an on-premises location to the AWS cloud. To minimize costs, only one VPN instance is provisioned to support this workshop. When planning VPN connectivity for your production workloads, AWS recommends using multiple VPN devices for high availability.
+
+In this workshop, you will deploy the Findnest Backend using AWS CDK.
+"**Backend Logic**" is handled by **AWS Lambda** running Node.js/Express code. It serves as the "brain" of the application, processing business logic only when triggered.
+"**Data & Storage**" utilizes **Amazon DynamoDB** for high-performance NoSQL data storage (Listings, Users) and **Amazon S3** for storing user-uploaded images securely. **Amazon API Gateway** acts as the secure entry point for all client requests.
 
 ![overview](/images/5-Workshop/5.1-Workshop-overview/diagram1.png)

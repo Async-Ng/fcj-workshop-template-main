@@ -10,24 +10,42 @@ pre: " <b> 5. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-
-# Đảm bảo truy cập Hybrid an toàn đến S3 bằng cách sử dụng VPC endpoint
+# Xây dựng Serverless Backend với AWS CDK
 
 #### Tổng quan
 
-**AWS PrivateLink** cung cấp kết nối riêng tư đến các dịch vụ aws từ VPCs hoặc trung tâm dữ liệu (on-premise) mà không làm lộ lưu lượng truy cập ra ngoài public internet.
+Trong workshop này, bạn sẽ xây dựng một **Serverless Backend** hoàn chỉnh cho ứng dụng **FindNest** - một nền tảng cho thuê nhà trọ. Bạn sẽ sử dụng **AWS CDK (Cloud Development Kit)** để định nghĩa và triển khai hạ tầng dưới dạng code.
 
-Trong bài lab này, chúng ta sẽ học cách tạo, cấu hình, và kiểm tra VPC endpoints để cho phép workload của bạn tiếp cận các dịch vụ AWS mà không cần đi qua Internet công cộng.
+Bạn sẽ học cách:
 
-Chúng ta sẽ tạo hai loại endpoints để truy cập đến Amazon S3: gateway vpc endpoint và interface vpc endpoint. Hai loại vpc endpoints này mang đến nhiều lợi ích tùy thuộc vào việc bạn truy cập đến S3 từ môi trường cloud hay từ trung tâm dữ liệu (on-premise).
-+ **Gateway** - Tạo gateway endpoint để gửi lưu lượng đến Amazon S3 hoặc DynamoDB using private IP addresses. Bạn điều hướng lưu lượng từ VPC của bạn đến gateway endpoint bằng các bảng định tuyến (route tables)
-+ **Interface** - Tạo interface endpoint để gửi lưu lượng đến các dịch vụ điểm cuối (endpoints) sử dụng Network Load Balancer để phân phối lưu lượng. Lưu lượng dành cho dịch vụ điểm cuối được resolved bằng DNS.
+- Triển khai hạ tầng serverless sử dụng AWS CDK với TypeScript
+- Xây dựng RESTful APIs với API Gateway và Lambda
+- Triển khai xác thực với Amazon Cognito
+- Lưu trữ dữ liệu trong DynamoDB với data modeling phù hợp
+- Tích hợp khả năng AI với Amazon Bedrock (Claude 3)
+- Thêm chức năng bản đồ với Amazon Location Service
+- Áp dụng security best practices với IAM policies
+- Quản lý vòng đời hạ tầng (deploy và cleanup)
+
+#### Kiến trúc
+
+Bạn sẽ triển khai kiến trúc serverless hiện đại bao gồm:
+
+- **API Gateway** - RESTful API endpoints
+- **AWS Lambda** - Serverless compute (Node.js)
+- **Amazon DynamoDB** - NoSQL database (7 bảng)
+- **Amazon Cognito** - Xác thực và phân quyền người dùng
+- **Amazon S3** - Lưu trữ hình ảnh
+- **Amazon Location Service** - Bản đồ và geocoding
+- **Amazon Bedrock** - AI/ML với Claude 3
+- **Amazon SNS** - Thông báo SMS
+- **CloudWatch Logs** - Monitoring và logging
 
 #### Nội dung
 
-1. [Tổng quan về workshop](5.1-Workshop-overview/)
+1. [Tổng quan Workshop](5.1-Workshop-overview/)
 2. [Chuẩn bị](5.2-Prerequiste/)
-3. [Truy cập đến S3 từ VPC](5.3-S3-vpc/)
-4. [Truy cập đến S3 từ TTDL On-premises](5.4-S3-onprem/)
-5. [VPC Endpoint Policies (làm thêm)](5.5-Policy/)
+3. [Triển khai Backend](5.3-DeployBackend/)
+4. [Tạo dữ liệu khởi tạo](5.4-SeedingData/)
+5. [Kiểm tra hệ thống](5.5-SystemValidation/)
 6. [Dọn dẹp tài nguyên](5.6-Cleanup/)
