@@ -1,9 +1,9 @@
 ---
-title : "Verification"
-date : "`r Sys.Date()`"
-weight : 4
-chapter : false
-pre : " <b> 5.4.4. </b> "
+title: "Verification"
+date: "`r Sys.Date()`"
+weight: 4
+chapter: false
+pre: " <b> 5.4.4. </b> "
 ---
 
 Let's ensure the user exists in both the Authentication service and the Database.

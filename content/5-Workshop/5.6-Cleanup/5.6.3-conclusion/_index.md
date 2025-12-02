@@ -1,9 +1,9 @@
 ---
-title : "Workshop Conclusion"
-date : "`r Sys.Date()`"
-weight : 3
-chapter : false
-pre : " <b> 5.6.3. </b> "
+title: "Workshop Conclusion"
+date: "`r Sys.Date()`"
+weight: 3
+chapter: false
+pre: " <b> 5.6.3. </b> "
 ---
 
 #### Congratulations
@@ -62,26 +62,31 @@ You applied:
 By completing this workshop, you now have hands-on experience with:
 
 1. **Serverless Architecture Design**
+
    - Event-driven patterns
    - Stateless compute
    - Managed services integration
 
 2. **AWS CDK Development**
+
    - TypeScript constructs
    - Resource provisioning
    - Stack management
 
 3. **API Development**
+
    - RESTful endpoints
    - Authentication flows
    - Protected and public routes
 
 4. **Database Design**
+
    - NoSQL data modeling
    - DynamoDB best practices
    - TTL and indexes
 
 5. **Security Implementation**
+
    - IAM policies
    - Cognito user pools
    - JWT token validation

@@ -1,9 +1,9 @@
 ---
-title : "Test đăng nhập Admin"
-date : "`r Sys.Date()`"
-weight : 2
-chapter : false
-pre : " <b> 5.5.2. </b> "
+title: "Test đăng nhập Admin"
+date: "`r Sys.Date()`"
+weight: 2
+chapter: false
+pre: " <b> 5.5.2. </b> "
 ---
 
 #### Test Case 1: Đăng nhập Admin
@@ -24,8 +24,8 @@ pre : " <b> 5.5.2. </b> "
 
 ```json
 {
-    "email": "admin@findnest.com",
-    "password": "Password@123"
+  "email": "admin@findnest.com",
+  "password": "Password@123"
 }
 ```
 
@@ -55,15 +55,15 @@ Bạn sẽ nhận được JSON object chứa authentication tokens (ID Token, A
 
 ```json
 {
-    "data": {
-        "id": "...",
-        "email": "admin@findnest.com",
-        "accessToken": "eyJraWQiOiJ...",
-        "refreshToken": "eyJjdHkiOiJ...",
-        "idToken": "eyJraWQiOiJ...",
-        "role": "Admins"
-    },
-    "message": "Login successful"
+  "data": {
+    "id": "...",
+    "email": "admin@findnest.com",
+    "accessToken": "eyJraWQiOiJ...",
+    "refreshToken": "eyJjdHkiOiJ...",
+    "idToken": "eyJraWQiOiJ...",
+    "role": "Admins"
+  },
+  "message": "Login successful"
 }
 ```
 

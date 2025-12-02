@@ -1,9 +1,9 @@
 ---
-title : "Hủy Stack"
-date : "`r Sys.Date()`"
-weight : 1
-chapter : false
-pre : " <b> 5.6.1. </b> "
+title: "Hủy Stack"
+date: "`r Sys.Date()`"
+weight: 1
+chapter: false
+pre: " <b> 5.6.1. </b> "
 ---
 
 Vẻ đẹp của **Infrastructure as Code (IaC)** với AWS CDK là bạn có thể phá bỏ toàn bộ hệ thống chỉ với một lệnh duy nhất.

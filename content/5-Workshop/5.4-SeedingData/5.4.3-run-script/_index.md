@@ -1,9 +1,9 @@
 ---
-title : "Run the Script"
-date : "`r Sys.Date()`"
-weight : 3
-chapter : false
-pre : " <b> 5.4.3. </b> "
+title: "Run the Script"
+date: "`r Sys.Date()`"
+weight: 3
+chapter: false
+pre: " <b> 5.4.3. </b> "
 ---
 
 Now, execute the script. It is interactive, so it will ask you for details.

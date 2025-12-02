@@ -1,9 +1,9 @@
 ---
-title : "Install Dependencies"
-date : "`r Sys.Date()`"
-weight : 2
-chapter : false
-pre : " <b> 5.3.2. </b> "
+title: "Install Dependencies"
+date: "`r Sys.Date()`"
+weight: 2
+chapter: false
+pre: " <b> 5.3.2. </b> "
 ---
 
 The system consists of two parts of source code requiring dependencies.

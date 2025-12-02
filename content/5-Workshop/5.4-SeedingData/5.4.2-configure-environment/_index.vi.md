@@ -1,9 +1,9 @@
 ---
-title : "Cấu hình môi trường"
-date : "`r Sys.Date()`"
-weight : 2
-chapter : false
-pre : " <b> 5.4.2. </b> "
+title: "Cấu hình môi trường"
+date: "`r Sys.Date()`"
+weight: 2
+chapter: false
+pre: " <b> 5.4.2. </b> "
 ---
 
 Script (`seed-admin.js`) cần các biến môi trường cụ thể để kết nối đến các tài nguyên AWS của bạn. Bạn cần tạo file `.env` với các giá trị từ CDK Deployment Output.
@@ -21,11 +21,11 @@ USER_PROFILES_TABLE_NAME=UserProfiles
 
 #### Giải thích các biến môi trường
 
-| Biến | Mô tả | Tìm ở đâu |
-|------|-------|-----------|
-| **REGION** | AWS region nơi tài nguyên được triển khai | `us-east-1` (hoặc `ap-southeast-1` nếu bạn đã thay đổi) |
-| **USER_POOL_ID** | Định danh Cognito User Pool | Sao chép giá trị của `BackendStack.UserPoolId` từ terminal sau khi chạy `cdk deploy` |
-| **USER_PROFILES_TABLE_NAME** | Tên bảng DynamoDB cho user profiles | Trong code CDK, chúng ta đặt tên bảng là `UserProfiles`. Nếu bạn thay đổi, kiểm tra DynamoDB Console để lấy tên chính xác |
+| Biến                         | Mô tả                                     | Tìm ở đâu                                                                                                                 |
+| ---------------------------- | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+| **REGION**                   | AWS region nơi tài nguyên được triển khai | `us-east-1` (hoặc `ap-southeast-1` nếu bạn đã thay đổi)                                                                   |
+| **USER_POOL_ID**             | Định danh Cognito User Pool               | Sao chép giá trị của `BackendStack.UserPoolId` từ terminal sau khi chạy `cdk deploy`                                      |
+| **USER_PROFILES_TABLE_NAME** | Tên bảng DynamoDB cho user profiles       | Trong code CDK, chúng ta đặt tên bảng là `UserProfiles`. Nếu bạn thay đổi, kiểm tra DynamoDB Console để lấy tên chính xác |
 
 #### Ví dụ cấu hình
 

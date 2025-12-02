@@ -1,9 +1,9 @@
 ---
-title : "Clean Up Resources"
-date : "`r Sys.Date()`"
-weight : 6
-chapter : false
-pre : " <b> 5.6. </b> "
+title: "Clean Up Resources"
+date: "`r Sys.Date()`"
+weight: 6
+chapter: false
+pre: " <b> 5.6. </b> "
 ---
 
 #### Why is cleanup important?

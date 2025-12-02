@@ -1,9 +1,9 @@
 ---
-title : "Chạy Script"
-date : "`r Sys.Date()`"
-weight : 3
-chapter : false
-pre : " <b> 5.4.3. </b> "
+title: "Chạy Script"
+date: "`r Sys.Date()`"
+weight: 3
+chapter: false
+pre: " <b> 5.4.3. </b> "
 ---
 
 Bây giờ, thực thi script. Script này tương tác, nên nó sẽ hỏi bạn các thông tin chi tiết.

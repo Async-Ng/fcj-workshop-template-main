@@ -1,9 +1,9 @@
 ---
-title : "Thiết lập Script"
-date : "`r Sys.Date()`"
-weight : 1
-chapter : false
-pre : " <b> 5.4.1. </b> "
+title: "Thiết lập Script"
+date: "`r Sys.Date()`"
+weight: 1
+chapter: false
+pre: " <b> 5.4.1. </b> "
 ---
 
 #### Bước 1: Di chuyển đến thư mục

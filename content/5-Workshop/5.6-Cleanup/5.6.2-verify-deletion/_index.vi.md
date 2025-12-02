@@ -1,9 +1,9 @@
 ---
-title : "Xác minh xóa tài nguyên"
-date : "`r Sys.Date()`"
-weight : 2
-chapter : false
-pre : " <b> 5.6.2. </b> "
+title: "Xác minh xóa tài nguyên"
+date: "`r Sys.Date()`"
+weight: 2
+chapter: false
+pre: " <b> 5.6.2. </b> "
 ---
 
 Mặc dù chúng ta đã cấu hình `RemovalPolicy.DESTROY` và `autoDeleteObjects: true` trong code CDK, việc kiểm tra kỹ AWS Console để đảm bảo mọi thứ đã bị xóa là một **Best Practice**.

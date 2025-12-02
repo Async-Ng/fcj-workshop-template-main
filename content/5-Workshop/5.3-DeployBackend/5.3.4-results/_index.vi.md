@@ -1,9 +1,9 @@
 ---
-title : "Kết quả & Outputs"
-date : "`r Sys.Date()`"
-weight : 4
-chapter : false
-pre : " <b> 5.3.4. </b> "
+title: "Kết quả & Outputs"
+date: "`r Sys.Date()`"
+weight: 4
+chapter: false
+pre: " <b> 5.3.4. </b> "
 ---
 
 Sau khi triển khai thành công, terminal sẽ hiển thị phần **Outputs** màu xanh. Đây là các tham số quan trọng để kết nối Frontend với Backend.
@@ -31,17 +31,17 @@ BackendStack.Region = us-east-1
 
 #### Giải thích các tham số Output
 
-| Tham số | Mô tả | Sử dụng |
-|---------|-------|---------|
-| **ApiUrl** | Endpoint cho Backend API | Frontend sử dụng để gọi API |
-| **UserPoolId** | Định danh Cognito User Pool | Dùng cho xác thực người dùng (Đăng nhập/Đăng ký) |
-| **UserPoolClientId** | Định danh Cognito App Client | Dùng cho xác thực người dùng (Đăng nhập/Đăng ký) |
-| **IdentityPoolId** | Định danh Cognito Identity Pool | Dùng để hiển thị bản đồ trên Frontend |
-| **ImagesBucket** | Tên S3 bucket cho hình ảnh | Dùng để lưu trữ và truy xuất hình ảnh phòng |
-| **MapName** | Tên bản đồ Location Service | Dùng để hiển thị bản đồ trên ứng dụng Frontend |
-| **PlaceIndexName** | Place index của Location Service | Dùng cho chức năng geocoding và tìm kiếm |
-| **RouteCalculatorName** | Route calculator của Location Service | Dùng để tính toán lộ trình giữa các địa điểm |
-| **Region** | AWS region | Region nơi các tài nguyên được triển khai |
+| Tham số                 | Mô tả                                 | Sử dụng                                          |
+| ----------------------- | ------------------------------------- | ------------------------------------------------ |
+| **ApiUrl**              | Endpoint cho Backend API              | Frontend sử dụng để gọi API                      |
+| **UserPoolId**          | Định danh Cognito User Pool           | Dùng cho xác thực người dùng (Đăng nhập/Đăng ký) |
+| **UserPoolClientId**    | Định danh Cognito App Client          | Dùng cho xác thực người dùng (Đăng nhập/Đăng ký) |
+| **IdentityPoolId**      | Định danh Cognito Identity Pool       | Dùng để hiển thị bản đồ trên Frontend            |
+| **ImagesBucket**        | Tên S3 bucket cho hình ảnh            | Dùng để lưu trữ và truy xuất hình ảnh phòng      |
+| **MapName**             | Tên bản đồ Location Service           | Dùng để hiển thị bản đồ trên ứng dụng Frontend   |
+| **PlaceIndexName**      | Place index của Location Service      | Dùng cho chức năng geocoding và tìm kiếm         |
+| **RouteCalculatorName** | Route calculator của Location Service | Dùng để tính toán lộ trình giữa các địa điểm     |
+| **Region**              | AWS region                            | Region nơi các tài nguyên được triển khai        |
 
 #### Các bước tiếp theo
 

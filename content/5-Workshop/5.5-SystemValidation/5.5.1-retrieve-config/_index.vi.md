@@ -1,9 +1,9 @@
 ---
-title : "Lấy cấu hình"
-date : "`r Sys.Date()`"
-weight : 1
-chapter : false
-pre : " <b> 5.5.1. </b> "
+title: "Lấy cấu hình"
+date: "`r Sys.Date()`"
+weight: 1
+chapter: false
+pre: " <b> 5.5.1. </b> "
 ---
 
 Đảm bảo bạn có **ApiUrl** từ outputs của Phần 5.3 (Deploy Backend).
@@ -45,10 +45,11 @@ Sao chép và lưu URL này. Bạn sẽ sử dụng nó làm base URL cho tất 
 
 {{% notice tip %}}
 Nếu bạn mất outputs, bạn có thể lấy lại bằng cách:
+
 - Chạy lại `cdk deploy` (nó sẽ không triển khai lại nếu không có gì thay đổi)
 - Kiểm tra outputs của CloudFormation stack trong AWS Console
 - Vào API Gateway Console và tìm invoke URL của API
-{{% /notice %}}
+  {{% /notice %}}
 
 #### Xác minh API Gateway
 

@@ -1,9 +1,9 @@
 ---
-title : "Verify Resource Deletion"
-date : "`r Sys.Date()`"
-weight : 2
-chapter : false
-pre : " <b> 5.6.2. </b> "
+title: "Verify Resource Deletion"
+date: "`r Sys.Date()`"
+weight: 2
+chapter: false
+pre: " <b> 5.6.2. </b> "
 ---
 
 Although we configured `RemovalPolicy.DESTROY` and `autoDeleteObjects: true` in our CDK code, it is a **Best Practice** to double-check the AWS Console to ensure everything is gone.

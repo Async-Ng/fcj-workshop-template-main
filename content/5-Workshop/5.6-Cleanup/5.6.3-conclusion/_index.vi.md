@@ -1,9 +1,9 @@
 ---
-title : "Kết luận Workshop"
-date : "`r Sys.Date()`"
-weight : 3
-chapter : false
-pre : " <b> 5.6.3. </b> "
+title: "Kết luận Workshop"
+date: "`r Sys.Date()`"
+weight: 3
+chapter: false
+pre: " <b> 5.6.3. </b> "
 ---
 
 #### Chúc mừng
@@ -62,26 +62,31 @@ Bạn đã áp dụng:
 Bằng cách hoàn thành workshop này, bạn giờ có kinh nghiệm thực tế với:
 
 1. **Thiết kế kiến trúc Serverless**
+
    - Event-driven patterns
    - Stateless compute
    - Tích hợp managed services
 
 2. **Phát triển AWS CDK**
+
    - TypeScript constructs
    - Resource provisioning
    - Stack management
 
 3. **Phát triển API**
+
    - RESTful endpoints
    - Authentication flows
    - Protected và public routes
 
 4. **Thiết kế Database**
+
    - NoSQL data modeling
    - DynamoDB best practices
    - TTL và indexes
 
 5. **Triển khai bảo mật**
+
    - IAM policies
    - Cognito user pools
    - JWT token validation

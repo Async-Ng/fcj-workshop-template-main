@@ -1,9 +1,9 @@
 ---
-title : "Results & Outputs"
-date : "`r Sys.Date()`"
-weight : 4
-chapter : false
-pre : " <b> 5.3.4. </b> "
+title: "Results & Outputs"
+date: "`r Sys.Date()`"
+weight: 4
+chapter: false
+pre: " <b> 5.3.4. </b> "
 ---
 
 Upon successful deployment, the terminal will display the **Outputs** section in green. These are critical parameters for connecting the Frontend to the Backend.
@@ -31,17 +31,17 @@ BackendStack.Region = us-east-1
 
 #### Output Parameters Explained
 
-| Parameter | Description | Usage |
-|-----------|-------------|-------|
-| **ApiUrl** | The endpoint for the Backend API | Used by Frontend to make API calls |
-| **UserPoolId** | Cognito User Pool identifier | Used for user authentication (Login/Register) |
-| **UserPoolClientId** | Cognito App Client identifier | Used for user authentication (Login/Register) |
-| **IdentityPoolId** | Cognito Identity Pool identifier | Used for displaying maps on the Frontend |
-| **ImagesBucket** | S3 bucket name for images | Used for storing and retrieving room images |
-| **MapName** | Location Service map name | Used for displaying maps on the Frontend application |
-| **PlaceIndexName** | Location Service place index | Used for geocoding and search functionality |
-| **RouteCalculatorName** | Location Service route calculator | Used for calculating routes between locations |
-| **Region** | AWS region | The region where resources are deployed |
+| Parameter               | Description                       | Usage                                                |
+| ----------------------- | --------------------------------- | ---------------------------------------------------- |
+| **ApiUrl**              | The endpoint for the Backend API  | Used by Frontend to make API calls                   |
+| **UserPoolId**          | Cognito User Pool identifier      | Used for user authentication (Login/Register)        |
+| **UserPoolClientId**    | Cognito App Client identifier     | Used for user authentication (Login/Register)        |
+| **IdentityPoolId**      | Cognito Identity Pool identifier  | Used for displaying maps on the Frontend             |
+| **ImagesBucket**        | S3 bucket name for images         | Used for storing and retrieving room images          |
+| **MapName**             | Location Service map name         | Used for displaying maps on the Frontend application |
+| **PlaceIndexName**      | Location Service place index      | Used for geocoding and search functionality          |
+| **RouteCalculatorName** | Location Service route calculator | Used for calculating routes between locations        |
+| **Region**              | AWS region                        | The region where resources are deployed              |
 
 #### Next Steps
 

@@ -1,9 +1,9 @@
 ---
-title : "Deploy Stack"
-date : "`r Sys.Date()`"
-weight : 3
-chapter : false
-pre : " <b> 5.3.3. </b> "
+title: "Deploy Stack"
+date: "`r Sys.Date()`"
+weight: 3
+chapter: false
+pre: " <b> 5.3.3. </b> "
 ---
 
 Now, let's turn this design into reality.

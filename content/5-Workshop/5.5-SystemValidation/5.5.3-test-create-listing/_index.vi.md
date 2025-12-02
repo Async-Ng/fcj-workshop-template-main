@@ -1,9 +1,9 @@
 ---
-title : "Test tạo Listing"
-date : "`r Sys.Date()`"
-weight : 3
-chapter : false
-pre : " <b> 5.5.3. </b> "
+title: "Test tạo Listing"
+date: "`r Sys.Date()`"
+weight: 3
+chapter: false
+pre: " <b> 5.5.3. </b> "
 ---
 
 #### Test Case 2: Tạo Listing (Protected Route)
@@ -27,12 +27,12 @@ Test này kiểm tra kết nối của Lambda đến DynamoDB.
 
 ```json
 {
-    "title": "Luxury Apartment in District 1",
-    "description": "Full furniture, near manufacturing hub",
-    "price": 5000000,
-    "address": "123 Le Loi, District 1, HCMC",
-    "area": 45,
-    "amenities": ["Wifi", "AC", "Parking"]
+  "title": "Luxury Apartment in District 1",
+  "description": "Full furniture, near manufacturing hub",
+  "price": 5000000,
+  "address": "123 Le Loi, District 1, HCMC",
+  "area": 45,
+  "amenities": ["Wifi", "AC", "Parking"]
 }
 ```
 
@@ -76,16 +76,16 @@ curl -X POST https://xyz123.execute-api.us-east-1.amazonaws.com/prod/landlord/li
 
 ```json
 {
-    "message": "Listing created successfully",
-    "data": {
-        "listingId": "listing_12345...",
-        "title": "Luxury Apartment in District 1",
-        "price": 5000000,
-        "address": "123 Le Loi, District 1, HCMC",
-        "area": 45,
-        "amenities": ["Wifi", "AC", "Parking"],
-        "createdAt": "2023-10-27T10:30:00Z"
-    }
+  "message": "Listing created successfully",
+  "data": {
+    "listingId": "listing_12345...",
+    "title": "Luxury Apartment in District 1",
+    "price": 5000000,
+    "address": "123 Le Loi, District 1, HCMC",
+    "area": 45,
+    "amenities": ["Wifi", "AC", "Parking"],
+    "createdAt": "2023-10-27T10:30:00Z"
+  }
 }
 ```
 

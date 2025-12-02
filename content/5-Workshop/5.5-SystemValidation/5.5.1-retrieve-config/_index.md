@@ -1,9 +1,9 @@
 ---
-title : "Retrieve Configuration"
-date : "`r Sys.Date()`"
-weight : 1
-chapter : false
-pre : " <b> 5.5.1. </b> "
+title: "Retrieve Configuration"
+date: "`r Sys.Date()`"
+weight: 1
+chapter: false
+pre: " <b> 5.5.1. </b> "
 ---
 
 Ensure you have the **ApiUrl** from the outputs of Section 5.3 (Deploy Backend).
@@ -45,10 +45,11 @@ Copy and save this URL. You will use it as the base URL for all API requests in 
 
 {{% notice tip %}}
 If you lost the outputs, you can retrieve them by:
+
 - Running `cdk deploy` again (it won't redeploy if nothing changed)
 - Checking the CloudFormation stack outputs in AWS Console
 - Going to API Gateway Console and finding your API's invoke URL
-{{% /notice %}}
+  {{% /notice %}}
 
 #### Verify API Gateway
 

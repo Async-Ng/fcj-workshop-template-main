@@ -1,9 +1,9 @@
 ---
-title : "Destroy the Stack"
-date : "`r Sys.Date()`"
-weight : 1
-chapter : false
-pre : " <b> 5.6.1. </b> "
+title: "Destroy the Stack"
+date: "`r Sys.Date()`"
+weight: 1
+chapter: false
+pre: " <b> 5.6.1. </b> "
 ---
 
 The beauty of **Infrastructure as Code (IaC)** with AWS CDK is that you can dismantle the entire system with a single command.

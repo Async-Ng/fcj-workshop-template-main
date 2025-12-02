@@ -1,9 +1,9 @@
 ---
-title : "Test Admin Login"
-date : "`r Sys.Date()`"
-weight : 2
-chapter : false
-pre : " <b> 5.5.2. </b> "
+title: "Test Admin Login"
+date: "`r Sys.Date()`"
+weight: 2
+chapter: false
+pre: " <b> 5.5.2. </b> "
 ---
 
 #### Test Case 1: Admin Login
@@ -24,8 +24,8 @@ This is the most critical test. It verifies:
 
 ```json
 {
-    "email": "admin@findnest.com",
-    "password": "Password@123"
+  "email": "admin@findnest.com",
+  "password": "Password@123"
 }
 ```
 
@@ -55,15 +55,15 @@ You should receive a JSON object containing the authentication tokens (ID Token,
 
 ```json
 {
-    "data": {
-        "id": "...",
-        "email": "admin@findnest.com",
-        "accessToken": "eyJraWQiOiJ...",
-        "refreshToken": "eyJjdHkiOiJ...",
-        "idToken": "eyJraWQiOiJ...",
-        "role": "Admins"
-    },
-    "message": "Login successful"
+  "data": {
+    "id": "...",
+    "email": "admin@findnest.com",
+    "accessToken": "eyJraWQiOiJ...",
+    "refreshToken": "eyJjdHkiOiJ...",
+    "idToken": "eyJraWQiOiJ...",
+    "role": "Admins"
+  },
+  "message": "Login successful"
 }
 ```
 

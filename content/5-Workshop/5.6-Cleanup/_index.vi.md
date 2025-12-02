@@ -1,9 +1,9 @@
 ---
-title : "Dọn dẹp tài nguyên"
-date : "`r Sys.Date()`"
-weight : 6
-chapter : false
-pre : " <b> 5.6. </b> "
+title: "Dọn dẹp tài nguyên"
+date: "`r Sys.Date()`"
+weight: 6
+chapter: false
+pre: " <b> 5.6. </b> "
 ---
 
 #### Tại sao cleanup lại quan trọng?

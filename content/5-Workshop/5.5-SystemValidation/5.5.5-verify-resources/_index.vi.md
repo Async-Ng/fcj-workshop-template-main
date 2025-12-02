@@ -1,9 +1,9 @@
 ---
-title : "Xác minh tài nguyên"
-date : "`r Sys.Date()`"
-weight : 5
-chapter : false
-pre : " <b> 5.5.5. </b> "
+title: "Xác minh tài nguyên"
+date: "`r Sys.Date()`"
+weight: 5
+chapter: false
+pre: " <b> 5.5.5. </b> "
 ---
 
 #### Xác minh tài nguyên trong Console

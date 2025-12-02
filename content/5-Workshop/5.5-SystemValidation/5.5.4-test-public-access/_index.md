@@ -1,9 +1,9 @@
 ---
-title : "Test Public Access"
-date : "`r Sys.Date()`"
-weight : 4
-chapter : false
-pre : " <b> 5.5.4. </b> "
+title: "Test Public Access"
+date: "`r Sys.Date()`"
+weight: 4
+chapter: false
+pre: " <b> 5.5.4. </b> "
 ---
 
 #### Test Case 3: Public Access (Listings)
@@ -38,20 +38,20 @@ You should see an array containing the listing you just created in Test Case 2:
 
 ```json
 {
-    "data": [
-        {
-            "listingId": "listing_12345...",
-            "title": "Luxury Apartment in District 1",
-            "description": "Full furniture, near manufacturing hub",
-            "price": 5000000,
-            "address": "123 Le Loi, District 1, HCMC",
-            "area": 45,
-            "amenities": ["Wifi", "AC", "Parking"],
-            "createdAt": "2023-10-27T10:30:00Z",
-            "landlordId": "..."
-        }
-    ],
-    "message": "Listings retrieved successfully"
+  "data": [
+    {
+      "listingId": "listing_12345...",
+      "title": "Luxury Apartment in District 1",
+      "description": "Full furniture, near manufacturing hub",
+      "price": 5000000,
+      "address": "123 Le Loi, District 1, HCMC",
+      "area": 45,
+      "amenities": ["Wifi", "AC", "Parking"],
+      "createdAt": "2023-10-27T10:30:00Z",
+      "landlordId": "..."
+    }
+  ],
+  "message": "Listings retrieved successfully"
 }
 ```
 

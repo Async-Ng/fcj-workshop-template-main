@@ -1,9 +1,9 @@
 ---
-title : "Configure Environment"
-date : "`r Sys.Date()`"
-weight : 2
-chapter : false
-pre : " <b> 5.4.2. </b> "
+title: "Configure Environment"
+date: "`r Sys.Date()`"
+weight: 2
+chapter: false
+pre: " <b> 5.4.2. </b> "
 ---
 
 The script (`seed-admin.js`) looks for specific environment variables to connect to your AWS resources. You need to create a `.env` file with values from the CDK Deployment Output.
@@ -21,11 +21,11 @@ USER_PROFILES_TABLE_NAME=UserProfiles
 
 #### Environment Variables Explained
 
-| Variable | Description | Where to find |
-|----------|-------------|---------------|
-| **REGION** | AWS region where resources are deployed | `us-east-1` (or `ap-southeast-1` if you changed it) |
-| **USER_POOL_ID** | Cognito User Pool identifier | Copy the value of `BackendStack.UserPoolId` from the terminal after `cdk deploy` |
-| **USER_PROFILES_TABLE_NAME** | DynamoDB table name for user profiles | In your CDK code, we set the table name to `UserProfiles`. If you changed it, check the DynamoDB Console for the exact name |
+| Variable                     | Description                             | Where to find                                                                                                               |
+| ---------------------------- | --------------------------------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| **REGION**                   | AWS region where resources are deployed | `us-east-1` (or `ap-southeast-1` if you changed it)                                                                         |
+| **USER_POOL_ID**             | Cognito User Pool identifier            | Copy the value of `BackendStack.UserPoolId` from the terminal after `cdk deploy`                                            |
+| **USER_PROFILES_TABLE_NAME** | DynamoDB table name for user profiles   | In your CDK code, we set the table name to `UserProfiles`. If you changed it, check the DynamoDB Console for the exact name |
 
 #### Example Configuration
 

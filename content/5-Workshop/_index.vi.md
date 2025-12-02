@@ -8,7 +8,7 @@ pre: " <b> 5. </b> "
 
 {{% notice warning %}}
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}  
+{{% /notice %}}
 
 # Xây dựng Serverless Backend với AWS CDK
 

@@ -1,9 +1,9 @@
 ---
-title : "Kiến trúc chi tiết"
-date : "`r Sys.Date()`"
-weight : 1
-chapter : false
-pre : " <b> 5.3.1. </b> "
+title: "Kiến trúc chi tiết"
+date: "`r Sys.Date()`"
+weight: 1
+chapter: false
+pre: " <b> 5.3.1. </b> "
 ---
 
 Hãy cùng tìm hiểu source code **BackendStack** để hiểu cách hệ thống hoạt động. Dưới đây là các đoạn code chi tiết cho từng tài nguyên.
@@ -51,19 +51,15 @@ const favoritesTable = new dynamodb.Table(this, "FavoritesTable", {
 });
 
 // 5. Support Requests Table
-const supportRequestsTable = new dynamodb.Table(
-  this,
-  "SupportRequestsTable",
-  {
-    tableName: "SupportRequests",
-    partitionKey: {
-      name: "requestId",
-      type: dynamodb.AttributeType.STRING,
-    },
-    billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
-    removalPolicy: RemovalPolicy.DESTROY,
-  }
-);
+const supportRequestsTable = new dynamodb.Table(this, "SupportRequestsTable", {
+  tableName: "SupportRequests",
+  partitionKey: {
+    name: "requestId",
+    type: dynamodb.AttributeType.STRING,
+  },
+  billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
+  removalPolicy: RemovalPolicy.DESTROY,
+});
 
 // 6. Search History Table - Includes TTL
 const searchHistoryTable = new dynamodb.Table(this, "SearchHistoryTable", {
@@ -107,7 +103,7 @@ const userPool = new cognito.UserPool(this, "UserPool", {
   userPoolName: "FindNestUsers",
   selfSignUpEnabled: false, // User created via API (Backend trigger)
   signInAliases: {
-    phone: true,    // User uses Phone Number
+    phone: true, // User uses Phone Number
     username: true, // Admin uses Username
   },
   autoVerify: { phone: true },
@@ -179,10 +175,14 @@ const map = new location.CfnMap(this, "Map", {
   configuration: { style: "VectorEsriStreets" },
 });
 
-const routeCalculator = new location.CfnRouteCalculator(this, "RouteCalculator", {
-  calculatorName: "FindNestRoutes",
-  dataSource: "Esri",
-});
+const routeCalculator = new location.CfnRouteCalculator(
+  this,
+  "RouteCalculator",
+  {
+    calculatorName: "FindNestRoutes",
+    dataSource: "Esri",
+  }
+);
 ```
 
 #### 5. Compute (AWS Lambda Monolith)
@@ -264,27 +264,33 @@ apiLambda.addToRolePolicy(
 
 ```typescript
 // Send SMS (OTP)
-apiLambda.addToRolePolicy(new iam.PolicyStatement({
-  actions: ["sns:Publish"],
-  resources: ["*"],
-}));
+apiLambda.addToRolePolicy(
+  new iam.PolicyStatement({
+    actions: ["sns:Publish"],
+    resources: ["*"],
+  })
+);
 
 // Invoke AI (Claude 3)
-apiLambda.addToRolePolicy(new iam.PolicyStatement({
-  actions: ["bedrock:InvokeModel"],
-  resources: ["arn:aws:bedrock:*::foundation-model/anthropic.claude-3-*"],
-}));
+apiLambda.addToRolePolicy(
+  new iam.PolicyStatement({
+    actions: ["bedrock:InvokeModel"],
+    resources: ["arn:aws:bedrock:*::foundation-model/anthropic.claude-3-*"],
+  })
+);
 
 // Access Location Service
-apiLambda.addToRolePolicy(new iam.PolicyStatement({
-  actions: [
-    "geo:SearchPlaceIndexForText",
-    "geo:GetPlace",
-    "geo:CalculateRoute",
-    "geo:SearchPlaceIndexForPosition",
-  ],
-  resources: [placeIndex.attrArn, routeCalculator.attrArn],
-}));
+apiLambda.addToRolePolicy(
+  new iam.PolicyStatement({
+    actions: [
+      "geo:SearchPlaceIndexForText",
+      "geo:GetPlace",
+      "geo:CalculateRoute",
+      "geo:SearchPlaceIndexForPosition",
+    ],
+    resources: [placeIndex.attrArn, routeCalculator.attrArn],
+  })
+);
 ```
 
 #### 7. API Gateway (REST API)
