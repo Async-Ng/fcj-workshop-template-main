@@ -21,10 +21,16 @@ BackendStack.UserPoolId = us-east-1_AbCdEfGh
 BackendStack.UserPoolClientId = 1a2b3c4d5e6f7g8h9i0j
 BackendStack.IdentityPoolId = us-east-1:12345678-abcd-1234-abcd-1234567890ab
 BackendStack.ImagesBucket = findnest-images-123456789012
-BackendStack.MapName = FindNestMap
-BackendStack.PlaceIndexName = FindNestPlaces
-BackendStack.RouteCalculatorName = FindNestRoutes
+BackendStack.MapName = FindNestMap-123456789012
+BackendStack.PlaceIndexName = FindNestPlacesV3-123456789012
+BackendStack.RouteCalculatorName = FindNestRoutesV3-123456789012
 BackendStack.Region = us-east-1
+
+✅  MonitoringStack
+
+Outputs:
+MonitoringStack.AlertTopicArn = arn:aws:sns:us-east-1:123456789012:BoardingHouseAlerts
+MonitoringStack.DashboardUrl = https://us-east-1.console.aws.amazon.com/cloudwatch/home?region=us-east-1#dashboards:name=SmartBoardingHouse-Monitoring
 ```
 
 ![Deployment Outputs](/images/5-Workshop/5.3-DeployBackend/outputs.png)
@@ -42,6 +48,8 @@ BackendStack.Region = us-east-1
 | **PlaceIndexName**      | Location Service place index      | Used for geocoding and search functionality          |
 | **RouteCalculatorName** | Location Service route calculator | Used for calculating routes between locations        |
 | **Region**              | AWS region                        | The region where resources are deployed              |
+| **AlertTopicArn**       | SNS Topic ARN for alerts          | Subscribe to this topic to receive system alerts     |
+| **DashboardUrl**        | CloudWatch Dashboard URL          | Access monitoring dashboard to view system metrics   |
 
 #### Next Steps
 
@@ -61,3 +69,5 @@ You have successfully deployed a modern **Serverless Backend system**, integrate
 - ✅ Scalable database (DynamoDB)
 - ✅ User authentication (Cognito)
 - ✅ RESTful API (API Gateway + Lambda)
+- ✅ Comprehensive monitoring (CloudWatch Dashboard & Alarms)
+- ✅ Real-time alerts (SNS Notifications)

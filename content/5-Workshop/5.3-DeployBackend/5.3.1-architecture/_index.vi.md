@@ -10,7 +10,7 @@ Hãy cùng tìm hiểu source code **BackendStack** để hiểu cách hệ th�
 
 #### 1. Cơ sở dữ liệu (Amazon DynamoDB)
 
-Chúng ta khởi tạo 7 bảng DynamoDB sử dụng chế độ `PAY_PER_REQUEST` (On-Demand) để tối ưu chi phí và khả năng mở rộng.
+Chúng ta khởi tạo 6 bảng DynamoDB sử dụng chế độ `PAY_PER_REQUEST` (On-Demand) để tối ưu chi phí và khả năng mở rộng.
 
 ```typescript
 // 1. Listings Table (Room rentals)
@@ -61,21 +61,13 @@ const supportRequestsTable = new dynamodb.Table(this, "SupportRequestsTable", {
   removalPolicy: RemovalPolicy.DESTROY,
 });
 
-// 6. Search History Table - Includes TTL
-const searchHistoryTable = new dynamodb.Table(this, "SearchHistoryTable", {
-  tableName: "SearchHistory",
+// 6. Notifications Table - Includes TTL
+const notificationsTable = new dynamodb.Table(this, "NotificationsTable", {
+  tableName: "Notifications",
   partitionKey: { name: "userId", type: dynamodb.AttributeType.STRING },
-  sortKey: { name: "searchId", type: dynamodb.AttributeType.STRING },
+  sortKey: { name: "notificationId", type: dynamodb.AttributeType.STRING },
   billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
   timeToLiveAttribute: "ttl",
-  removalPolicy: RemovalPolicy.DESTROY,
-});
-
-// 7. User Preferences Table
-const userPreferencesTable = new dynamodb.Table(this, "UserPreferencesTable", {
-  tableName: "UserPreferences",
-  partitionKey: { name: "userId", type: dynamodb.AttributeType.STRING },
-  billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
   removalPolicy: RemovalPolicy.DESTROY,
 });
 ```
@@ -150,7 +142,7 @@ const adminsGroup = new cognito.CfnUserPoolGroup(this, "AdminsGroup", {
 // Identity Pool for Frontend
 const identityPool = new cognito.CfnIdentityPool(this, "IdentityPool", {
   identityPoolName: "FindNestMapAccess",
-  allowUnauthenticatedIdentities: true, // Allow guests to view map
+  allowUnauthenticatedIdentities: true, // Cho phép khách truy cập bản đồ
   cognitoIdentityProviders: [
     {
       clientId: userPoolClient.userPoolClientId,
@@ -158,20 +150,102 @@ const identityPool = new cognito.CfnIdentityPool(this, "IdentityPool", {
     },
   ],
 });
+
+// IAM Role cho người dùng chưa xác thực (chỉ truy cập bản đồ)
+const unauthenticatedRole = new iam.Role(this, "UnauthenticatedRole", {
+  assumedBy: new iam.FederatedPrincipal(
+    "cognito-identity.amazonaws.com",
+    {
+      StringEquals: {
+        "cognito-identity.amazonaws.com:aud": identityPool.ref,
+      },
+      "ForAnyValue:StringLike": {
+        "cognito-identity.amazonaws.com:amr": "unauthenticated",
+      },
+    },
+    "sts:AssumeRoleWithWebIdentity"
+  ),
+  inlinePolicies: {
+    LocationServicePolicy: new iam.PolicyDocument({
+      statements: [
+        new iam.PolicyStatement({
+          effect: iam.Effect.ALLOW,
+          actions: [
+            "geo:GetMap*",
+            "geo:SearchPlaceIndexForText",
+            "geo:SearchPlaceIndexForPosition",
+            "geo:GetPlace",
+            "geo:CalculateRoute",
+            "geo:CalculateRouteMatrix",
+          ],
+          resources: [map.attrArn, placeIndex.attrArn, routeCalculator.attrArn],
+        }),
+      ],
+    }),
+  },
+});
+
+// IAM Role cho người dùng đã xác thực (truy cập đầy đủ)
+const authenticatedRole = new iam.Role(this, "AuthenticatedRole", {
+  assumedBy: new iam.FederatedPrincipal(
+    "cognito-identity.amazonaws.com",
+    {
+      StringEquals: {
+        "cognito-identity.amazonaws.com:aud": identityPool.ref,
+      },
+      "ForAnyValue:StringLike": {
+        "cognito-identity.amazonaws.com:amr": "authenticated",
+      },
+    },
+    "sts:AssumeRoleWithWebIdentity"
+  ),
+  inlinePolicies: {
+    LocationServicePolicy: new iam.PolicyDocument({
+      statements: [
+        new iam.PolicyStatement({
+          effect: iam.Effect.ALLOW,
+          actions: [
+            "geo:GetMap*",
+            "geo:SearchPlaceIndexForText",
+            "geo:SearchPlaceIndexForPosition",
+            "geo:GetPlace",
+            "geo:CalculateRoute",
+            "geo:CalculateRouteMatrix",
+            "geo:BatchGetDevicePosition",
+            "geo:GetDevicePosition",
+          ],
+          resources: [map.attrArn, placeIndex.attrArn, routeCalculator.attrArn],
+        }),
+      ],
+    }),
+  },
+});
+
+// Gắn roles vào identity pool
+new cognito.CfnIdentityPoolRoleAttachment(this, "IdentityPoolRoleAttachment", {
+  identityPoolId: identityPool.ref,
+  roles: {
+    authenticated: authenticatedRole.roleArn,
+    unauthenticated: unauthenticatedRole.roleArn,
+  },
+});
 ```
 
 #### 4. Dịch vụ Vị trí (Maps & Geocoding)
 
-Khởi tạo tài nguyên Location Service sử dụng Esri data provider.
+Khởi tạo tài nguyên Location Service sử dụng **Here** data provider để có độ phủ POI tốt hơn tại Việt Nam.
 
 ```typescript
 const placeIndex = new location.CfnPlaceIndex(this, "PlaceIndex", {
-  indexName: "FindNestPlaces",
-  dataSource: "Esri",
+  indexName: `FindNestPlacesV3-${cdk.Aws.ACCOUNT_ID}`,
+  dataSource: "Here", // Độ phủ POI tốt hơn cho châu Á (Việt Nam)
+  dataSourceConfiguration: {
+    intendedUse: "Storage", // Cho phép lưu trữ và truy vấn dữ liệu POI
+  },
 });
 
 const map = new location.CfnMap(this, "Map", {
-  mapName: "FindNestMap",
+  mapName: `FindNestMap-${cdk.Aws.ACCOUNT_ID}`,
   configuration: { style: "VectorEsriStreets" },
 });
 
@@ -179,8 +253,8 @@ const routeCalculator = new location.CfnRouteCalculator(
   this,
   "RouteCalculator",
   {
-    calculatorName: "FindNestRoutes",
-    dataSource: "Esri",
+    calculatorName: `FindNestRoutesV3-${cdk.Aws.ACCOUNT_ID}`,
+    dataSource: "Here",
   }
 );
 ```
@@ -204,8 +278,7 @@ const apiLambda = new lambda.Function(this, "ApiLambda", {
     OTP_TABLE_NAME: otpTable.tableName,
     FAVORITES_TABLE_NAME: favoritesTable.tableName,
     SUPPORT_REQUESTS_TABLE_NAME: supportRequestsTable.tableName,
-    SEARCH_HISTORY_TABLE_NAME: searchHistoryTable.tableName,
-    USER_PREFERENCES_TABLE_NAME: userPreferencesTable.tableName,
+    NOTIFICATIONS_TABLE_NAME: notificationsTable.tableName,
     IMAGES_BUCKET_NAME: imagesBucket.bucketName,
     USER_POOL_ID: userPool.userPoolId,
     USER_POOL_CLIENT_ID: userPoolClient.userPoolClientId,
@@ -230,8 +303,7 @@ userProfilesTable.grantReadWriteData(apiLambda);
 otpTable.grantReadWriteData(apiLambda);
 favoritesTable.grantReadWriteData(apiLambda);
 supportRequestsTable.grantReadWriteData(apiLambda);
-searchHistoryTable.grantReadWriteData(apiLambda);
-userPreferencesTable.grantReadWriteData(apiLambda);
+notificationsTable.grantReadWriteData(apiLambda);
 imagesBucket.grantReadWrite(apiLambda);
 ```
 
@@ -314,3 +386,111 @@ const api = new apigateway.LambdaRestApi(this, "BoardingHouseApi", {
   restApiName: "FindNestAPI",
 });
 ```
+
+#### 8. Giám sát & Quan sát (CloudWatch)
+
+Chúng ta triển khai giám sát toàn diện với **CloudWatch Dashboard**, **Alarms**, và **SNS Notifications**.
+
+**A. SNS Alert Topic:**
+
+```typescript
+const alertTopic = new sns.Topic(this, "AlertTopic", {
+  topicName: "BoardingHouseAlerts",
+  displayName: "Smart Boarding House Alerts",
+});
+
+alertTopic.addSubscription(
+  new snsSubscriptions.EmailSubscription("admin@smartboardinghouse.com")
+);
+```
+
+**B. CloudWatch Alarms:**
+
+```typescript
+// Lambda Error Alarm
+const lambdaErrorAlarm = new cloudwatch.Alarm(this, "LambdaErrorAlarm", {
+  alarmName: "BoardingHouse-Lambda-Errors",
+  metric: new cloudwatch.Metric({
+    namespace: "AWS/Lambda",
+    metricName: "Errors",
+    dimensionsMap: { FunctionName: lambdaFunctionName },
+    statistic: "Sum",
+  }),
+  threshold: 5,
+  evaluationPeriods: 2,
+});
+
+// Lambda Duration Alarm
+const lambdaDurationAlarm = new cloudwatch.Alarm(this, "LambdaDurationAlarm", {
+  alarmName: "BoardingHouse-Lambda-Duration",
+  metric: new cloudwatch.Metric({
+    namespace: "AWS/Lambda",
+    metricName: "Duration",
+    dimensionsMap: { FunctionName: lambdaFunctionName },
+    statistic: "Average",
+  }),
+  threshold: 25000, // 25 giây
+  evaluationPeriods: 3,
+});
+
+// API Gateway 4xx/5xx Alarms
+const apiGateway4xxAlarm = new cloudwatch.Alarm(this, "ApiGateway4xxAlarm", {
+  alarmName: "BoardingHouse-API-4xx-Errors",
+  metric: new cloudwatch.Metric({
+    namespace: "AWS/ApiGateway",
+    metricName: "4XXError",
+    dimensionsMap: { ApiName: apiGatewayName },
+    statistic: "Sum",
+  }),
+  threshold: 10,
+  evaluationPeriods: 2,
+});
+```
+
+**C. CloudWatch Dashboard (8 Hàng):**
+
+```typescript
+const dashboard = new cloudwatch.Dashboard(this, "BoardingHouseDashboard", {
+  dashboardName: "SmartBoardingHouse-Monitoring",
+  defaultInterval: cdk.Duration.hours(24),
+});
+
+// Row 1: Tổng quan Lambda (Invocations, Errors, Throttles)
+dashboard.addWidgets(
+  new cloudwatch.GraphWidget({
+    title: "Lambda Invocations",
+    left: [lambdaInvocationsMetric],
+    width: 8,
+    height: 6,
+  }),
+  new cloudwatch.GraphWidget({
+    title: "Lambda Errors",
+    left: [lambdaErrorsMetric],
+    width: 8,
+    height: 6,
+  }),
+  new cloudwatch.GraphWidget({
+    title: "Lambda Throttles",
+    left: [lambdaThrottlesMetric],
+    width: 8,
+    height: 6,
+  })
+);
+
+// Row 2: Hiệu suất Lambda (Duration, Concurrent Executions)
+// Row 3: API Gateway (Requests, Latency)
+// Row 4: Lỗi API Gateway (4XX, 5XX)
+// Row 5: Metrics DynamoDB (Read/Write Capacity, Errors)
+// Row 6: Tóm tắt Sức khỏe Hệ thống (Tỷ lệ lỗi, Thời gian phản hồi, Tổng Requests)
+// Row 7: Sử dụng Token Bedrock AI & Invocations
+// Row 8: Tóm tắt Model Bedrock (Tổng Tokens, Invocations, Latency)
+```
+
+**Tính năng Dashboard:**
+
+- 📊 **Lambda Metrics**: Invocations, Errors, Throttles, Duration, Concurrency
+- 🌐 **API Gateway Metrics**: Requests, Latency (Avg & P99), Lỗi 4XX/5XX
+- 💾 **DynamoDB Metrics**: Read/Write Capacity, User Errors theo bảng
+- 🤖 **Bedrock AI Metrics**: Token Usage (Input/Output), Invocations, Latency
+- 📈 **Tóm tắt Sức khỏe Hệ thống**: Tỷ lệ lỗi, Thời gian phản hồi, Tổng Requests (24h)
+- 🚨 **Cảnh báo Tự động**: Thông báo email qua SNS khi vượt ngưỡng

@@ -10,7 +10,7 @@ Let's dive into the **BackendStack** source code to understand how the system op
 
 #### 1. Database (Amazon DynamoDB)
 
-We initialize 7 DynamoDB tables using `PAY_PER_REQUEST` (On-Demand) mode to optimize costs and scalability.
+We initialize 6 DynamoDB tables using `PAY_PER_REQUEST` (On-Demand) mode to optimize costs and scalability.
 
 ```typescript
 // 1. Listings Table (Room rentals)
@@ -61,21 +61,13 @@ const supportRequestsTable = new dynamodb.Table(this, "SupportRequestsTable", {
   removalPolicy: RemovalPolicy.DESTROY,
 });
 
-// 6. Search History Table - Includes TTL
-const searchHistoryTable = new dynamodb.Table(this, "SearchHistoryTable", {
-  tableName: "SearchHistory",
+// 6. Notifications Table - Includes TTL
+const notificationsTable = new dynamodb.Table(this, "NotificationsTable", {
+  tableName: "Notifications",
   partitionKey: { name: "userId", type: dynamodb.AttributeType.STRING },
-  sortKey: { name: "searchId", type: dynamodb.AttributeType.STRING },
+  sortKey: { name: "notificationId", type: dynamodb.AttributeType.STRING },
   billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
   timeToLiveAttribute: "ttl",
-  removalPolicy: RemovalPolicy.DESTROY,
-});
-
-// 7. User Preferences Table
-const userPreferencesTable = new dynamodb.Table(this, "UserPreferencesTable", {
-  tableName: "UserPreferences",
-  partitionKey: { name: "userId", type: dynamodb.AttributeType.STRING },
-  billingMode: dynamodb.BillingMode.PAY_PER_REQUEST,
   removalPolicy: RemovalPolicy.DESTROY,
 });
 ```
@@ -158,20 +150,102 @@ const identityPool = new cognito.CfnIdentityPool(this, "IdentityPool", {
     },
   ],
 });
+
+// IAM Role for unauthenticated users (map access only)
+const unauthenticatedRole = new iam.Role(this, "UnauthenticatedRole", {
+  assumedBy: new iam.FederatedPrincipal(
+    "cognito-identity.amazonaws.com",
+    {
+      StringEquals: {
+        "cognito-identity.amazonaws.com:aud": identityPool.ref,
+      },
+      "ForAnyValue:StringLike": {
+        "cognito-identity.amazonaws.com:amr": "unauthenticated",
+      },
+    },
+    "sts:AssumeRoleWithWebIdentity"
+  ),
+  inlinePolicies: {
+    LocationServicePolicy: new iam.PolicyDocument({
+      statements: [
+        new iam.PolicyStatement({
+          effect: iam.Effect.ALLOW,
+          actions: [
+            "geo:GetMap*",
+            "geo:SearchPlaceIndexForText",
+            "geo:SearchPlaceIndexForPosition",
+            "geo:GetPlace",
+            "geo:CalculateRoute",
+            "geo:CalculateRouteMatrix",
+          ],
+          resources: [map.attrArn, placeIndex.attrArn, routeCalculator.attrArn],
+        }),
+      ],
+    }),
+  },
+});
+
+// IAM Role for authenticated users (full access)
+const authenticatedRole = new iam.Role(this, "AuthenticatedRole", {
+  assumedBy: new iam.FederatedPrincipal(
+    "cognito-identity.amazonaws.com",
+    {
+      StringEquals: {
+        "cognito-identity.amazonaws.com:aud": identityPool.ref,
+      },
+      "ForAnyValue:StringLike": {
+        "cognito-identity.amazonaws.com:amr": "authenticated",
+      },
+    },
+    "sts:AssumeRoleWithWebIdentity"
+  ),
+  inlinePolicies: {
+    LocationServicePolicy: new iam.PolicyDocument({
+      statements: [
+        new iam.PolicyStatement({
+          effect: iam.Effect.ALLOW,
+          actions: [
+            "geo:GetMap*",
+            "geo:SearchPlaceIndexForText",
+            "geo:SearchPlaceIndexForPosition",
+            "geo:GetPlace",
+            "geo:CalculateRoute",
+            "geo:CalculateRouteMatrix",
+            "geo:BatchGetDevicePosition",
+            "geo:GetDevicePosition",
+          ],
+          resources: [map.attrArn, placeIndex.attrArn, routeCalculator.attrArn],
+        }),
+      ],
+    }),
+  },
+});
+
+// Attach roles to identity pool
+new cognito.CfnIdentityPoolRoleAttachment(this, "IdentityPoolRoleAttachment", {
+  identityPoolId: identityPool.ref,
+  roles: {
+    authenticated: authenticatedRole.roleArn,
+    unauthenticated: unauthenticatedRole.roleArn,
+  },
+});
 ```
 
 #### 4. Location Service (Maps & Geocoding)
 
-Initialize Location Service resources using Esri data provider.
+Initialize Location Service resources using **Here** data provider for better POI coverage in Vietnam.
 
 ```typescript
 const placeIndex = new location.CfnPlaceIndex(this, "PlaceIndex", {
-  indexName: "FindNestPlaces",
-  dataSource: "Esri",
+  indexName: `FindNestPlacesV3-${cdk.Aws.ACCOUNT_ID}`,
+  dataSource: "Here", // Better POI coverage for Asia (Vietnam)
+  dataSourceConfiguration: {
+    intendedUse: "Storage", // Allows storing and querying POI data
+  },
 });
 
 const map = new location.CfnMap(this, "Map", {
-  mapName: "FindNestMap",
+  mapName: `FindNestMap-${cdk.Aws.ACCOUNT_ID}`,
   configuration: { style: "VectorEsriStreets" },
 });
 
@@ -179,8 +253,8 @@ const routeCalculator = new location.CfnRouteCalculator(
   this,
   "RouteCalculator",
   {
-    calculatorName: "FindNestRoutes",
-    dataSource: "Esri",
+    calculatorName: `FindNestRoutesV3-${cdk.Aws.ACCOUNT_ID}`,
+    dataSource: "Here",
   }
 );
 ```
@@ -204,8 +278,7 @@ const apiLambda = new lambda.Function(this, "ApiLambda", {
     OTP_TABLE_NAME: otpTable.tableName,
     FAVORITES_TABLE_NAME: favoritesTable.tableName,
     SUPPORT_REQUESTS_TABLE_NAME: supportRequestsTable.tableName,
-    SEARCH_HISTORY_TABLE_NAME: searchHistoryTable.tableName,
-    USER_PREFERENCES_TABLE_NAME: userPreferencesTable.tableName,
+    NOTIFICATIONS_TABLE_NAME: notificationsTable.tableName,
     IMAGES_BUCKET_NAME: imagesBucket.bucketName,
     USER_POOL_ID: userPool.userPoolId,
     USER_POOL_CLIENT_ID: userPoolClient.userPoolClientId,
@@ -230,8 +303,7 @@ userProfilesTable.grantReadWriteData(apiLambda);
 otpTable.grantReadWriteData(apiLambda);
 favoritesTable.grantReadWriteData(apiLambda);
 supportRequestsTable.grantReadWriteData(apiLambda);
-searchHistoryTable.grantReadWriteData(apiLambda);
-userPreferencesTable.grantReadWriteData(apiLambda);
+notificationsTable.grantReadWriteData(apiLambda);
 imagesBucket.grantReadWrite(apiLambda);
 ```
 
@@ -314,3 +386,111 @@ const api = new apigateway.LambdaRestApi(this, "BoardingHouseApi", {
   restApiName: "FindNestAPI",
 });
 ```
+
+#### 8. Monitoring & Observability (CloudWatch)
+
+We implement comprehensive monitoring with **CloudWatch Dashboard**, **Alarms**, and **SNS Notifications**.
+
+**A. SNS Alert Topic:**
+
+```typescript
+const alertTopic = new sns.Topic(this, "AlertTopic", {
+  topicName: "BoardingHouseAlerts",
+  displayName: "Smart Boarding House Alerts",
+});
+
+alertTopic.addSubscription(
+  new snsSubscriptions.EmailSubscription("admin@smartboardinghouse.com")
+);
+```
+
+**B. CloudWatch Alarms:**
+
+```typescript
+// Lambda Error Alarm
+const lambdaErrorAlarm = new cloudwatch.Alarm(this, "LambdaErrorAlarm", {
+  alarmName: "BoardingHouse-Lambda-Errors",
+  metric: new cloudwatch.Metric({
+    namespace: "AWS/Lambda",
+    metricName: "Errors",
+    dimensionsMap: { FunctionName: lambdaFunctionName },
+    statistic: "Sum",
+  }),
+  threshold: 5,
+  evaluationPeriods: 2,
+});
+
+// Lambda Duration Alarm
+const lambdaDurationAlarm = new cloudwatch.Alarm(this, "LambdaDurationAlarm", {
+  alarmName: "BoardingHouse-Lambda-Duration",
+  metric: new cloudwatch.Metric({
+    namespace: "AWS/Lambda",
+    metricName: "Duration",
+    dimensionsMap: { FunctionName: lambdaFunctionName },
+    statistic: "Average",
+  }),
+  threshold: 25000, // 25 seconds
+  evaluationPeriods: 3,
+});
+
+// API Gateway 4xx/5xx Alarms
+const apiGateway4xxAlarm = new cloudwatch.Alarm(this, "ApiGateway4xxAlarm", {
+  alarmName: "BoardingHouse-API-4xx-Errors",
+  metric: new cloudwatch.Metric({
+    namespace: "AWS/ApiGateway",
+    metricName: "4XXError",
+    dimensionsMap: { ApiName: apiGatewayName },
+    statistic: "Sum",
+  }),
+  threshold: 10,
+  evaluationPeriods: 2,
+});
+```
+
+**C. CloudWatch Dashboard (8 Rows):**
+
+```typescript
+const dashboard = new cloudwatch.Dashboard(this, "BoardingHouseDashboard", {
+  dashboardName: "SmartBoardingHouse-Monitoring",
+  defaultInterval: cdk.Duration.hours(24),
+});
+
+// Row 1: Lambda Overview (Invocations, Errors, Throttles)
+dashboard.addWidgets(
+  new cloudwatch.GraphWidget({
+    title: "Lambda Invocations",
+    left: [lambdaInvocationsMetric],
+    width: 8,
+    height: 6,
+  }),
+  new cloudwatch.GraphWidget({
+    title: "Lambda Errors",
+    left: [lambdaErrorsMetric],
+    width: 8,
+    height: 6,
+  }),
+  new cloudwatch.GraphWidget({
+    title: "Lambda Throttles",
+    left: [lambdaThrottlesMetric],
+    width: 8,
+    height: 6,
+  })
+);
+
+// Row 2: Lambda Performance (Duration, Concurrent Executions)
+// Row 3: API Gateway (Requests, Latency)
+// Row 4: API Gateway Errors (4XX, 5XX)
+// Row 5: DynamoDB Metrics (Read/Write Capacity, Errors)
+// Row 6: System Health Summary (Error Rates, Response Time, Total Requests)
+// Row 7: Bedrock AI Token Usage & Invocations
+// Row 8: Bedrock Model Summary (Total Tokens, Invocations, Latency)
+```
+
+**Dashboard Features:**
+
+- 📊 **Lambda Metrics**: Invocations, Errors, Throttles, Duration, Concurrency
+- 🌐 **API Gateway Metrics**: Requests, Latency (Avg & P99), 4XX/5XX Errors
+- 💾 **DynamoDB Metrics**: Read/Write Capacity, User Errors per table
+- 🤖 **Bedrock AI Metrics**: Token Usage (Input/Output), Invocations, Latency
+- 📈 **System Health Summary**: Error Rates, Response Time, Total Requests (24h)
+- 🚨 **Automatic Alerts**: Email notifications via SNS when thresholds are breached
