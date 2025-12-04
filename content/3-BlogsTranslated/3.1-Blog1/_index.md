@@ -1,126 +1,94 @@
 ---
-title: "Blog 1"
-date: "`r Sys.Date()`"
+title: "Shield AI and AWS Collaborate to Deliver Mission Autonomy at Formation Scale"
+date: "2025-06-25"
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
+
 {{% notice warning %}}
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Shield AI and AWS Collaborate to Deliver Mission Autonomy at Formation Scale
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
-
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
-
----
-
-## Architecture Guidance
-
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
-
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+**Authors:** Keith Johnson, Tim Wilson, and Sean Park | **Date:** June 25, 2025  
+**Tags:** Amazon Elastic Container Registry, Announcements, Artificial Intelligence, AWS IoT Core, Defense, Government, Internet of Things, Public Sector
 
 ---
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## Introduction
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+The rapid evolution of autonomous systems in defense and other sectors is creating new challenges in software deployment and management. Market analysis emphasizes this trend, with the global military unmanned aerial vehicle (UAV) market projected to expand at an estimated compound annual growth rate of 11.2% through 2033.
+
+The significant growth of military UAVs—which are viewed as representative of the broader autonomous systems market—highlights the urgent need for scalable, secure, and efficient software deployment solutions. As the number of autonomous platforms increases, so does the complexity in managing their software. In response to these challenges, Shield AI and Amazon Web Services (AWS) have collaborated and successfully demonstrated a scalable architecture and proof of concept (PoC) to address the common issues encountered when deploying autonomous software and machine learning algorithms to autonomous systems. By integrating Shield AI's platform-agnostic autonomous software development suite, Hivemind Enterprise, with AWS IoT Core and Amazon Elastic Container Registry (ECR), autonomous system developers can develop a Hivemind Pilot and—after simulation and testing are complete—deploy it directly to the hardware platform of their choice from the AWS cloud using command line interface (CLI) or Hivemind's user interface.
 
 ---
 
-## Technology Choices and Communication Scope
+## Challenges in Autonomous System Deployment
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+For defense customers deploying autonomous systems, software deployment encounters numerous challenges, including:
 
----
+- **Scaling across multiple vehicle types**: Supporting air, ground, and maritime autonomous vehicles
+- **Mission-specific collaboration**: Increasing demand for coordination between vehicles
+- **Rapid deployment in DDIL environments**: The necessity to rapidly deploy updates across large fleets of vehicles in denied, disrupted, intermittent, and limited (DDIL) environments
 
-## The Pub/Sub Hub
+Emerging conflicts demand rapid software updates and reconfiguration across different system software components. From integrated control firmware, mission machine learning models, to "AI pilots," these updates must be deployed securely and reliably to vehicle formations, ensuring system integrity to counter evolving threats and mission requirements. While many aspects of autonomous vehicle systems such as advanced hardware, sensors, navigation, and autonomous perception have made rapid progress, updating these systems often requires time-consuming manual processes that can slow initial development and testing of new capabilities, create bottlenecks during mission execution, and create opportunities for misconfiguration.
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+**Liz Martin, DoD General Manager at AWS**, emphasized the importance of this collaboration:
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+> "Our defense customers need rapid autonomous software updates to maintain readiness and respond to emerging mission requirements. Through the collaboration between Shield AI and AWS, we have a solution that delivers development and deployment of mission autonomy capabilities at formation scale across autonomous platforms."
 
 ---
 
-## Core Microservice
+## The Solution
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+The collaboration addressed the challenge of updating autonomous systems by building a flexible solution that uses AWS IoT Core as a scalable and secure mechanism to orchestrate updates and state between Shield AI's software stacks (Edgeos) running on autonomous hardware platforms and Shield AI's autonomous development platform. Because Hivemind pilots are deployed as containers, once a new deployment is ready and communicated via AWS IoT Core to the autonomous platform, the container is securely fetched from Amazon ECR where it is hosted by Hivemind as part of the development and deployment integration, creating a cloud-hosted approach.
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+In summary, the solution enables:
 
----
+- **Centralized control and rapid deployment** of Hivemind pilot software
+- **Secure, cloud-based distribution** to field systems
+- **Scalable management** of large autonomous fleets
+- **Real-time monitoring and control** of deployment processes
 
-## Front Door Microservice
+**Nathan Michael, Chief Technology Officer at Shield AI**, stated:
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+> "Developing autonomy is both complex and expensive—but with AWS, we're making it faster, easier, and more scalable. This collaboration combines Hivemind Enterprise autonomy systems and AWS infrastructure to streamline how customers develop, deliver, and maintain intelligent autonomous systems across large distributed fleets."
 
 ---
 
-## Staging ER7 Microservice
+## Benefits for Defense and Commercial Customers
 
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+The collaboration brings advantages to both defense and commercial customers. Defense customers can now maintain high levels of mission readiness by rapidly updating their autonomous fleets to counter emerging threats and adapt to changing mission parameters. This capability comes with increased operational flexibility, allowing teams to quickly modify autonomous capabilities for new environments and mission types. The solution also enhances security measures by ensuring all platforms consistently run secure, up-to-date software versions, while providing centralized management and monitoring capabilities for autonomous platforms.
+
+### Commercial Applications
+
+In the commercial realm, benefits extend across multiple industries:
+
+- **Agriculture**: Operations can now efficiently update self-driving tractor fleets to adapt to seasonal changes and implement new farming techniques
+- **Oil & Gas**: The industry can deploy critical updates to offshore autonomous systems, enhancing both safety protocols and operational efficiency
+- **Logistics and Warehousing**: Businesses can seamlessly modify their autonomous vehicle fleets to adapt to evolving inventory requirements and routing needs
+- **Mining**: Operations benefit from the ability to quickly update autonomous equipment to accommodate new terrain conditions or extraction methods
 
 ---
 
-## New Features in the Solution
+## Conclusion
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+The collaboration between Shield AI and AWS addresses a critical challenge in autonomous system management. By demonstrating rapid, secure deployment of mission autonomy software, we are enabling organizations in both defense and commercial sectors to maximize the power of their autonomous fleets. This integration also establishes a foundation for post-mission data collection, which is crucial for driving rapid pilot development and continuous improvement of autonomous capabilities. In the next phase of collaboration, we are moving from proof of concept to production, and we are excited to explore how this solution will transform operations and unlock new possibilities in autonomy.
+
+---
+
+## About the Authors
+
+### Keith Johnson
+
+Keith is the Chief Technologist for AWS's United States Department of Defense (DoD) business. Keith leads a team of experienced solution architects who serve as trusted technical advisors to DoD customers, guiding them to maximize business and mission outcomes by leveraging AWS solutions and best practices. Keith joined AWS in May 2022.
+
+### Tim Wilson
+
+Tim is the Principal IoT Specialist for AWS's United States Federal Specialist team. In this role, Tim works with AWS United States Federal customers and partners to help them adopt and use AWS IoT services and solutions. He started working at AWS as a solutions architect in 2012.
+
+### Sean Park
+
+Sean is a Principal Customer Executive at AWS, supporting the Department of Defense (DoD) and driving innovative critical capabilities with partners. Outside of work, he enjoys seeking out new culinary adventures with his wife and two children.

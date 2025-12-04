@@ -1,7 +1,7 @@
 ---
-title: "Blog 3"
-date: "`r Sys.Date()`"
-weight: 1
+title: "Giới thiệu AWS Builder Center: Ngôi nhà mới dành cho cộng đồng AWS builder"
+date: "2025-07-09"
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
@@ -10,118 +10,87 @@ pre: " <b> 3.3. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+# Giới thiệu AWS Builder Center: Ngôi nhà mới dành cho cộng đồng AWS builder
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
+**Tác giả:** Channy Yun và Matheus Guimaraes | **Ngày:** 09 tháng 7 năm 2025  
+**Tags:** Announcements, Developer, Launch, News
 
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
-
----
-
-## Hướng dẫn kiến trúc
-
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
-
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
-
-**Kiến trúc giải pháp bây giờ như sau:**
-
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+_Được lồng tiếng bởi AWS Polly_
 
 ---
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+## Giới thiệu
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+Chúng tôi thực sự trân trọng những builders tại AWS. Chúng tôi luôn không ngừng suy nghĩ về những cách mới để giúp các cộng đồng kỹ thuật phát triển, cũng như tạo ra những không gian như AWS Developer Center và community.aws, nơi mọi người có thể kết nối và chia sẻ kiến thức cùng trải nghiệm của mình.
+
+Hôm nay, chúng tôi công bố **AWS Builder Center**, một ngôi nhà mới dành cho các builders để truy cập tất cả tài nguyên liên quan, tham gia cùng cộng đồng AWS, và đóng góp phản hồi hoặc đề xuất sản phẩm cho các nhóm sản phẩm AWS. Trải nghiệm mới này cũng tích hợp cả AWS Developer Center và community.aws trước đây.
+
+Có một loạt các tính năng thú vị vì vậy chúng ta hãy khám phá một số trong số chúng.
 
 ---
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+## Tiếng nói của bạn rất quan trọng: Giới thiệu Wishlist
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Theo tôi, một trong những tính năng mới thú vị nhất chính là **Wishlist**. Giờ đây, bạn có thể gửi những mong muốn của mình về các tính năng mới hoặc các cải tiến mà bạn muốn thấy trong các dịch vụ AWS. Người khác cũng có thể khám phá và bình chọn cho những mong muốn này, đồng thời tự tạo ra Wishlist của riêng họ.
+
+Bạn có thể cùng cộng đồng tác động đến lộ trình sản phẩm và giúp chúng tôi định hình tương lai của các dịch vụ AWS. Bạn có thể chia sẻ ý tưởng, đề xuất, đề nghị tính năng, hoặc những thách thức gặp phải khi vận hành dịch vụ AWS, với khả năng để cộng đồng AWS bình chọn cho các ý tưởng và làm nổi bật những cải tiến được mong đợi nhất. Các nhóm nội bộ của chúng tôi sẽ theo dõi những điều này và đưa những mong muốn phổ biến nhất đến các nhóm dịch vụ, biến tiếng nói của bạn trở thành một phần không thể thiếu trong quá trình phát triển sản phẩm.
 
 ---
 
-## The pub/sub hub
+## Kết nối mọi người trong cộng đồng AWS
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+Trên trang **Connect**, bạn sẽ tìm thấy nhiều cơ hội để kết nối trực tiếp với AWS Heroes và AWS Community Builders. Bạn cũng có thể khám phá và tham gia các AWS User Groups và AWS Cloud Clubs tại những thành phố gần bạn trên khắp thế giới.
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+Không chỉ vậy, bạn còn có thể đánh dấu trang này làm trung tâm tập trung để tìm các sự kiện cộng đồng sắp tới, giúp bạn dễ dàng khám phá cơ hội học hỏi và kết nối trong khu vực của mình, cũng như gặp gỡ những builders có cùng chí hướng và sở thích.
 
----
-
-## Core microservice
-
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
-
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+Nói về việc theo dõi mọi người, AWS Builder Center giúp bạn dễ dàng kết nối và tương tác với người khác, đóng vai trò như trung tâm chính của cộng đồng kỹ thuật AWS. Nó tập hợp tất cả những cách khác nhau để bạn có thể kết nối với các builders khác. Ví dụ, mục **Who to Follow** sẽ giới thiệu đến bạn các AWS Heroes, Community Builders, và những thành viên cộng đồng năng động đang chia sẻ kiến thức và chuyên môn trong các lĩnh vực mà bạn quan tâm.
 
 ---
 
-## Front door microservice
+## Khám phá các tài nguyên thực hành AWS của chúng tôi
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+Trên trang **Build**, bạn sẽ khám phá những cách để làm quen với AWS thông qua trải nghiệm thực hành, chẳng hạn như các tài nguyên học tập tương tác được thiết kế cho mọi cấp độ kỹ năng, như AWS Tutorials và AWS Workshops. Bạn cũng có thể khám phá playground cho generative AI và agentic AI services, đồng thời tìm thấy AWS Free Tier để dùng thử các dịch vụ AWS miễn phí trong phạm vi giới hạn được quy định cho từng dịch vụ.
 
----
+Chọn trang **Toolbox** và khám phá các công cụ mới nhất, tài nguyên ngôn ngữ lập trình, cũng như các dự án Mã nguồn mở (Open Source) dành cho AWS. Toolbox có mọi thứ bạn cần để khởi tạo dự án và đưa nó vào vận hành.
 
-## Staging ER7 microservice
-
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+Để cải thiện trải nghiệm xây dựng cho các builders, chúng tôi dự định mở rộng các tính năng tích hợp sẵn của Builder Center, chẳng hạn như tạo các nhóm và diễn đàn chuyên biệt để cộng tác về một chủ đề cụ thể, tổ chức các workshop cho phòng thí nghiệm thực hành, và xây dựng nhiều service playgrounds khác nhau, nơi các builders có thể tự do thử nghiệm với các dịch vụ AWS.
 
 ---
 
-## Tính năng mới trong giải pháp
+## Hỗ trợ hành trình builder của bạn
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+Phần **Learn** mới đóng vai trò như cánh cổng dẫn bạn đến việc phát triển kỹ năng, tập hợp mọi thứ bạn cần để mở rộng kiến thức chuyên môn về AWS. Tại đây, bạn có thể khám phá các tài nguyên học tập và đào tạo, workshops, trải nghiệm gamified, và nhiều nội dung khác để biến hành trình xây dựng trên AWS của bạn vừa mang tính giáo dục vừa hấp dẫn.
+
+Chọn trang **Topics**, nơi bạn có thể khám phá và tìm hiểu thêm nhiều nội dung. Bạn có thể khám phá nội dung theo chủ đề và thẻ (tags). Ngoài ra còn có phần featured và trending topics, giúp bạn luôn nắm bắt được những gì đang thu hút sự quan tâm của cộng đồng ở thời điểm hiện tại.
+
+---
+
+## Tích hợp bản địa hóa cho ngôn ngữ nói của bạn
+
+AWS Builder Center phá vỡ rào cản ngôn ngữ với khả năng hỗ trợ bản địa hóa toàn diện. Tất cả nội dung được xuất bản trong Builder Center đều tự động khả dụng bằng 16 ngôn ngữ, và nội dung do người dùng tạo ra, chẳng hạn như bài đăng, bình luận hoặc mong muốn (wishes), có thể được dịch máy theo yêu cầu bằng dịch vụ AWS Translate. Nhờ vậy, bạn có thể cộng tác với các builders trên toàn thế giới, chia sẻ kiến thức và trải nghiệm vượt qua mọi ranh giới ngôn ngữ.
+
+Theo mặc định, tất cả nội dung sẽ được hiển thị dựa trên ngôn ngữ mà trình duyệt của bạn đang thiết lập. Tuy nhiên, bạn có thể thay đổi cài đặt này bằng cách truy cập trang **Settings** và chọn ngôn ngữ mà bạn muốn AWS Builder Center sử dụng mặc định.
+
+---
+
+## Đăng ký và xây dựng hồ sơ của bạn ngay bây giờ
+
+AWS Builder Center mang đến cho bạn một cách cá nhân hóa và toàn diện hơn để thể hiện hành trình AWS của mình. Hồ sơ độc đáo của bạn sẽ đi kèm với URL tùy chỉnh và mã QR có thể chia sẻ, giúp bạn dễ dàng kết nối với người khác và chia sẻ sự hiện diện của mình trong cộng đồng AWS.
+
+Tất cả các bài đăng, mong muốn (wishes), và những tương tác ý nghĩa của bạn đều được sắp xếp trong một giao diện tập trung, giúp bạn dễ dàng theo dõi. Trong trang **Manage profile**, bạn có thể tùy chỉnh hồ sơ, thêm các mối quan tâm cụ thể và lĩnh vực chuyên môn, hỗ trợ bạn kết nối với những builders có cùng đam mê. Việc quản lý hồ sơ diễn ra một cách liền mạch: nó được đồng bộ trên tất cả dịch vụ AWS thông qua AWS Builder ID, đảm bảo danh tính của bạn luôn nhất quán ở bất cứ nơi nào bạn tham gia vào các dịch vụ AWS.
+
+Truy cập **builder.aws.com**, đăng ký bằng AWS Builder ID, và chọn bí danh (alias) độc nhất của bạn để truy cập tất cả tính năng, bao gồm tạo nội dung, Wishlist, và các công cụ tương tác cộng đồng.
+
+AWS Builder Center được thiết kế để giúp bạn kết nối, học hỏi và xây dựng cùng với các AWS builders khác, vì vậy hãy tận hưởng hành trình của bạn cùng nhau!
+
+---
+
+## Về tác giả
+
+### Channy Yun (윤석찬)
+
+Channy là Principal Developer Advocate cho AWS Cloud. Là một người đam mê web mở và là một blogger thực thụ, anh ấy yêu thích việc học hỏi và chia sẻ công nghệ dựa trên sức mạnh của cộng đồng.
+
+### Matheus Guimaraes
+
+Matheus Guimaraes (@codingmatheus) là một chuyên gia về .NET và microservices, diễn giả quốc tế, và Developer Advocate tại AWS. Với hơn 25 năm trong lĩnh vực công nghệ, anh đã đảm nhận nhiều vai trò khác nhau — từ lập trình viên game cấp junior cho đến CTO và nhà sáng lập startup. Matheus đã giúp nhiều công ty ở mọi quy mô hiện đại hóa và mở rộng hệ thống, dẫn dắt các chuyển đổi số và thiết kế các kiến trúc cloud-native. Ngày nay, anh chia sẻ chuyên môn của mình đến toàn cầu thông qua các buổi nói chuyện, blog, và video, với niềm đam mê giúp người khác phát triển trong ngành công nghệ. Ngoài công nghệ, anh còn là một game thủ, vận động viên bơi lội, nhạc sĩ, và tin vào sự giao thoa mạnh mẽ giữa sáng tạo và lập trình.

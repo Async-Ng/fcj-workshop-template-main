@@ -1,126 +1,150 @@
 ---
-title: "Blog 2"
-date: "`r Sys.Date()`"
-weight: 1
+title: "Enabling Digital Transformation to Advance Healthcare"
+date: "2025-06-24"
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
+
 {{% notice warning %}}
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Enabling Digital Transformation to Advance Healthcare
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
-
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
-
----
-
-## Architecture Guidance
-
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
-
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+**Author:** Michael Leonard | **Date:** June 24, 2025  
+**Tags:** Artificial Intelligence, AWS Marketplace, AWS Partner Network, Healthcare, Industries, Intermediate (200), Learning Levels, Thought Leadership
 
 ---
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## Introduction
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+Healthcare organizations (HCOs) face increasing challenges and opportunities that are reshaping the industry. From the largest cybersecurity attack of 2024 on Change Healthcare to widespread provider-payer disruptions affecting healthcare access, the pressure to transform is significant. Emerging technologies, particularly generative artificial intelligence (AI) and cloud computing, offer pathways to revolutionize patient care while improving operational efficiency and security frameworks.
 
----
+Amazon Web Services (AWS) and third-party solutions from AWS Marketplace equip HCOs with tools that enhance data security, accelerate AI adoption, streamline workflows, and improve patient outcomes.
 
-## Technology Choices and Communication Scope
+Recently, I moderated a panel discussion on **Enabling Digital Transformation to Advance Healthcare**, exploring how organizations navigate uncertainty while embracing new technologies. Our conversation focused on research from Forrester's latest survey of 441 U.S. healthcare provider organizations, examining cloud infrastructure strategies, generative AI adoption, security, and compliance.
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+The panel included industry experts with deep healthcare technology experience:
+
+- **Shannon Germain Farraher**, Senior Analyst, Forrester
+- **Demetri Giannikopoulos**, Chief Transformation Officer, Aidoc
+- **Dr. Dan Rafter**, Senior Vice President of Partnerships and Product Strategy, Flywheel
+- **Wilson To**, Vice President of Strategy, Philips
+
+In this post, I highlight key insights from our discussion on healthcare's digital transformation journey.
 
 ---
 
-## The Pub/Sub Hub
+## Forrester Research Reveals Key Findings
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+Forrester's research identified four critical areas where HCOs are focusing their digital transformation efforts.
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+### Finding One: Security Takes Center Stage
 
----
+92% of respondents identified improving enterprise security and reducing risk as their top priority. Farraher explained: "Healthcare is the most vulnerable industry according to the Federal Bureau of Investigation (FBI) in 2023. For hackers, it's low-hanging fruit because there are so many unprotected entry points."
 
-## Core Microservice
+### Finding Two: Data and Analytics Support AI Initiatives
 
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
+Adoption of advanced data and analytics enables AI initiatives, although 44% consider security concerns as their top infrastructure challenge. As one respondent emphasized, "If you don't have a good data infrastructure, then any fancy generative AI tool on top is no good."
 
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+### Finding Three: Workforce Experience Drives Investment Decisions
+
+90% of organizations plan to invest 10% or more in their technology infrastructure this year. According to Forrester, 83% expect improved revenue, while 79% predict improved workforce experience and engagement.
+
+### Finding Four: Generative AI Adoption Shows Practical Patterns
+
+20% of organizations operate at the scaling or enterprise stage with generative AI, but this number is expected to reach 90% within three years. Top use cases include workflow optimization (56%) and data integration, analytics, and personalized care treatment (approximately 50% each).
 
 ---
 
-## Front Door Microservice
+## Critical Differentiating Factors Accelerating Healthcare Transformation
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+Unlike previous healthcare innovation cycles, converging factors create new opportunities for change. The regulatory landscape is evolving to enable technological progress, with Fast Healthcare Interoperability Resources (FHIR) now mentioned multiple times in recent legal updates. The pandemic demonstrated healthcare's ability to innovate rapidly when facing threats.
 
----
+"What the industry has seen in the pandemic is the opportunity to innovate its way out of various crises," observed Farraher. This creates a cultural shift toward embracing scalable technologies and faster implementation cycles.
 
-## Staging ER7 Microservice
-
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+Most importantly, there is organic demand for organizational integration of generative AI. "Generative AI is in people's hands every day so easily," Farraher noted. "There's enthusiasm, it becomes mainstream." This "Bring Your Own AI" phenomenon contrasts with previous technology deployments like electronic health records that required extensive training.
 
 ---
 
-## New Features in the Solution
+## Strategic AI Deployment Approaches
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+HCOs adopt approaches that balance enthusiasm with realistic timelines and safety requirements. The discussion focused on how organizations concentrate on automation, augmentation, and agility when implementing AI to enhance clinical capabilities, eliminate invisible work, and enable deeper insights. "There are a lot of minutes that can be saved, where customers want to see how we can deploy technology on behalf of their clinicians," noted To.
+
+The focus remains on enhancing rather than replacing human capabilities. Giannikopoulos emphasized strategic starting points for success: "Finding those initial use cases to explore, considering lessons from others, not trying to do this alone, and developing a comprehensive end-to-end process... ultimately really matters."
+
+Organizations must recognize that AI deployment includes change management and cultural adaptation, not merely technology implementation. The goal is to build governance guidelines that direct enthusiasm for AI toward safe solutions.
+
+---
+
+## Overcoming Data and Infrastructure Barriers
+
+Data standardization is a major obstacle to AI deployment. Organizations often spend 85% of their time searching, de-identifying, and centralizing data before beginning analysis. "It's a very manual process one hundred percent without the right tools," Dr. Rafter noted.
+
+The industry is shifting from departmental solutions to enterprise-wide solutions, enabling comprehensive data integration. Giannikopoulos remarked: "There's now a strong drive toward collaboration, breaking down silos, enhancing interoperability between systems and people." This facilitates precision medicine capabilities, which require seamless integration between genetic testing, medical imaging, and electronic health records.
+
+Cloud infrastructure adoption has reached an inflection point where migration is no longer optional. "It's no longer a question of whether we need to centralize data in a way that's accessible outside the four walls of the hospital - that has to happen," Dr. Rafter emphasized.
+
+---
+
+## Security and Compliance Strategies
+
+Healthcare organizations adopt a shared responsibility model, allocating security obligations among internal teams, cloud service providers, and solution providers. To emphasized: "Security is priority zero, privacy is priority zero, and patient safety is always at the center of everything."
+
+Organizations benefit from leveraging pre-established standard frameworks and certifications rather than building security capabilities from scratch. Giannikopoulos explained: "Safety by design is integrated into all our solutions. Adhering to those principles, while aligning with International Organization for Standardization (ISO) standards, SOC 2 Type II... gives you the opportunity to develop safe and robust solutions."
+
+Healthcare leaders must clearly understand security partnership relationships and provider responsibilities to avoid knowledge gaps; therefore, training, transparency, and clearly documented agreements are key factors for successful cloud computing adoption.
+
+---
+
+## Key Recommendations for Navigating Digital Transformation
+
+Forrester's research identified four strategic recommendations for healthcare organizations (HCOs) on their digital transformation journey.
+
+### First: Advocate for Unified AI Regulatory Framework
+
+Adopt best practices through frameworks like the Coalition for Health Artificial Intelligence (CHAI) to validate AI tools for fairness, safety, and effectiveness.
+
+### Second: Leverage Bring Your Own AI (B-Y-O-A-I) Enthusiasm
+
+Rather than punishing employees, harness their interest. Over 20% of physicians and clinicians now use AI in their work. Farraher explained: "Leaders should start gathering and directing employee interest in B-Y-O-A-I tools, then transition them to approved and safer tools."
+
+### Third: Rely on Core Organizational Values During Uncertainty
+
+HCOs need to continue focusing on mission engagement, recognition programs, and employee autonomy. Farraher emphasized: "Don't pause initiatives like recognition. People often think it should be the first thing cut, but it should actually be the last."
+
+### Fourth: Seek Provider Partners Aligned with Core Values
+
+Look for partners that demonstrate flexibility, cost-effectiveness, and minimal disruption. Farraher advised: "Challenge your partners, push them to meet your needs right now. At the same time, carefully evaluate how they will support you in taking the next step tomorrow."
+
+---
+
+## Conclusion
+
+The healthcare industry is at a transformative turning point, where the question has shifted from whether to adopt AI and cloud computing technologies to how to deploy them safely at scale. Forrester's research and our expert panel show that successful transformation requires a balanced approach prioritizing security, employee experience, and strategic partnerships. Patient safety remains the core principle in all operations. To reminded the audience: "Behind every pixel, behind every bit and byte, is a patient."
+
+The coming years will separate thriving organizations from those merely surviving. The difference will be each organization's ability to integrate advanced technologies while maintaining core missions focused on patient care. Organizations embracing this transformation with the right partners will deliver improved patient outcomes while enhancing operational efficiency.
+
+---
+
+## About AWS Marketplace
+
+AWS Marketplace is a curated digital catalog with numerous healthcare solutions across multiple categories and regions. This makes it easy to find, purchase, deploy, and manage solutions from AWS Partners. It provides fast, easy, and secure deployment capabilities, flexible consumption, contract models, as well as streamlined purchasing and payment operations.
+
+Over 300,000 organizations use AWS Marketplace monthly to accelerate digital transformation and improve efficiency. Research from Forrester estimates it takes half the time to find, purchase, and deploy solutions through AWS Marketplace compared to other channels.
+
+---
+
+## Next Steps
+
+- Explore healthcare solutions and software in **AWS Marketplace** to learn about solutions discussed by panel experts: **Philips**, **Aidoc**, and **Flywheel**
+- Watch **Enabling Digital Transformation to Advance Healthcare** as a replay for additional in-depth perspectives
+
+---
+
+## About the Author
+
+### Michael Leonard
+
+Michael Leonard is the global leader responsible for developing healthcare partnerships within the AWS Partner Organization and developing vertical healthcare business on AWS Marketplace. His previous role was Principal Product Manager in the AWS Storage Gateway team. Over the past 20 years, Michael has progressed through various roles in business development, product management, and engineering. Outside AWS, Michael has worked for Commvault, Iron Mountain, Merge Healthcare, and GE Healthcare. He has built and managed teams to develop healthcare IT solutions focused on medical imaging, EHR systems, hybrid cloud storage services, and data protection solutions.

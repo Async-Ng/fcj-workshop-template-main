@@ -1,7 +1,7 @@
 ---
-title: "Blog 2"
-date: "`r Sys.Date()`"
-weight: 1
+title: "Hỗ trợ chuyển đổi kỹ thuật số để thúc đẩy chăm sóc sức khỏe"
+date: "2025-06-24"
+weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
@@ -10,118 +10,141 @@ pre: " <b> 3.2. </b> "
 ⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
 {{% /notice %}}
 
-# Bắt đầu với healthcare data lakes: Sử dụng microservices
+# Hỗ trợ chuyển đổi kỹ thuật số để thúc đẩy chăm sóc sức khỏe
 
-Các data lake có thể giúp các bệnh viện và cơ sở y tế chuyển dữ liệu thành những thông tin chi tiết về doanh nghiệp và duy trì hoạt động kinh doanh liên tục, đồng thời bảo vệ quyền riêng tư của bệnh nhân. **Data lake** là một kho lưu trữ tập trung, được quản lý và bảo mật để lưu trữ tất cả dữ liệu của bạn, cả ở dạng ban đầu và đã xử lý để phân tích. data lake cho phép bạn chia nhỏ các kho chứa dữ liệu và kết hợp các loại phân tích khác nhau để có được thông tin chi tiết và đưa ra các quyết định kinh doanh tốt hơn.
-
-Bài đăng trên blog này là một phần của loạt bài lớn hơn về việc bắt đầu cài đặt data lake dành cho lĩnh vực y tế. Trong bài đăng blog cuối cùng của tôi trong loạt bài, *“Bắt đầu với data lake dành cho lĩnh vực y tế: Đào sâu vào Amazon Cognito”*, tôi tập trung vào các chi tiết cụ thể của việc sử dụng Amazon Cognito và Attribute Based Access Control (ABAC) để xác thực và ủy quyền người dùng trong giải pháp data lake y tế. Trong blog này, tôi trình bày chi tiết cách giải pháp đã phát triển ở cấp độ cơ bản, bao gồm các quyết định thiết kế mà tôi đã đưa ra và các tính năng bổ sung được sử dụng. Bạn có thể truy cập các code samples cho giải pháp tại Git repo này để tham khảo.
-
----
-
-## Hướng dẫn kiến trúc
-
-Thay đổi chính kể từ lần trình bày cuối cùng của kiến trúc tổng thể là việc tách dịch vụ đơn lẻ thành một tập hợp các dịch vụ nhỏ để cải thiện khả năng bảo trì và tính linh hoạt. Việc tích hợp một lượng lớn dữ liệu y tế khác nhau thường yêu cầu các trình kết nối chuyên biệt cho từng định dạng; bằng cách giữ chúng được đóng gói riêng biệt với microservices, chúng ta có thể thêm, xóa và sửa đổi từng trình kết nối mà không ảnh hưởng đến những kết nối khác. Các microservices được kết nối rời thông qua tin nhắn publish/subscribe tập trung trong cái mà tôi gọi là “pub/sub hub”.
-
-Giải pháp này đại diện cho những gì tôi sẽ coi là một lần lặp nước rút hợp lý khác từ last post của tôi. Phạm vi vẫn được giới hạn trong việc nhập và phân tích cú pháp đơn giản của các **HL7v2 messages** được định dạng theo **Quy tắc mã hóa 7 (ER7)** thông qua giao diện REST.
-
-**Kiến trúc giải pháp bây giờ như sau:**
-
-> *Hình 1. Kiến trúc tổng thể; những ô màu thể hiện những dịch vụ riêng biệt.*
+**Tác giả:** Michael Leonard | **Ngày:** 24 tháng 6 năm 2025  
+**Tags:** Artificial Intelligence, AWS Marketplace, AWS Partner Network, Healthcare, Industries, Intermediate (200), Learning Levels, Thought Leadership
 
 ---
 
-Mặc dù thuật ngữ *microservices* có một số sự mơ hồ cố hữu, một số đặc điểm là chung:  
-- Chúng nhỏ, tự chủ, kết hợp rời rạc  
-- Có thể tái sử dụng, giao tiếp thông qua giao diện được xác định rõ  
-- Chuyên biệt để giải quyết một việc  
-- Thường được triển khai trong **event-driven architecture**
+## Giới thiệu
 
-Khi xác định vị trí tạo ranh giới giữa các microservices, cần cân nhắc:  
-- **Nội tại**: công nghệ được sử dụng, hiệu suất, độ tin cậy, khả năng mở rộng  
-- **Bên ngoài**: chức năng phụ thuộc, tần suất thay đổi, khả năng tái sử dụng  
-- **Con người**: quyền sở hữu nhóm, quản lý *cognitive load*
+Các tổ chức chăm sóc sức khỏe (HCO) phải đối mặt với những thách thức và cơ hội ngày càng tăng đang định hình lại ngành. Từ cuộc tấn công an ninh mạng lớn nhất năm 2024 vào Change Healthcare đến sự gián đoạn rộng rãi của nhà cung cấp-công ty bảo hiểm ảnh hưởng đến khả năng tiếp cận chăm sóc sức khỏe, áp lực chuyển đổi là đáng kể. Các công nghệ mới nổi, đặc biệt là trí tuệ nhân tạo tổng quát (AI) và điện toán đám mây, cung cấp các con đường để cách mạng hóa việc chăm sóc bệnh nhân đồng thời cải thiện hiệu quả hoạt động và khuôn khổ bảo mật.
 
----
+Amazon Web Services (AWS) và các giải pháp của bên thứ ba từ AWS Marketplace trang bị cho HCO các công cụ giúp tăng cường bảo mật dữ liệu, đẩy nhanh việc áp dụng AI, hợp lý hóa quy trình làm việc và cải thiện kết quả của bệnh nhân.
 
-## Lựa chọn công nghệ và phạm vi giao tiếp
+Gần đây, tôi đã điều hành một cuộc thảo luận nhóm về **Cho phép chuyển đổi kỹ thuật số để thúc đẩy chăm sóc sức khỏe**, khám phá cách các tổ chức điều hướng sự không chắc chắn trong khi nắm bắt các công nghệ mới. Cuộc trò chuyện của chúng tôi tập trung vào nghiên cứu từ cuộc khảo sát mới nhất của Forrester với 441 tổ chức cung cấp dịch vụ chăm sóc sức khỏe Hoa Kỳ, kiểm tra các chiến lược cơ sở hạ tầng đám mây, áp dụng AI tổng quát, bảo mật và tuân thủ.
 
-| Phạm vi giao tiếp                        | Các công nghệ / mô hình cần xem xét                                                        |
-| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Trong một microservice                   | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Giữa các microservices trong một dịch vụ | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Giữa các dịch vụ                         | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+Hội thảo bao gồm các chuyên gia trong ngành có kinh nghiệm chuyên sâu về công nghệ chăm sóc sức khỏe:
+
+- **Shannon Germain Farraher**, Nhà phân tích cấp cao, Forrester
+- **Demetri Giannikopoulos**, Giám đốc chuyển đổi, Aidoc
+- **Tiến sĩ Dan Rafter**, Phó Chủ tịch Cấp cao Đối tác và Chiến lược Sản phẩm, Flywheel
+- **Wilson To**, Phó Chủ tịch Chiến lược, Philips
+
+Trong bài đăng này, tôi nhấn mạnh những hiểu biết chính từ cuộc thảo luận của chúng tôi về hành trình chuyển đổi kỹ thuật số của chăm sóc sức khỏe.
 
 ---
 
-## The pub/sub hub
+## Nghiên cứu của Forrester tiết lộ những phát hiện chính
 
-Việc sử dụng kiến trúc **hub-and-spoke** (hay message broker) hoạt động tốt với một số lượng nhỏ các microservices liên quan chặt chẽ.  
-- Mỗi microservice chỉ phụ thuộc vào *hub*  
-- Kết nối giữa các microservice chỉ giới hạn ở nội dung của message được xuất  
-- Giảm số lượng synchronous calls vì pub/sub là *push* không đồng bộ một chiều
+Nghiên cứu của Forrester đã xác định bốn lĩnh vực quan trọng trong đó các HCO tập trung các nỗ lực chuyển đổi kỹ thuật số của họ.
 
-Nhược điểm: cần **phối hợp và giám sát** để tránh microservice xử lý nhầm message.
+### Phát hiện đầu tiên: Bảo mật chiếm vị trí trung tâm
 
----
+92% số người được hỏi xác định cải thiện bảo mật doanh nghiệp và giảm rủi ro là ưu tiên hàng đầu của họ. Farraher giải thích: "Chăm sóc sức khỏe là ngành dễ bị tổn thương nhất theo Cục Điều tra Liên bang (FBI) vào năm 2023. Đối với tin tặc, đó là trái cây treo thấp vì có rất nhiều điểm xâm nhập không được bảo vệ."
 
-## Core microservice
+### Phát hiện thứ hai: Dữ liệu và phân tích hỗ trợ các sáng kiến AI
 
-Cung cấp dữ liệu nền tảng và lớp truyền thông, gồm:  
-- **Amazon S3** bucket cho dữ liệu  
-- **Amazon DynamoDB** cho danh mục dữ liệu  
-- **AWS Lambda** để ghi message vào data lake và danh mục  
-- **Amazon SNS** topic làm *hub*  
-- **Amazon S3** bucket cho artifacts như mã Lambda
+Việc áp dụng dữ liệu và phân tích nâng cao cho phép các sáng kiến AI, mặc dù 44% cho rằng mối quan tâm về bảo mật là thách thức cơ sở hạ tầng hàng đầu của họ. Như một người được hỏi nhấn mạnh, "Nếu bạn không có cơ sở hạ tầng dữ liệu tốt, thì bất kỳ công cụ AI tổng quát ưa thích nào ở trên cùng đều không tốt."
 
-> Chỉ cho phép truy cập ghi gián tiếp vào data lake qua hàm Lambda → đảm bảo nhất quán.
+### Phát hiện thứ ba: Kinh nghiệm của lực lượng lao động thúc đẩy các quyết định đầu tư
+
+90% các tổ chức có kế hoạch đầu tư 10% trở lên vào cơ sở hạ tầng công nghệ của họ trong năm nay. Theo Forrester, 83% kỳ vọng doanh thu được cải thiện, trong khi 79% dự đoán trải nghiệm và sự gắn kết của lực lượng lao động được cải thiện.
+
+### Phát hiện thứ tư: Việc áp dụng AI tổng quát cho thấy các mô hình thực tế
+
+20% tổ chức hoạt động ở giai đoạn mở rộng quy mô hoặc doanh nghiệp với AI tổng quát nhưng hy vọng con số này sẽ đạt 90% trong vòng ba năm. Các trường hợp sử dụng hàng đầu bao gồm tối ưu hóa quy trình làm việc (56%) và tích hợp dữ liệu, phân tích và điều trị chăm sóc cá nhân hóa (khoảng 50% mỗi trường hợp).
 
 ---
 
-## Front door microservice
+## Các yếu tố khác biệt quan trọng đẩy nhanh quá trình chuyển đổi chăm sóc sức khỏe
 
-- Cung cấp API Gateway để tương tác REST bên ngoài  
-- Xác thực & ủy quyền dựa trên **OIDC** thông qua **Amazon Cognito**  
-- Cơ chế *deduplication* tự quản lý bằng DynamoDB thay vì SNS FIFO vì:
-  1. SNS deduplication TTL chỉ 5 phút
-  2. SNS FIFO yêu cầu SQS FIFO
-  3. Chủ động báo cho sender biết message là bản sao
+Không giống như các chu kỳ đổi mới chăm sóc sức khỏe trước đây, các yếu tố hội tụ tạo ra cơ hội mới để thay đổi. Cảnh quan quy định phát triển để cho phép tiến bộ công nghệ, với các nguồn lực tương tác chăm sóc sức khỏe nhanh (FHIR) hiện đã đề cập nhiều lần trong các cập nhật pháp lý gần đây. Đại dịch đã chứng minh khả năng của chăm sóc sức khỏe để đổi mới nhanh chóng khi phải đối mặt với các mối đe dọa.
 
----
+"Những gì ngành công nghiệp đã thấy trong đại dịch là cơ hội để đổi mới cách thoát khỏi các cuộc khủng hoảng khác nhau", Farraher quan sát. Điều này tạo ra sự thay đổi văn hóa đối với việc nắm lấy các công nghệ có thể mở rộng và các chu kỳ thực hiện nhanh hơn.
 
-## Staging ER7 microservice
-
-- Lambda “trigger” đăng ký với pub/sub hub, lọc message theo attribute  
-- Step Functions Express Workflow để chuyển ER7 → JSON  
-- Hai Lambda:
-  1. Sửa format ER7 (newline, carriage return)
-  2. Parsing logic  
-- Kết quả hoặc lỗi được đẩy lại vào pub/sub hub
+Quan trọng nhất, có nhu cầu hữu cơ để tích hợp tổ chức của AI tổng quát. "AI thế hệ nằm trong tay mọi người mỗi ngày một cách dễ dàng như vậy", Farraher lưu ý. "Có sự nhiệt tình, nó trở thành chủ đạo." Hiện tượng "Mang AI của riêng bạn" này tương phản với các triển khai công nghệ trước đây như hồ sơ sức khỏe điện tử cần được đào tạo rộng rãi.
 
 ---
 
-## Tính năng mới trong giải pháp
+## Các cách tiếp cận triển khai AI mang tính chiến lược
 
-### 1. AWS CloudFormation cross-stack references
-Ví dụ *outputs* trong core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+HCO áp dụng phương pháp tiếp cận cân bằng nhiệt tình với các mốc thời gian thực tế và các yêu cầu an toàn. Cuộc thảo luận tập trung vào cách các tổ chức tập trung vào tự động hóa, tăng cường và nhanh nhẹn khi thực hiện AI để tăng cường khả năng lâm sàng, loại bỏ công việc vô hình và cho phép hiểu biết sâu sắc hơn. "Có rất nhiều phút có thể được cứu, nơi khách hàng muốn xem cách chúng tôi có thể triển khai công nghệ thay mặt cho các bác sĩ lâm sàng của họ," To lưu ý.
+
+Trọng tâm vẫn là nâng cao hơn là thay thế khả năng của con người. Giannikopoulos nhấn mạnh các điểm khởi đầu chiến lược để thành công: "Tìm ra những trường hợp sử dụng ban đầu đó để khám phá, xem xét những bài học của những người khác, không cố gắng làm điều này một mình và phát triển quy trình toàn diện đầy đủ... cuối cùng thực sự quan trọng."
+
+Các tổ chức phải nhận ra rằng việc triển khai AI bao gồm cả quản trị thay đổi và thích ứng văn hóa, chứ không chỉ đơn thuần là triển khai công nghệ. Mục tiêu là xây dựng các hướng dẫn quản trị nhằm định hướng sự hứng khởi đối với AI theo hướng các giải pháp an toàn.
+
+---
+
+## Khắc phục các rào cản dữ liệu và cơ sở hạ tầng
+
+Tiêu chuẩn hóa dữ liệu là một trở ngại lớn đối với việc triển khai AI. Các tổ chức thường dành 85% thời gian để tìm kiếm, loại bỏ nhận dạng và tập trung dữ liệu trước khi bắt đầu phân tích. "Đó là một quy trình rất thủ công một trăm phần trăm mà không có các công cụ phù hợp", Tiến sĩ Rafter lưu ý.
+
+Ngành đang chuyển dịch từ các giải pháp cấp phòng ban sang các giải pháp toàn doanh nghiệp, cho phép tích hợp dữ liệu một cách toàn diện. Giannikopoulos nhận xét: "Hiện có một động lực mạnh mẽ hướng tới hợp tác, phá vỡ các silo, tăng cường khả năng tương tác giữa các hệ thống và con người." Điều này tạo điều kiện cho các năng lực y học chính xác, vốn đòi hỏi sự tích hợp liền mạch giữa xét nghiệm gen, hình ảnh y khoa và hồ sơ bệnh án điện tử.
+
+Việc áp dụng cơ sở hạ tầng đám mây đã đạt đến một điểm bùng phát trong đó việc di chuyển không còn là tùy chọn. "Đó không còn là câu hỏi liệu chúng ta có cần tập trung dữ liệu theo cách có thể truy cập bên ngoài bốn bức tường của bệnh viện hay không - điều đó phải xảy ra", Tiến sĩ Rafter nhấn mạnh.
+
+---
+
+## Chiến lược bảo mật và tuân thủ
+
+Các tổ chức chăm sóc sức khỏe áp dụng mô hình trách nhiệm chia sẻ, phân bổ nghĩa vụ bảo mật giữa các nhóm nội bộ, nhà cung cấp dịch vụ đám mây và các nhà cung cấp giải pháp. To nhấn mạnh: "Bảo mật là ưu tiên số không, quyền riêng tư là ưu tiên số không, và an toàn bệnh nhân luôn ở vị trí trung tâm của mọi hoạt động."
+
+Các tổ chức được hưởng lợi từ việc tận dụng các khung chuẩn và chứng chỉ đã được thiết lập sẵn thay vì xây dựng năng lực bảo mật từ đầu. Giannikopoulos giải thích: "An toàn theo thiết kế (safety by design) được tích hợp trong tất cả các giải pháp của chúng tôi. Việc tuân thủ các nguyên tắc đó, đồng thời phù hợp với các tiêu chuẩn của Tổ chức Tiêu chuẩn hóa Quốc tế (ISO), SOC 2 Type II... mang lại cho bạn cơ hội để phát triển những giải pháp an toàn và vững chắc."
+
+Các nhà lãnh đạo ngành y tế phải hiểu rõ các mối quan hệ hợp tác về bảo mật và trách nhiệm của nhà cung cấp để tránh khoảng trống về kiến thức; vì vậy, việc đào tạo, minh bạch và các thỏa thuận được ghi chép rõ ràng là yếu tố then chốt cho việc áp dụng điện toán đám mây thành công.
+
+---
+
+## Các khuyến nghị chính để định hướng trong quá trình chuyển đổi số
+
+Nghiên cứu của Forrester đã chỉ ra bốn khuyến nghị chiến lược dành cho các tổ chức chăm sóc sức khỏe (HCOs) trong hành trình chuyển đổi số.
+
+### Thứ nhất: Vận động cho một khung pháp lý thống nhất về AI
+
+Áp dụng các thực hành tốt nhất thông qua các khuôn khổ như Liên minh Trí tuệ Nhân tạo trong Y tế (Coalition for Health Artificial Intelligence – CHAI) để kiểm chứng các công cụ AI về tính công bằng, an toàn và hiệu quả.
+
+### Thứ hai: Tận dụng sự hứng khởi đối với mô hình Bring Your Own AI (B-Y-O-A-I)
+
+Thay vì trừng phạt nhân viên, hãy khai thác sự quan tâm của họ. Hiện đã có hơn 20% bác sĩ, nhân viên lâm sàng sử dụng AI trong công việc của họ. Farraher giải thích: "Các nhà lãnh đạo nên bắt đầu tập hợp và định hướng sự quan tâm của nhân viên đối với các công cụ B-Y-O-A-I, sau đó chuyển đổi họ sang những công cụ được phê duyệt và an toàn hơn."
+
+### Thứ ba: Dựa vào các giá trị cốt lõi của tổ chức trong thời kỳ bất định
+
+Các tổ chức chăm sóc sức khỏe (HCOs) cần tiếp tục tập trung vào sự gắn kết với sứ mệnh, các chương trình ghi nhận đóng góp, và quyền tự chủ của nhân viên. Farraher nhấn mạnh: "Đừng tạm dừng các sáng kiến như ghi nhận. Người ta thường nghĩ nó nên là thứ bị cắt đầu tiên, nhưng thực ra nó nên là thứ cuối cùng."
+
+### Thứ tư: Tìm kiếm các đối tác cung cấp phù hợp với giá trị cốt lõi
+
+Tìm kiếm đối tác thể hiện sự linh hoạt, hiệu quả chi phí, cùng mức độ gián đoạn tối thiểu. Farraher khuyên: "Hãy thách thức các đối tác của bạn, thúc đẩy họ đáp ứng nhu cầu của bạn ngay tại thời điểm hiện tại. Đồng thời, hãy đánh giá kỹ để xem họ sẽ hỗ trợ bạn tiến tới bước tiếp theo vào ngày mai như thế nào."
+
+---
+
+## Kết luận
+
+Ngành chăm sóc sức khỏe đang ở một điểm bước ngoặc mang tính chuyển đổi, nơi câu hỏi đã chuyển từ việc có nên áp dụng công nghệ AI và điện toán đám mây sang làm thế nào để triển khai chúng một cách an toàn ở quy mô lớn. Nghiên cứu của Forrester và hội đồng chuyên gia của chúng tôi cho thấy rằng để chuyển đổi thành công, cần có một cách tiếp cận cân bằng, ưu tiên bảo mật, trải nghiệm nhân viên, và các quan hệ đối tác chiến lược. Sự an toàn của bệnh nhân vẫn là nguyên tắc cốt lõi trong mọi hoạt động. To đã nhắc nhở khán giả: "Đằng sau mỗi điểm ảnh, đằng sau từng bit và byte là một bệnh nhân."
+
+Vài năm tới sẽ tách biệt các tổ chức phát triển mạnh với những tổ chức chỉ tồn tại. Điểm khác biệt sẽ là khả năng của mỗi tổ chức trong việc tích hợp các công nghệ tiên tiến trong khi vẫn duy trì các nhiệm vụ cốt lõi tập trung vào chăm sóc bệnh nhân. Các tổ chức nắm bắt sự chuyển đổi này với các đối tác phù hợp, sẽ mang lại kết quả cải thiện cho bệnh nhân đồng thời nâng cao hiệu quả hoạt động.
+
+---
+
+## Về AWS Marketplace
+
+AWS Marketplace là một danh mục kỹ thuật số được tuyển chọn với nhiều giải pháp chăm sóc sức khỏe thuộc nhiều danh mục và khu vực. Điều này giúp bạn dễ dàng tìm kiếm, mua, triển khai và quản lý các giải pháp từ Đối tác AWS. Nó cung cấp khả năng triển khai nhanh chóng, dễ dàng và an toàn, tiêu thụ linh hoạt, mô hình hợp đồng cũng như các hoạt động mua sắm và thanh toán được sắp xếp hợp lý.
+
+Hơn 300.000 tổ chức sử dụng AWS Marketplace hàng tháng để đẩy nhanh quá trình chuyển đổi kỹ thuật số và cải thiện hiệu quả. Nghiên cứu từ Forrester ước tính mất một nửa thời gian để tìm kiếm, mua và triển khai các giải pháp thông qua AWS Marketplace so với các kênh khác.
+
+---
+
+## Các bước tiếp theo
+
+- Khám phá các giải pháp và phần mềm chăm sóc sức khỏe trong **AWS Marketplace** để tìm hiểu những giải pháp như các chuyên gia trong hội thảo đã thảo luận: **Philips**, **Aidoc** và **Flywheel**
+- Xem **Enabling digital transformation to advance healthcare** theo hình thức xem lại để có thêm những góc nhìn chuyên sâu
+
+---
+
+## Về tác giả
+
+### Michael Leonard
+
+Michael Leonard là lãnh đạo toàn cầu chịu trách nhiệm phát triển quan hệ đối tác chăm sóc sức khỏe của Tổ chức Đối tác AWS và phát triển hoạt động kinh doanh ngành dọc chăm sóc sức khỏe trên AWS Marketplace. Vai trò trước đây của ông là giám đốc sản phẩm chính trong nhóm AWS Storage Gateway. Trong 20 năm qua, Michael đã tiến bộ qua nhiều vai trò khác nhau trong phát triển kinh doanh, quản lý sản phẩm và kỹ thuật. Ngoài AWS, Michael đã làm việc cho Commvault, Iron Mountain, Merge Healthcare và GE Healthcare. Ông đã xây dựng và quản lý các nhóm để phát triển các giải pháp CNTT chăm sóc sức khỏe tập trung vào hình ảnh y tế, hệ thống EHR, dịch vụ lưu trữ đám mây lai và các giải pháp bảo vệ dữ liệu.

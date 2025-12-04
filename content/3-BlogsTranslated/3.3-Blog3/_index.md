@@ -1,126 +1,96 @@
 ---
-title: "Blog 3"
-date: "`r Sys.Date()`"
-weight: 1
+title: "Introducing AWS Builder Center: A New Home for the AWS Builder Community"
+date: "2025-07-09"
+weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
+
 {{% notice warning %}}
 ⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
 {{% /notice %}}
 
-# Getting Started with Healthcare Data Lakes: Using Microservices
+# Introducing AWS Builder Center: A New Home for the AWS Builder Community
 
-Data lakes can help hospitals and healthcare facilities turn data into business insights, maintain business continuity, and protect patient privacy. A **data lake** is a centralized, managed, and secure repository to store all your data, both in its raw and processed forms for analysis. Data lakes allow you to break down data silos and combine different types of analytics to gain insights and make better business decisions.
+**Authors:** Channy Yun and Matheus Guimaraes | **Date:** July 9, 2025  
+**Tags:** Announcements, Developer, Launch, News
 
-This blog post is part of a larger series on getting started with setting up a healthcare data lake. In my final post of the series, *“Getting Started with Healthcare Data Lakes: Diving into Amazon Cognito”*, I focused on the specifics of using Amazon Cognito and Attribute Based Access Control (ABAC) to authenticate and authorize users in the healthcare data lake solution. In this blog, I detail how the solution evolved at a foundational level, including the design decisions I made and the additional features used. You can access the code samples for the solution in this Git repo for reference.
-
----
-
-## Architecture Guidance
-
-The main change since the last presentation of the overall architecture is the decomposition of a single service into a set of smaller services to improve maintainability and flexibility. Integrating a large volume of diverse healthcare data often requires specialized connectors for each format; by keeping them encapsulated separately as microservices, we can add, remove, and modify each connector without affecting the others. The microservices are loosely coupled via publish/subscribe messaging centered in what I call the “pub/sub hub.”
-
-This solution represents what I would consider another reasonable sprint iteration from my last post. The scope is still limited to the ingestion and basic parsing of **HL7v2 messages** formatted in **Encoding Rules 7 (ER7)** through a REST interface.
-
-**The solution architecture is now as follows:**
-
-> *Figure 1. Overall architecture; colored boxes represent distinct services.*
+_Narrated by AWS Polly_
 
 ---
 
-While the term *microservices* has some inherent ambiguity, certain traits are common:  
-- Small, autonomous, loosely coupled  
-- Reusable, communicating through well-defined interfaces  
-- Specialized to do one thing well  
-- Often implemented in an **event-driven architecture**
+## Introduction
 
-When determining where to draw boundaries between microservices, consider:  
-- **Intrinsic**: technology used, performance, reliability, scalability  
-- **Extrinsic**: dependent functionality, rate of change, reusability  
-- **Human**: team ownership, managing *cognitive load*
+We truly value builders at AWS. We're constantly thinking about new ways to help technical communities grow, and creating spaces like the AWS Developer Center and community.aws, where people can connect and share their knowledge and experiences.
+
+Today, we announce **AWS Builder Center**, a new home for builders to access all related resources, participate in the AWS community, and contribute feedback or product suggestions to AWS product teams. This new experience also integrates the previous AWS Developer Center and community.aws.
+
+There's a range of exciting features, so let's explore some of them.
 
 ---
 
-## Technology Choices and Communication Scope
+## Your Voice Matters: Introducing Wishlist
 
-| Communication scope                       | Technologies / patterns to consider                                                        |
-| ----------------------------------------- | ------------------------------------------------------------------------------------------ |
-| Within a single microservice              | Amazon Simple Queue Service (Amazon SQS), AWS Step Functions                               |
-| Between microservices in a single service | AWS CloudFormation cross-stack references, Amazon Simple Notification Service (Amazon SNS) |
-| Between services                          | Amazon EventBridge, AWS Cloud Map, Amazon API Gateway                                      |
+In my opinion, one of the most exciting new features is the **Wishlist**. Now you can submit your wishes for new features or improvements you'd like to see in AWS services. Others can also discover and vote for these wishes, while creating their own Wishlists.
+
+You can impact the product roadmap alongside the community and help us shape the future of AWS services. You can share ideas, suggestions, feature requests, or challenges encountered when operating AWS services, with the ability for the AWS community to vote on ideas and highlight the most anticipated improvements. Our internal teams will monitor these and bring the most popular wishes to service teams, making your voice an integral part of the product development process.
 
 ---
 
-## The Pub/Sub Hub
+## Connecting People in the AWS Community
 
-Using a **hub-and-spoke** architecture (or message broker) works well with a small number of tightly related microservices.  
-- Each microservice depends only on the *hub*  
-- Inter-microservice connections are limited to the contents of the published message  
-- Reduces the number of synchronous calls since pub/sub is a one-way asynchronous *push*
+On the **Connect** page, you'll find numerous opportunities to connect directly with AWS Heroes and AWS Community Builders. You can also discover and join AWS User Groups and AWS Cloud Clubs in cities near you around the world.
 
-Drawback: **coordination and monitoring** are needed to avoid microservices processing the wrong message.
+Not only that, you can bookmark this page as a central hub to find upcoming community events, making it easy for you to discover learning and networking opportunities in your area, as well as meet like-minded builders with similar interests.
 
----
-
-## Core Microservice
-
-Provides foundational data and communication layer, including:  
-- **Amazon S3** bucket for data  
-- **Amazon DynamoDB** for data catalog  
-- **AWS Lambda** to write messages into the data lake and catalog  
-- **Amazon SNS** topic as the *hub*  
-- **Amazon S3** bucket for artifacts such as Lambda code
-
-> Only allow indirect write access to the data lake through a Lambda function → ensures consistency.
+Speaking of following people, AWS Builder Center makes it easy to connect and interact with others, serving as the main hub of the AWS technical community. It brings together all the different ways you can connect with other builders. For example, the **Who to Follow** section will introduce you to AWS Heroes, Community Builders, and active community members sharing knowledge and expertise in areas you're interested in.
 
 ---
 
-## Front Door Microservice
+## Discover Our Hands-On AWS Resources
 
-- Provides an API Gateway for external REST interaction  
-- Authentication & authorization based on **OIDC** via **Amazon Cognito**  
-- Self-managed *deduplication* mechanism using DynamoDB instead of SNS FIFO because:  
-  1. SNS deduplication TTL is only 5 minutes  
-  2. SNS FIFO requires SQS FIFO  
-  3. Ability to proactively notify the sender that the message is a duplicate  
+On the **Build** page, you'll discover ways to get familiar with AWS through hands-on experiences, such as interactive learning resources designed for all skill levels, like AWS Tutorials and AWS Workshops. You can also explore playgrounds for generative AI and agentic AI services, and find the AWS Free Tier to try AWS services for free within specified limits for each service.
 
----
+Select the **Toolbox** page and discover the latest tools, programming language resources, as well as Open Source projects for AWS. Toolbox has everything you need to bootstrap your project and put it into operation.
 
-## Staging ER7 Microservice
-
-- Lambda “trigger” subscribed to the pub/sub hub, filtering messages by attribute  
-- Step Functions Express Workflow to convert ER7 → JSON  
-- Two Lambdas:  
-  1. Fix ER7 formatting (newline, carriage return)  
-  2. Parsing logic  
-- Result or error is pushed back into the pub/sub hub  
+To improve the building experience for builders, we plan to expand Builder Center's built-in features, such as creating specialized groups and forums to collaborate on specific topics, organizing workshops for hands-on labs, and building various service playgrounds where builders can freely experiment with AWS services.
 
 ---
 
-## New Features in the Solution
+## Supporting Your Builder Journey
 
-### 1. AWS CloudFormation Cross-Stack References
-Example *outputs* in the core microservice:
-```yaml
-Outputs:
-  Bucket:
-    Value: !Ref Bucket
-    Export:
-      Name: !Sub ${AWS::StackName}-Bucket
-  ArtifactBucket:
-    Value: !Ref ArtifactBucket
-    Export:
-      Name: !Sub ${AWS::StackName}-ArtifactBucket
-  Topic:
-    Value: !Ref Topic
-    Export:
-      Name: !Sub ${AWS::StackName}-Topic
-  Catalog:
-    Value: !Ref Catalog
-    Export:
-      Name: !Sub ${AWS::StackName}-Catalog
-  CatalogArn:
-    Value: !GetAtt Catalog.Arn
-    Export:
-      Name: !Sub ${AWS::StackName}-CatalogArn
+The new **Learn** section serves as a gateway to skill development, bringing together everything you need to expand your AWS expertise. Here, you can discover learning and training resources, workshops, gamified experiences, and much more content to make your journey building on AWS both educational and engaging.
+
+Select the **Topics** page, where you can explore and discover more content. You can explore content by topic and tags. There are also featured and trending topics sections, helping you stay on top of what's currently attracting community interest.
+
+---
+
+## Native Localization for Your Spoken Language
+
+AWS Builder Center breaks down language barriers with comprehensive localization support. All content published in Builder Center is automatically available in 16 languages, and user-generated content, such as posts, comments, or wishes, can be machine-translated on demand using AWS Translate service. Thanks to this, you can collaborate with builders around the world, sharing knowledge and experiences across all language boundaries.
+
+By default, all content will be displayed based on the language your browser is set to. However, you can change this setting by accessing the **Settings** page and selecting the language you want AWS Builder Center to use by default.
+
+---
+
+## Register and Build Your Profile Now
+
+AWS Builder Center gives you a more personalized and comprehensive way to showcase your AWS journey. Your unique profile comes with a custom URL and shareable QR code, making it easy to connect with others and share your presence in the AWS community.
+
+All your posts, wishes, and meaningful interactions are organized in a centralized interface, making them easy to track. On the **Manage profile** page, you can customize your profile, add specific interests and areas of expertise, helping you connect with builders who share your passion. Profile management happens seamlessly: it's synchronized across all AWS services through AWS Builder ID, ensuring your identity is always consistent wherever you engage with AWS services.
+
+Visit **builder.aws.com**, register with AWS Builder ID, and choose your unique alias to access all features, including content creation, Wishlist, and community interaction tools.
+
+AWS Builder Center is designed to help you connect, learn, and build with other AWS builders, so enjoy your journey together!
+
+---
+
+## About the Authors
+
+### Channy Yun (윤석찬)
+
+Channy is a Principal Developer Advocate for AWS Cloud. As an open web enthusiast and a true blogger, he loves learning and sharing technology based on the power of community.
+
+### Matheus Guimaraes
+
+Matheus Guimaraes (@codingmatheus) is a .NET and microservices expert, international speaker, and Developer Advocate at AWS. With over 25 years in technology, he has held various roles—from junior game developer to CTO and startup founder. Matheus has helped companies of all sizes modernize and scale systems, leading digital transformations and designing cloud-native architectures. Today, he shares his expertise globally through talks, blogs, and videos, with a passion for helping others thrive in the tech industry. Beyond technology, he's also a gamer, swimmer, musician, and believes in the powerful intersection of creativity and programming.
