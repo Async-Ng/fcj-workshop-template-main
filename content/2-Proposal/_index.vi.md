@@ -1,10 +1,11 @@
 ---
+
 title: "Bản đề xuất"
 date: "`r Sys.Date()`"
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
----
+[Tải Proposal dạng DOCX tại đây](../../static/proposal.docx)
 
 # FindNest
 
@@ -103,15 +104,15 @@ Nền tảng sử dụng thiết kế AWS Serverless module với làm phong ph�
 
 ### Chi phí hạ tầng
 
-| Thành phần            | Dịch vụ               | Ước tính   |
-| -------------------- | --------------------- | ---------------- |
-| Lambda + API Gateway | Backend               | $0.22/tháng      |
-| DynamoDB             | Database              | $0.10/tháng      |
-| S3                   | Storage               | $0.20/tháng      |
-| Cognito + SNS        | Authentication + OTP  | $0.13/tháng      |
-| Bedrock              | AI Processing         | $7.5/tháng      |
-| Location Service     | Map & Geospatial Data | $3.30/tháng            |
-| **Tổng cộng**            |                       | **~$24.32/tháng** |
+| Thành phần           | Dịch vụ               | Ước tính          |
+| -------------------- | --------------------- | ----------------- |
+| Lambda + API Gateway | Backend               | $0.22/tháng       |
+| DynamoDB             | Database              | $0.10/tháng       |
+| S3                   | Storage               | $0.20/tháng       |
+| Cognito + SNS        | Authentication + OTP  | $0.13/tháng       |
+| Bedrock              | AI Processing         | $7.5/tháng        |
+| Location Service     | Map & Geospatial Data | $3.30/tháng       |
+| **Tổng cộng**        |                       | **~$24.32/tháng** |
 
 **Lưu ý**: Tất cả dịch vụ hoạt động trong giới hạn sử dụng Free Tier trong giai đoạn MVP với chi phí vận hành tối thiểu.
 

@@ -5,9 +5,10 @@ date: "`r Sys.Date()`"
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
---------------------
 
 # FindNest
+
+[Download the Proposal in DOCX format here](../../static/proposal.docx)
 
 ## AWS Serverless AI Platform for Smart Accommodation Search
 
