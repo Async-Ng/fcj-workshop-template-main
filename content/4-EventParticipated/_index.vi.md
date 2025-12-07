@@ -6,41 +6,40 @@ chapter: false
 pre: " <b> 4. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
+### [AI-Driven Development Life Cycle (AI-DLC)](4.1-Event1/)
 
-> Trong phần này, các bạn cần liệt kê và mô tả chi tiết các sự kiện (event) mà mình đã tham gia trong suốt quá trình thực tập hoặc làm việc. 
-> 
-> Mỗi sự kiện nên được trình bày theo định dạng Event 1, Event 2, Event 3…, kèm theo các thông tin:
-> * Tên sự kiện
-> * Thời gian tổ chức
-> * Địa điểm (nếu có)
-> * Vai trò của bạn trong sự kiện (người tham dự, hỗ trợ tổ chức, diễn giả, v.v.)
-> * Mô tả ngắn gọn nội dung và hoạt động chính trong sự kiện
-> * Kết quả hoặc giá trị đạt được (bài học, kỹ năng mới, đóng góp cho nhóm/dự án)
-> * Việc liệt kê này giúp thể hiện rõ sự tham gia thực tế của bạn, cũng như các kỹ năng mềm và kinh nghiệm bạn đã tích lũy qua từng sự kiện.
+&emsp;**Thời gian:** 3/10/2025
+&emsp;**Địa điểm:** AWS Vietnam Office (HCM)
+&emsp;**Vai trò:** Người tham dự  
+&emsp;**Tóm tắt:** Giới thiệu mô hình AI-Driven Development, phát triển theo spec, và các công cụ agentic như Amazon Q Developer và Kiro. Nhấn mạnh vai trò mới của developer là architect & validator và tự động hóa các tác vụ lặp lại.  
+&emsp;**Kết quả:** Nắm được workflow AI-assisted, kỹ thuật prompt-as-code và cách tích hợp AI agents vào SDLC.
 
+---
 
-Trong quá trình thực tập, em đã tham gia 2 events, với mỗi event là một trải nghiệm đáng nhớ với những kiến thức mới, hay và bổ ích, cùng với đó là nhứng món quà và những khoảnh khắc rất tuyệt vời.
+### [AI/ML/GenAI trên AWS](4.2-Event2/)
 
-### [Event 1](4.1-Event1/)
-&emsp;**Tên sự kiện:** GenAI-powered App-DB Modernization workshop
+&emsp;**Thời gian:** 15/11/2025
+&emsp;**Địa điểm:** AWS Vietnam Office (HCM)
+&emsp;**Vai trò:** Người tham dự  
+&emsp;**Tóm tắt:** Tổng quan các dịch vụ AI của AWS (Rekognition, Polly, Transcribe, Comprehend, Translate, Lex) và nội dung GenAI với Bedrock (foundation models, prompt engineering, RAG, agents, guardrails).  
+&emsp;**Kết quả:** Học cách xây dựng chatbot GenAI bằng Bedrock, kiến trúc RAG và thực hành an toàn khi triển khai GenAI.
 
-&emsp;**Thời gian:** 09:00 ngày 13/08/2025
+---
 
-&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
+### [DevOps trên AWS](4.3-Event3/)
 
-&emsp;**Vai trò trong sự kiện:** Người tham dự 
+&emsp;**Thời gian:** 17/11/2025
+&emsp;**Địa điểm:** AWS Vietnam Office (HCM)
+&emsp;**Vai trò:** Người tham dự  
+&emsp;**Tóm tắt:** Thực hành CI/CD (CodePipeline, CodeBuild, CodeDeploy), IaC (CloudFormation, CDK), container (ECR, ECS, EKS) và monitoring (CloudWatch, X-Ray).  
+&emsp;**Kết quả:** Nắm quy trình xây dựng pipeline CI/CD, triển khai container và thiết lập observability cho hệ thống production.
 
+---
 
+### [Workshop Bảo mật mạng & Kiến trúc AWS](4.4-Event4/)
 
-### [Event 2](4.2-Event2/)
-&emsp;**Tên sự kiện:** GenAI-powered App-DB Modernization workshop
-
-&emsp;**Thời gian:** 09:00 ngày 13/08/2025
-
-&emsp;**Địa điểm:** Tầng 26, tòa nhà Bitexco, số 02 đường Hải Triều, phường Sài Gòn, thành phố Hồ Chí Minh
-
-&emsp;**Vai trò trong sự kiện:** Người tham dự 
-
+&emsp;**Thời gian:** 29/11/2025
+&emsp;**Địa điểm:** AWS Vietnam Office (HCM)
+&emsp;**Vai trò:** Người tham dự  
+&emsp;**Tóm tắt:** Đi sâu vào bảo mật mạng, so sánh MFA (TOTP vs FIDO2), phòng thủ đa lớp (WAF, Shield, Network Firewall), kiến trúc Transit Gateway và chiến lược egress tập trung.  
+&emsp;**Kết quả:** Hiểu sâu về defense-in-depth, phân đoạn mạng và best practice kiến trúc cho mạng AWS an toàn.

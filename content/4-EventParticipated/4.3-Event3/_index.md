@@ -11,7 +11,7 @@ pre: " <b> 4.3. </b> "
 **Event:** DevOps on AWS Training Session  
 **Date:** Monday, November 17, 2025  
 **Duration:** 8:30 AM – 5:00 PM  
-**Location:** AWS Office  
+**Location:** AWS Office
 
 ---
 

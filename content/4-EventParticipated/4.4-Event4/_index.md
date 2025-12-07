@@ -1,13 +1,10 @@
 ---
-title: "Event 4"
+title: "AWS Network Security & Architecture Workshop"
 date: "`r Sys.Date()`"
-weight: 1
+weight: 4
 chapter: false
-pre: " <b> 4.4. </b> "
+pre: " <b> 4.4.</b> "
 ---
-
-# Summary Report: “AWS Network Security & Architecture Workshop”
-
 ### Event Objectives
 
 - Understand the differences between MFA technologies (TOTP vs. FIDO2).
@@ -79,6 +76,3 @@ Attending the **“AWS Network Security & Architecture”** workshop provided a 
 
 - Seeing the "Good Traffic Flows" diagram helped clarify how to architect a production-grade network using Transit Gateways and centralized internet egress points.
 
-#### Some event photos
-
-> Overall, the session reinforced the importance of not just perimeter security, but also internal network segmentation and strong identity management.

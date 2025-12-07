@@ -1,12 +1,10 @@
 ---
-title: "Event 1"
+title: "AI-Driven Development Life Cycle"
 date: "`r Sys.Date()`"
 weight: 1
 chapter: false
 pre: " <b> 4.1. </b> "
 ---
-
-# Bài thu hoạch “AI-Driven Development Life Cycle”
 
 ### Mục Đích Của Sự Kiện
 

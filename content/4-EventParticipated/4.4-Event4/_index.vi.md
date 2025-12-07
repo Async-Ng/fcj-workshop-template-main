@@ -1,16 +1,10 @@
 ---
-title: "Báo cáo tóm tắt: Workshop Bảo mật Mạng và Kiến trúc AWS"
+title: "Workshop Bảo mật Mạng và Kiến trúc AWS"
 date: "`r Sys.Date()`"
-weight: 1
+weight: 4
 chapter: false
-pre: " <b> 4.4. </b> "
+pre: " <b> 4.4.</b> "
 ---
-
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
-
-# Báo cáo tóm tắt: "Workshop Bảo mật Mạng và Kiến trúc AWS"
 
 ## Mục đích sự kiện
 
@@ -82,7 +76,3 @@ Tham gia workshop **"AWS Network Security & Architecture"** cung cấp hướng 
 ### Đào sâu Kiến trúc
 
 - Xem sơ đồ "Good Traffic Flows" giúp làm rõ cách kiến trúc mạng cấp sản xuất bằng Transit Gateways và các điểm egress internet tập trung.
-
-### Một số hình ảnh sự kiện
-
-> Tổng thể, phiên làm tăng cường tầm quan trọng không chỉ của bảo mật perimeter, mà còn của phân đoạn mạng nội bộ và quản lý danh tính mạnh mẽ.
