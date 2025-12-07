@@ -1,14 +1,11 @@
 ---
-title: "Shield AI và AWS hợp tác để cung cấp khả năng tự chủ nhiệm vụ ở quy mô đội hình"
+title: "Blog 1"
 date: "2025-06-25"
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
 # Shield AI và AWS hợp tác để cung cấp khả năng tự chủ nhiệm vụ ở quy mô đội hình
 

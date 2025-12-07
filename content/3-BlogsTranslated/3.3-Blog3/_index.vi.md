@@ -1,14 +1,11 @@
 ---
-title: "Giới thiệu AWS Builder Center: Ngôi nhà mới dành cho cộng đồng AWS builder"
+title: "Blog 3"
 date: "2025-07-09"
 weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
 # Giới thiệu AWS Builder Center: Ngôi nhà mới dành cho cộng đồng AWS builder
 

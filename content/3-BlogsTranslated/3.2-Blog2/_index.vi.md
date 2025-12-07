@@ -1,14 +1,11 @@
 ---
-title: "Hỗ trợ chuyển đổi kỹ thuật số để thúc đẩy chăm sóc sức khỏe"
+title: "Blog 2"
 date: "2025-06-24"
 weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Lưu ý:** Các thông tin dưới đây chỉ nhằm mục đích tham khảo, vui lòng **không sao chép nguyên văn** cho bài báo cáo của bạn kể cả warning này.
-{{% /notice %}}
 
 # Hỗ trợ chuyển đổi kỹ thuật số để thúc đẩy chăm sóc sức khỏe
 

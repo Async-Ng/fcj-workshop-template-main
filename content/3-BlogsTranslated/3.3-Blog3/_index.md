@@ -1,14 +1,11 @@
 ---
-title: "Introducing AWS Builder Center: A New Home for the AWS Builder Community"
+title: "Blog 3"
 date: "2025-07-09"
 weight: 3
 chapter: false
 pre: " <b> 3.3. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
 # Introducing AWS Builder Center: A New Home for the AWS Builder Community
 

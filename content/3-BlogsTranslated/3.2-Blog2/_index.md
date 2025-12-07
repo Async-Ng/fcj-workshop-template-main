@@ -1,14 +1,11 @@
 ---
-title: "Enabling Digital Transformation to Advance Healthcare"
+title: "Blog 2"
 date: "2025-06-24"
 weight: 2
 chapter: false
 pre: " <b> 3.2. </b> "
 ---
 
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
 # Enabling Digital Transformation to Advance Healthcare
 

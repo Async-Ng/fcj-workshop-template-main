@@ -1,14 +1,10 @@
 ---
-title: "Shield AI and AWS Collaborate to Deliver Mission Autonomy at Formation Scale"
+title: "Blog 1"
 date: "2025-06-25"
 weight: 1
 chapter: false
 pre: " <b> 3.1. </b> "
 ---
-
-{{% notice warning %}}
-⚠️ **Note:** The information below is for reference purposes only. Please **do not copy verbatim** for your report, including this warning.
-{{% /notice %}}
 
 # Shield AI and AWS Collaborate to Deliver Mission Autonomy at Formation Scale
 
