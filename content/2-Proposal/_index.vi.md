@@ -1,11 +1,10 @@
 ---
-
 title: "Bản đề xuất"
 date: "`r Sys.Date()`"
 weight: 2
 chapter: false
 pre: " <b> 2. </b> "
-[Tải Proposal dạng DOCX tại đây](../../static/proposal.docx)
+---
 
 # FindNest
 
@@ -149,3 +148,9 @@ Nền tảng sử dụng thiết kế AWS Serverless module với làm phong ph�
 - **Nhận thức ngữ cảnh thông minh**: Xây dựng hồ sơ động cho khu vực và thói quen người dùng.
 - **Nền tảng có khả năng mở rộng**: Sẵn sàng tích hợp với Amazon Personalize hoặc tinh chỉnh Bedrock.
 - **Hiệu quả chi phí**: Hoàn toàn serverless với bảo trì tối thiểu và không có máy chủ cố định.
+
+---
+
+{{% notice info %}}
+[Tải Proposal tại đây](../../static/proposal.docx)
+{{% /notice %}}
