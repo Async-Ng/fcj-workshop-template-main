@@ -104,3 +104,7 @@ Chương trình được thiết kế theo hướng tiến bộ, giúp tôi xây
 - Sửa các lỗi endpoint được báo cáo
 - Phối hợp với team frontend để điều chỉnh giao diện
 - Tiếp tục chỉnh sửa và cải thiện các endpoint cần thiết
+
+**Tuần 13:** [Fix tính năng AI Search & Tích hợp](1.13-Week13/)
+
+- Thử nghiệm các biến thể prompt và cải thiện chất lượng tìm kiếm ngữ nghĩa

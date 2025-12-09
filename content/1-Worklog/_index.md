@@ -104,3 +104,7 @@ The program is designed progressively, helping me build a solid knowledge founda
 - Fix reported endpoint errors
 - Coordinate with frontend team for interface adjustments
 - Continue editing and improving necessary endpoints
+
+**Week 13:** [AI Search Fix & Integration](1.13-Week13/)
+
+- Experimented with prompt variants and improved semantic search quality
